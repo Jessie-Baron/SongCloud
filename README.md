@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-<img src="file:///Users/jessiebaron/Downloads/Untitled.png"></img>
+![title](Images/backend-schema.png)
 
 ## API Documentation
 
