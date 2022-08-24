@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-<img src="images/backend-schema.png" alt="schema"></img>
+<img src="https://drive.google.com/file/d/1zCpjQvCtnpN8EEoLk6OjPpu-FXBo1Ort/view?usp=sharing" alt="schema"></img>
 
 ## API Documentation
 
