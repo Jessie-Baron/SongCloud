@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-![Schema Image](backend-schema.png)
+<img src="images/backend-schema.png" alt="schema"></img>
 
 ## API Documentation
 
