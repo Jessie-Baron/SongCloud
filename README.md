@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-<a href="https://drive.google.com/uc?export=view&id=1F4-2ql11w2SHBQpgPraP1bMf1Qe33cUK"><img src="https://drive.google.com/uc?export=view&id=1F4-2ql11w2SHBQpgPraP1bMf1Qe33cUK" style="width: 650px; max-width: 100%; height: auto" alt="schema" />
+<a href="https://drive.google.com/uc?export=view&id=1VeiPA1nIv-pxfap_eEegXieOjtN12ni8"><img src="https://drive.google.com/uc?export=view&id=1VeiPA1nIv-pxfap_eEegXieOjtN12ni8" style="width: 650px; max-width: 100%; height: auto" alt="schema" />
 
 ## API Documentation
 
@@ -405,8 +405,8 @@ Creates and returns a new song with or without an album.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: '/songs'
   * Headers:
     * Content-Type: application/json
   * Body without an album:
@@ -491,8 +491,8 @@ Updates and returns an existing song.
 * Require Authentication: true
 * Require proper authorization: Song must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: PUT
+  * URL: '/songs/:id'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -564,8 +564,8 @@ Deletes an existing song.
 * Require Authentication: true
 * Require proper authorization: Song must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: DELETE
+  * URL: '/songs/:id'
   * Body: none
 
 * Successful Response
@@ -602,8 +602,8 @@ Returns all the playlists created by the specified artist.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/users/:artistId/playlists'
   * Body: none
 
 * Successful Response
