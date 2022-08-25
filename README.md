@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-<a href="https://drive.google.com/uc?export=view&id=1RoFh85lpHAtYuarzToYdwg6c4uu7rGQS"><img src="https://drive.google.com/uc?export=view&id=1RoFh85lpHAtYuarzToYdwg6c4uu7rGQS" style="width: 650px; max-width: 100%; height: auto" alt="schema" />
+<a href="https://drive.google.com/uc?export=view&id=1F4-2ql11w2SHBQpgPraP1bMf1Qe33cUK"><img src="https://drive.google.com/uc?export=view&id=1F4-2ql11w2SHBQpgPraP1bMf1Qe33cUK" style="width: 650px; max-width: 100%; height: auto" alt="schema" />
 
 ## API Documentation
 
@@ -272,7 +272,7 @@ Returns all the songs created by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: ''
+  * URL: '/user/songs'
   * Body: none
 
 * Successful Response
@@ -305,8 +305,8 @@ Returns all the songs created by the specified artist.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/artists/songs'
   * Body: none
 
 * Successful Response
@@ -352,8 +352,8 @@ Returns the details of a song specified by its id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/songs/:id'
   * Body: none
 
 * Successful Response
