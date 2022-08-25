@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-<a href="https://drive.google.com/uc?export=view&id=1SxHPvDVEzILjUNuHAw0iKWxc5vsaA1bc"><img src="https://drive.google.com/uc?export=view&id=1SxHPvDVEzILjUNuHAw0iKWxc5vsaA1bc" style="width: 650px; max-width: 100%; height: auto" alt="schema" />
+<a href="https://drive.google.com/uc?export=view&id=1TPC5Sle93yVpZvqGp2-KVw_5yaFdW2Jl"><img src="https://drive.google.com/uc?export=view&id=1TPC5Sle93yVpZvqGp2-KVw_5yaFdW2Jl" style="width: 650px; max-width: 100%; height: auto" alt="schema" />
 
 ## API Documentation
 
@@ -78,8 +78,8 @@ information.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: '/user/:id'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -145,8 +145,8 @@ user's information.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: '/user'
   * Headers:
     * Content-Type: application/json
   * Body:
