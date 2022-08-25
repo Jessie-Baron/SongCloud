@@ -1,8 +1,8 @@
-# `<name of application here>`
+# `AcademyCloud`
 
 ## Database Schema Design
 
-<a href="https://drive.google.com/uc?export=view&id=1zCpjQvCtnpN8EEoLk6OjPpu-FXBo1Ort"><img src="https://drive.google.com/uc?export=view&id=1zCpjQvCtnpN8EEoLk6OjPpu-FXBo1Ort" style="width: 650px; max-width: 100%; height: auto" alt="schema" />
+<a href="https://drive.google.com/uc?export=view&id=1RoFh85lpHAtYuarzToYdwg6c4uu7rGQS"><img src="https://drive.google.com/uc?export=view&id=1RoFh85lpHAtYuarzToYdwg6c4uu7rGQS" style="width: 650px; max-width: 100%; height: auto" alt="schema" />
 
 ## API Documentation
 
@@ -51,8 +51,8 @@ Returns the information about the current user that is logged in.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/users/:id'
   * Body: none
 
 * Successful Response
@@ -78,8 +78,8 @@ information.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: '/users/:id'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -145,8 +145,8 @@ user's information.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: '/users'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -237,8 +237,8 @@ Returns all the songs.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/songs'
   * Body: none
 
 * Successful Response
@@ -271,8 +271,8 @@ Returns all the songs created by the current user.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/songs/:userId'
   * Body: none
 
 * Successful Response
@@ -305,8 +305,8 @@ Returns all the songs created by the specified artist.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/songs/:artistId'
   * Body: none
 
 * Successful Response
@@ -352,8 +352,8 @@ Returns the details of a song specified by its id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/songs/:id'
   * Body: none
 
 * Successful Response
@@ -405,8 +405,8 @@ Creates and returns a new song with or without an album.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: '/songs'
   * Headers:
     * Content-Type: application/json
   * Body without an album:
@@ -491,8 +491,8 @@ Updates and returns an existing song.
 * Require Authentication: true
 * Require proper authorization: Song must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: PUT
+  * URL: '/songs/:id'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -564,8 +564,8 @@ Deletes an existing song.
 * Require Authentication: true
 * Require proper authorization: Song must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: DELETE
+  * URL: '/songs/:id'
   * Body: none
 
 * Successful Response
@@ -602,8 +602,8 @@ Returns all the playlists created by the specified artist.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/playlists/:artistId'
   * Body: none
 
 * Successful Response
@@ -646,8 +646,8 @@ Creates and returns a new playlist.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: '/playlists'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -699,8 +699,8 @@ Add a song to a playlist specified by the playlist's id.
 * Require Authentication: true
 * Require proper authorization: Playlist must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: '/playlists/:id'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -757,8 +757,8 @@ Returns the details of a playlist specified by its id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/playlists/:id
   * Body: none
 
 * Successful Response
@@ -811,8 +811,8 @@ Updates and returns an existing playlist.
 * Require Authentication: true
 * Require proper authorization: Playlist must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: PUT
+  * URL: '/playlists/:id'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -877,8 +877,8 @@ Deletes an existing playlist.
 * Require Authentication: true
 * Require proper authorization: Playlist must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: DELETE
+  * URL: '/playlists/:id'
   * Body: none
 
 * Successful Response
@@ -913,8 +913,8 @@ Returns all the playlists created by the current user.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/playlists/:userId'
   * Body: none
 
 * Successful Response
@@ -946,8 +946,8 @@ Returns all the comments that belong to a song specified by id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/comments/:songId'
   * Body: none
 
 * Successful Response
@@ -994,8 +994,8 @@ Create and return a new comment for a song specified by id.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: '/comments/:songId'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1059,8 +1059,8 @@ Update and return an existing comment.
 * Require Authentication: true
 * Require proper authorization: Comment must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: PUT
+  * URL: '/comments/:id'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1124,8 +1124,8 @@ Delete an existing comment.
 * Require Authentication: true
 * Require proper authorization: Comment must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: DELETE
+  * URL: '/comments/:id'
   * Body: none
 
 * Successful Response
@@ -1162,8 +1162,8 @@ Returns all the Albums.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/albums'
   * Body: none
 
 * Successful Response
@@ -1194,8 +1194,8 @@ Returns all the Albums created by the current user.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/albums/:userId'
   * Body: none
 
 * Successful Response
@@ -1226,8 +1226,8 @@ Returns all the albums created by the specified artist.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/albums/:artistId'
   * Body: none
 
 * Successful Response
@@ -1271,8 +1271,8 @@ Returns the details of an album specified by its id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/albums/:id'
   * Body: none
 
 * Successful Response
@@ -1330,8 +1330,8 @@ Creates and returns a new album.
 
 * Require Authentication: true
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: POST
+  * URL: '/albums'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1385,8 +1385,8 @@ Updates and returns an existing album.
 * Require Authentication: true
 * Require proper authorization: Album must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: PUT
+  * URL: '/albums/:id'
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -1453,8 +1453,8 @@ Deletes an existing album.
 * Require Authentication: true
 * Require proper authorization: Album must belong to the current user
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: DELETE
+  * URL: '/albums/:id'
   * Body: none
 
 * Successful Response
@@ -1491,8 +1491,8 @@ Returns the details of an artist specified by their id.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: /users/:artistId
   * Body: none
 
 * Successful Response
@@ -1530,8 +1530,8 @@ Return songs filtered by query parameters.
 
 * Require Authentication: false
 * Request
-  * Method: ?
-  * URL: ?
+  * Method: GET
+  * URL: '/songs'
   * Query Parameters
     * page: integer, minimum: 0, maximum: 10, default: 0
     * size: integer, minimum: 0, maximum: 20, default: 20
