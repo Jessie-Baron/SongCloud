@@ -40,6 +40,7 @@ if (!isProduction) {
 
   // backend/app.js
 const routes = require('./routes');
+app.use(routes)
 
 app.use((_req, _res, next) => {
     const err = new Error("The requested resource couldn't be found.");
