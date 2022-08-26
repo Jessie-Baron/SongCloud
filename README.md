@@ -1,8 +1,6 @@
 # SoundCloud Clone
 
 ## Database Schema Design
-https://drive.google.com/file/d/14rZgn5WlGcKhmz8FW7o8aY0Da20bK2qR/view?usp=sharing
-[soundcloud-dbdiagram]: ../assets/soundcloud_dbdiagram.png
 <a href="https://drive.google.com/uc?export=view&id=14rZgn5WlGcKhmz8FW7o8aY0Da20bK2qR"><img src="https://drive.google.com/uc?export=view&id=14rZgn5WlGcKhmz8FW7o8aY0Da20bK2qR" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
 ## API Documentation
 
