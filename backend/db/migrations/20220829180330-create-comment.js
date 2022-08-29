@@ -9,10 +9,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       songId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Song' },
+        onDelete: 'CASCADE'
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'User' },
+        onDelete: 'CASCADE'
       },
       body: {
         type: Sequelize.STRING
