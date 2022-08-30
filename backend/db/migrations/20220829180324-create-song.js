@@ -10,12 +10,12 @@ module.exports = {
       },
       albumId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Album' },
+        references: { model: 'Albums' },
         onDelete: 'CASCADE'
       },
       userId: {
         type: Sequelize.INTEGER,
-        references: { model: 'User' },
+        references: { model: 'Users' },
         onDelete: 'CASCADE'
       },
       title: {

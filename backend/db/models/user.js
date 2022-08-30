@@ -33,9 +33,11 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
 
-    static async signup({ username, email, password }) {
+    static async signup({ firstName, lastName, username, email, password }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
+        firstName,
+        lastName,
         username,
         email,
         hashedPassword
@@ -47,6 +49,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Album, { foreignKey: "userId" })
       User.hasMany(models.Comment, { foreignKey: "userId" })
+      User.hasMany(models.Song, { foreignKey: "userId" })
     }
   };
 
@@ -66,14 +69,12 @@ module.exports = (sequelize, DataTypes) => {
       },
       firstName: {
         type: DataTypes.STRING,
-        allowNull: false,
         validate: {
           len: [3, 256]
         }
       },
       lastName: {
         type: DataTypes.STRING,
-        allowNull: false,
         validate: {
           len: [3, 256]
         }
