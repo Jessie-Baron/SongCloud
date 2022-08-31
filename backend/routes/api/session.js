@@ -4,6 +4,7 @@ const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth')
 const { User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { default: isEmail } = require('validator/lib/isEmail');
 
 const router = express.Router();
 
@@ -35,11 +36,19 @@ router.post(
         return next(err);
       }
 
-      await setTokenCookie(res, user);
+      const token = await setTokenCookie(res, user);
+      const userObj = user.toJSON()
+      userObj.token = token
+
 
       return res.json({
-        user
-      });
+          id: userObj.id,
+          firstName: userObj.firstName,
+          lastName: userObj.lastName,
+          email: userObj.email,
+          username: userObj.username,
+          token: userObj.token
+        });
     }
   );
 

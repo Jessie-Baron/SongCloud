@@ -15,9 +15,11 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 
 // Songs
-router.get('/songs', async (req, res, next) => {
+router.get('/songs', requireAuth, async (req, res, next) => {
   const songs = await Song.findAll()
-  res.json(songs)
+  res.json({
+    Songs: songs
+  })
 })
 
 router.get('/songs/current', async (req, res, next) => {
@@ -28,7 +30,9 @@ router.get('/songs/current', async (req, res, next) => {
         userId: user
       }
     })
-    res.json(songs)
+    res.json({
+      Songs: songs
+    })
   }
 })
 
@@ -48,7 +52,7 @@ router.post('/songs', requireAuth, async (req, res) => {
   res.json(song)
 })
 
-router.put('/songs/:songid', async (req, res, next) => {
+router.put('/songs/:songid', requireAuth, async (req, res, next) => {
   const { title, description, url, imageUrl, albumId } = req.body
 
   const song = await Song.findOne({
@@ -72,7 +76,7 @@ router.put('/songs/:songid', async (req, res, next) => {
   res.json(song)
 })
 
-router.get('/users/:userid/songs', async (req, res, next) => {
+router.get('/artists/:userid/songs', async (req, res, next) => {
   const songs = await Song.findAll(
      {
         where: {
@@ -88,7 +92,7 @@ router.get('/users/:userid/songs', async (req, res, next) => {
   })
 }
   else {
-    res.json(songs)
+    res.json({Songs: songs})
   }
 })
 
@@ -119,7 +123,7 @@ router.get('/songs/:songid', async (req, res, next) => {
   }
 })
 
-router.delete('/songs/:songid', async (req, res, next) => {
+router.delete('/songs/:songid', requireAuth, async (req, res, next) => {
   const song = await Song.findOne({
       where: {
         id: req.params.songid
@@ -133,26 +137,32 @@ router.delete('/songs/:songid', async (req, res, next) => {
 
   song.destroy()
   res.json({
-    message: "Successfully deleted"
+    message: "Successfully deleted",
+    statusCode: 200
   })
 })
 
 // Playlists
 router.get('/users/:userid/playlists', async (req, res, next) => {
-  const playlist = await Playlist.findAll({
+  const playlists = await Playlist.findAll({
     where: {
       userId: req.params.userid
     }
   })
-  res.json(playlist)
+
+  if(!playlists.length) res.json({
+    message: "Artist couldn't be found",
+    statusCode: 404
+  })
+
+  res.json({Playlists: playlists})
 })
 
-//name is not showing up
 router.post('/playlists', async (req, res, next) => {
   const { name, imageUrl } = req.body
   const userId = req.user.id
 
-  const song = await Song.create({ name, imageUrl, userId })
+  const song = await Playlist.create({ name, imageUrl, userId })
 
   res.json(song)
 })
