@@ -41,7 +41,7 @@ router.post('/songs', requireAuth, async (req, res) => {
   const userId = req.user.id
 
   if(albumId > 999) {
-    res.json({
+    res.status(404).json({
       statusCode: 404,
       message: "Album couldn't be found"
     })
@@ -61,7 +61,7 @@ router.put('/songs/:songid', requireAuth, async (req, res, next) => {
     }
   })
 
-  if(!song) res.json({
+  if(!song) res.status(404).json({
     message: "Song couldn't be found",
     statusCode: 404
   })
@@ -130,7 +130,7 @@ router.delete('/songs/:songid', requireAuth, async (req, res, next) => {
       }
   })
 
-  if(!song) res.json({
+  if(!song) res.status(404).json({
     message: "Song couldn't be found",
     statusCode: 404
   })
@@ -150,13 +150,15 @@ router.get('/users/:userid/playlists', async (req, res, next) => {
     }
   })
 
-  if(!playlists.length) res.json({
+  if(!playlists.length) res.status(404).json({
     message: "Artist couldn't be found",
     statusCode: 404
   })
 
   res.json({Playlists: playlists})
 })
+
+
 
 router.post('/playlists', async (req, res, next) => {
   const { name, imageUrl } = req.body
