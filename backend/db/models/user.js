@@ -6,8 +6,8 @@ const { Model, Validator } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
-      return { id, username, email };
+      const { id, firstName, lastName, username, email } = this; // context will be the User instance
+      return { id, firstName, lastName, username, email };
     }
 
     validatePassword(password) {
@@ -92,7 +92,8 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           len: [60, 60]
         }
-      }
+      },
+      imageUrl: DataTypes.STRING
     },
     {
       sequelize,
