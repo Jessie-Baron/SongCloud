@@ -3,8 +3,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const { restoreUser } = require("../../utils/auth.js");
 const { requireAuth } = require("../../utils/auth.js");
-const { Song, Album, User, Playlist } = require('../../db/models');
-
+const { Song, Album, User, Playlist, PlaylistSong } = require('../../db/models');
 // Connect restoreUser middleware to the API router
   // If current user session is valid, set req.user to the user in the database
   // If current user session is not valid, set req.user to null
@@ -160,7 +159,7 @@ router.get('/users/:userid/playlists', async (req, res, next) => {
 
 
 
-router.post('/playlists', async (req, res, next) => {
+router.post('/playlists', requireAuth, restoreUser, async (req, res, next) => {
   const { name, imageUrl } = req.body
   const userId = req.user.id
 
@@ -169,14 +168,86 @@ router.post('/playlists', async (req, res, next) => {
   res.json(song)
 })
 
-router.post('/albums', async (req, res, next) => {
-  const userId = req.user.id
-  const { title, description, imageUrl } = req.body
+router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req, res, next) => {
+  const { songId } = req.body
+  const { playlistid } = req.params
 
-  const album = await Album.create({
-    title, description, imageUrl, userId
+  const playlist = await Playlist.findOne({
+    where: {
+      id: playlistid
+    }
   })
-  res.json(album)
+
+  if(!playlist) {
+    res.status(404).json({
+      message: "Playlist couldn't be found",
+      statusCode: 404
+    })
+  }
+
+  const song = await Song.findOne({
+    where: {
+      id: songId
+    }
+  })
+
+  if(!song) {
+    res.status(404).json({
+      message: "Song couldn't be found",
+      statusCode: 404
+    })
+  }
+
+  await PlaylistSong.create({songId, playlistid})
+
+  const playlistSong = await PlaylistSong.findOne({
+    where: {
+      playlistId: playlistid,
+      songId: songId
+    },
+    attributes:{
+      include:['id','playlistId','songId'],
+      exclude:['createdAt','updatedAt', 'order']
+    }
+  })
+  res.json(playlistSong)
 })
+
+router.get('/playlists/:playlistid', async (req, res, next) => {
+  const playlist = await Playlist.findOne({
+    where: {
+      id: req.params.playlistid
+    },
+    include: [
+    {
+      model: Song,
+      through: {attributes: []}
+    }],
+  })
+
+  if(!playlist) {
+    res.status(404)
+    res.json({
+      message: "Playlist couldn't be found",
+      statusCode: 404
+    })
+  }
+
+  else {
+  res.json(playlist)
+  }
+})
+
+// router.post('/albums', async (req, res, next) => {
+//   const userId = req.user.id
+//   const { title, description, imageUrl } = req.body
+
+//   const album = await Album.create({
+//     title, description, imageUrl, userId
+//   })
+//   res.json(album)
+// })
+
+
 
 module.exports = router;
