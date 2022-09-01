@@ -56,7 +56,7 @@ const setTokenCookie = (res, user) => {
 const requireAuth = function (req, _res, next) {
   if (req.user) return next();
 
-  const err = new Error('Unauthorized');
+  const err = new Error('Authentication required');
   err.title = 'Unauthorized';
   err.errors = ['Unauthorized'];
   err.status = 401;

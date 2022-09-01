@@ -15,7 +15,7 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 
 // Songs
-router.get('/songs', requireAuth, async (req, res, next) => {
+router.get('/songs', requireAuth, restoreUser, async (req, res, next) => {
   const songs = await Song.findAll()
   res.json({
     Songs: songs
@@ -36,7 +36,7 @@ router.get('/songs/current', async (req, res, next) => {
   }
 })
 
-router.post('/songs', requireAuth, async (req, res) => {
+router.post('/songs', requireAuth, restoreUser, async (req, res) => {
   const { title, description, url, imageUrl, albumId } = req.body
   const userId = req.user.id
 
@@ -52,7 +52,7 @@ router.post('/songs', requireAuth, async (req, res) => {
   res.json(song)
 })
 
-router.put('/songs/:songid', requireAuth, async (req, res, next) => {
+router.put('/songs/:songid', requireAuth, restoreUser, async (req, res, next) => {
   const { title, description, url, imageUrl, albumId } = req.body
 
   const song = await Song.findOne({
@@ -123,7 +123,7 @@ router.get('/songs/:songid', async (req, res, next) => {
   }
 })
 
-router.delete('/songs/:songid', requireAuth, async (req, res, next) => {
+router.delete('/songs/:songid', requireAuth, restoreUser, async (req, res, next) => {
   const song = await Song.findOne({
       where: {
         id: req.params.songid
@@ -236,6 +236,55 @@ router.get('/playlists/:playlistid', async (req, res, next) => {
   res.json(playlist)
   }
 })
+
+router.put('/playlists/:playlistid', requireAuth, restoreUser, async (req, res, next) => {
+  const { name, imageUrl } = req.body
+
+  const playlist = await Playlist.findOne({
+    where: {
+      id: req.params.playlistid
+    }
+  })
+
+  if(!playlist) res.status(404).json({
+    message: "Playlist couldn't be found",
+    statusCode: 404
+  })
+
+  if(name) playlist.name = name
+  if(imageUrl) playlist.imageUrl = imageUrl
+  playlist.save()
+
+  res.json({
+    id: playlist.id,
+    userId: playlist.userId,
+    name: playlist.name,
+    createdAt: playlist.createdAt,
+    updatedAt: playlist.updatedAt,
+    previewImage: playlist.imageUrl
+  })
+})
+
+router.delete('/playlists/:playlistid', requireAuth, restoreUser, async (req, res, next) => {
+  const playlist = await Playlist.findOne({
+      where: {
+        id: req.params.playlistid
+      }
+  })
+
+  if(!playlist) res.status(404).json({
+    message: "Playlist couldn't be found",
+    statusCode: 404
+  })
+
+  playlist.destroy()
+  res.json({
+    message: "Successfully deleted",
+    statusCode: 200
+  })
+})
+
+
 
 router.post('/albums', async (req, res, next) => {
   const userId = req.user.id
