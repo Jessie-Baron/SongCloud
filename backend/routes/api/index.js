@@ -170,11 +170,11 @@ router.post('/playlists', requireAuth, restoreUser, async (req, res, next) => {
 
 router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req, res, next) => {
   const { songId } = req.body
-  const { playlistId } = req.params
+  const { playlistid } = req.params
 
   const playlist = await Playlist.findOne({
     where: {
-      id: playlistId
+      id: playlistid
     }
   })
 
@@ -198,7 +198,7 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
     })
   }
 
-  await PlaylistSong.create({songId, playlistId})
+  await PlaylistSong.create({songId, playlistid})
 
   const playlistSong = await PlaylistSong.findOne({
     where: {
