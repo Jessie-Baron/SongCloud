@@ -174,7 +174,7 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
 
   const playlist = await Playlist.findOne({
     where: {
-      id: playlistid
+      id: playlistId
     }
   })
 
