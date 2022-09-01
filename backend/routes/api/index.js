@@ -201,20 +201,18 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
 
 const temp = await PlaylistSong.create({songId, playlistid})
 if(temp) return res.json(temp)
+console.log(temp)
 
-  const playlistSong = await PlaylistSong.findOne({
-    where: {
-      [Op.and]: [
-      {playlistId: playlistid},
-      {songId: songId}
-      ]
-    },
-    attributes:{
-      exclude:['createdAt','updatedAt', 'order']
-    }
-  })
-  res.json(playlistSong)
-})
+//   const playlistSong = await PlaylistSong.findByPk(temp.id)
+//     },
+//     attributes:{
+//       exclude:['createdAt','updatedAt', 'order']
+//     }
+//   })
+//   res.json(playlistSong)
+// })
+
+res.send("completed")
 
 // router.get('/playlists/:playlistid', async (req, res, next) => {
 
