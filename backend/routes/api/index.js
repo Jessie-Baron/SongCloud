@@ -4,6 +4,7 @@ const usersRouter = require('./users.js');
 const { restoreUser } = require("../../utils/auth.js");
 const { requireAuth } = require("../../utils/auth.js");
 const { Song, Album, User, Playlist, PlaylistSong } = require('../../db/models');
+const { Op } = require('sequelize')
 // Connect restoreUser middleware to the API router
   // If current user session is valid, set req.user to the user in the database
   // If current user session is not valid, set req.user to null
@@ -202,8 +203,10 @@ await PlaylistSong.create({songId, playlistid})
 
   const playlistSong = await PlaylistSong.findOne({
     where: {
-      playlistId: playlistid,
-      songId: songId
+      [Op.and]: [
+      {playlistId: playlistid},
+      {songId: songId}
+      ]
     },
     attributes:{
       exclude:['createdAt','updatedAt', 'order']
