@@ -198,8 +198,7 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
     })
   }
 
-  const newSong = await PlaylistSong.create({songId, playlistid})
-  newSong.save()
+await PlaylistSong.create({songId, playlistid})
 
   const playlistSong = await PlaylistSong.findOne({
     where: {
@@ -207,38 +206,37 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
       songId: songId
     },
     attributes:{
-      include:['id','playlistId','songId'],
       exclude:['createdAt','updatedAt', 'order']
     }
   })
   res.json(playlistSong)
 })
 
-router.get('/playlists/:playlistid', async (req, res, next) => {
+// router.get('/playlists/:playlistid', async (req, res, next) => {
 
-  const playlist = await Playlist.findOne({
-    where: {
-      id: req.params.playlistid
-    },
-    include: [
-    {
-      model: Song,
-      through: {attributes: []}
-    }],
-  })
+//   const playlist = await Playlist.findOne({
+//     where: {
+//       id: req.params.playlistid
+//     },
+//     include: [
+//     {
+//       model: Song,
+//       through: {attributes: []}
+//     }],
+//   })
 
-  if(!playlist) {
-    res.status(404)
-    res.json({
-      message: "Playlist couldn't be found",
-      statusCode: 404
-    })
-  }
+//   if(!playlist) {
+//     res.status(404)
+//     res.json({
+//       message: "Playlist couldn't be found",
+//       statusCode: 404
+//     })
+//   }
 
-  else {
-  res.json(playlist)
-  }
-})
+//   else {
+//   res.json(playlist)
+//   }
+// })
 
 // router.post('/albums', async (req, res, next) => {
 //   const userId = req.user.id
