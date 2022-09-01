@@ -219,11 +219,11 @@ router.get('/playlists/:playlistid', async (req, res, next) => {
     where: {
       id: req.params.playlistid
     },
-    // include: [
-    // {
-    //   model: Song,
-    //   through: {attributes: []}
-    // }],
+    include: [
+    {
+      model: Song,
+      // through: {attributes: []}
+    }],
   })
 
   if(!playlist) {
