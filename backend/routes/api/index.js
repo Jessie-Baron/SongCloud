@@ -206,7 +206,7 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
       songId: songId
     },
     attributes:{
-      include:['id','songId'],
+      include:['id','playlistId','songId'],
       exclude:['createdAt','updatedAt', 'order']
     }
   })
