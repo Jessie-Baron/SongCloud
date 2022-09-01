@@ -345,7 +345,7 @@ router.post('/songs/:songid/comments', requireAuth, restoreUser, async (req, res
   const comment = await Comment.create({ userId, songId, body })
 
 
-  if(!comment) {
+  if(!songId) {
     res.status(404).json({
       message: "Song couldn't be found",
       statusCode: 404
