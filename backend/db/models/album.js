@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
         models.Song, {foreignKey: "albumId"}
       )
       Album.belongsTo(
-        models.User, { foreignKey: "userId"}
+        models.User, { as: 'Artist', foreignKey: "userId"}
       )
     }
   }

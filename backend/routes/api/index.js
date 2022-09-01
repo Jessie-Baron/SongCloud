@@ -15,7 +15,7 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 
 // Songs
-router.get('/songs', requireAuth, restoreUser, async (req, res, next) => {
+router.get('/songs', async (req, res, next) => {
   const songs = await Song.findAll()
   res.json({
     Songs: songs
@@ -76,11 +76,11 @@ router.put('/songs/:songid', requireAuth, restoreUser, async (req, res, next) =>
   res.json(song)
 })
 
-router.get('/artists/:userid/songs', async (req, res, next) => {
+router.get('/artists/:artistid/songs', async (req, res, next) => {
   const songs = await Song.findAll(
      {
         where: {
-          userId: req.params.userid
+          userId: req.params.artistid
         }
   })
 
@@ -299,17 +299,6 @@ router.delete('/playlists/:playlistid', requireAuth, restoreUser, async (req, re
   })
 })
 
-
-router.post('/albums', async (req, res, next) => {
-  const userId = req.user.id
-  const { title, description, imageUrl } = req.body
-
-  const album = await Album.create({
-    title, description, imageUrl, userId
-  })
-  res.json(album)
-})
-
 // Comments
 
 router.get('/songs/:songid/comments', async (req, res, next) => {
@@ -385,6 +374,89 @@ router.delete('/comments/:commentid', requireAuth, restoreUser, async (req, res,
     message: "Successfully deleted",
     statusCode: 200
   })
+})
+
+// Albums
+
+router.get('/albums', async (req, res, next) => {
+
+  const albums = await Album.findAll()
+
+  res.json({
+    Albums: albums
+  })
+})
+
+router.post('/albums', async (req, res, next) => {
+  const userId = req.user.id
+  const { title, description, imageUrl } = req.body
+
+  const album = await Album.create({
+    title, description, imageUrl, userId
+  })
+  res.json(album)
+})
+
+router.get('/albums/current', restoreUser, requireAuth, async (req, res)=>{
+  const user = req.user
+  if(user){
+    const albums = await Album.findAll({
+      where:{
+        userId: user.id
+      }
+    })
+    res.json({
+      Albums: albums
+    })
+  }
+})
+
+router.get('/artists/:artistid/albums', async (req, res, next) => {
+  const albums = await Album.findAll(
+     {
+        where: {
+          userId: req.params.artistid
+        }
+  })
+
+  if(!albums.length) {
+  res.status(404)
+  res.json({
+    message: "Artist couldn't be found",
+    statusCode: 404
+  })
+}
+  else {
+    res.json({Albums: albums})
+  }
+})
+
+router.get('/albums/:albumid', async (req, res, next) => {
+
+  const album = await Album.findOne({
+    where: {
+      id: req.params.albumid
+    },
+    include: [{
+      model: User, as: 'Artist',
+      attributes: ['id', 'username', 'imageUrl']
+    },
+    {
+      model: Song
+    }],
+  })
+
+  if(!album) {
+    res.status(404)
+    res.json({
+      message: "Playlist couldn't be found",
+      statusCode: 404
+    })
+  }
+
+  else {
+  res.json(album)
+  }
 })
 
 module.exports = router;
