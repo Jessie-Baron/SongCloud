@@ -3,7 +3,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const { restoreUser } = require("../../utils/auth.js");
 const { requireAuth } = require("../../utils/auth.js");
-const { Song, Album, User, Playlist, PlaylistSong } = require('../../db/models');
+const { Song, Album, User, Playlist, PlaylistSong, Comment } = require('../../db/models');
 const { Op } = require('sequelize')
 // Connect restoreUser middleware to the API router
   // If current user session is valid, set req.user to the user in the database
@@ -312,6 +312,79 @@ router.post('/albums', async (req, res, next) => {
 
 // Comments
 
+router.get('/songs/:songid/comments', async (req, res, next) => {
+  const comments = await Comment.findAll({
+    where: {
+      songId: req.params.songid
+    },
+    include: {
+      model: User,
+      attributes: ['id', 'username']
+    }
+  })
 
+  if(!comments.length) res.status(404).json({
+    message: "Song couldn't be found",
+    statusCode: 404
+  })
+
+  res.json({Comments: comments})
+})
+
+router.post('/songs/:songid/comments', requireAuth, restoreUser, async (req, res, next) => {
+  const { body } = req.body
+  const userId = req.user.id
+  const songId = req.params.songid
+
+  const comment = await Comment.create({ userId, songId, body })
+
+  res.json(comment)
+})
+
+router.put('/comments/:commentid', requireAuth, restoreUser, async (req, res, next) => {
+  const { body } = req.body
+
+  const comment = await Comment.findOne({
+    where: {
+      id: req.params.commentid
+    }
+  })
+
+  if(!comment) res.status(404).json({
+    message: "Comment couldn't be found",
+    statusCode: 404
+  })
+
+  if(body) comment.body = body
+  comment.save()
+
+  res.json({
+    id: comment.id,
+    userId: comment.userId,
+    songId: comment.songId,
+    body: comment.body,
+    createdAt: comment.createdAt,
+    updatedAt: comment.updatedAt,
+  })
+})
+
+router.delete('/comments/:commentid', requireAuth, restoreUser, async (req, res, next) => {
+  const comment = await Comment.findOne({
+      where: {
+        id: req.params.commentid
+      }
+  })
+
+  if(!comment) res.status(404).json({
+    message: "Comment couldn't be found",
+    statusCode: 404
+  })
+
+  comment.destroy()
+  res.json({
+    message: "Successfully deleted",
+    statusCode: 200
+  })
+})
 
 module.exports = router;
