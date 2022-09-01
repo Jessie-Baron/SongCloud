@@ -449,7 +449,7 @@ router.get('/albums/:albumid', async (req, res, next) => {
   if(!album) {
     res.status(404)
     res.json({
-      message: "Playlist couldn't be found",
+      message: "Album couldn't be found",
       statusCode: 404
     })
   }
@@ -458,5 +458,56 @@ router.get('/albums/:albumid', async (req, res, next) => {
   res.json(album)
   }
 })
+
+router.put('/albums/:albumid', requireAuth, restoreUser, async (req, res, next) => {
+  const { title, description, imageUrl } = req.body
+
+  const album = await Album.findOne({
+    where: {
+      id: req.params.albumid
+    }
+  })
+
+  if(!album) res.status(404).json({
+    message: "Album couldn't be found",
+    statusCode: 404
+  })
+
+  if(title) album.title = title
+  if(description) album.description = description
+  if(imageUrl) album.imageUrl = imageUrl
+
+  album.save()
+
+  res.json({
+    id: album.id,
+    userId: album.userId,
+    description: album.description,
+    createdAt: album.createdAt,
+    updatedAt: album.updatedAt,
+    previewImage: album.imageUrl
+  })
+})
+
+router.delete('/albums/:albumid', requireAuth, restoreUser, async (req, res, next) => {
+  const album = await Album.findOne({
+      where: {
+        id: req.params.albumid
+      }
+  })
+
+  if(!album) res.status(404).json({
+    message: "Comment couldn't be found",
+    statusCode: 404
+  })
+
+  album.destroy()
+  res.json({
+    message: "Successfully deleted",
+    statusCode: 200
+  })
+})
+
+// Artist
 
 module.exports = router;
