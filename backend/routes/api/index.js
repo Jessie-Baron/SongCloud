@@ -214,15 +214,16 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
 })
 
 router.get('/playlists/:playlistid', async (req, res, next) => {
+
   const playlist = await Playlist.findOne({
     where: {
       id: req.params.playlistid
     },
-    include: [
-    {
-      model: Song,
-      through: {attributes: []}
-    }],
+    // include: [
+    // {
+    //   model: Song,
+    //   through: {attributes: []}
+    // }],
   })
 
   if(!playlist) {
