@@ -20,8 +20,6 @@ router.get('/songs', async (req, res, next) => {
   let { size, page } = req.query
   const pagination = {}
 
-  if (!page) page = 0
-  if (!size) size = 20
   if (page > 10) page = 10
   if (size > 20) size = 20
 
@@ -95,11 +93,11 @@ router.put('/songs/:songid', requireAuth, restoreUser, async (req, res, next) =>
   res.json(song)
 })
 
-router.get('/artists/:artistid/songs', async (req, res, next) => {
+router.get('/artists/:userid/songs', async (req, res, next) => {
   const songs = await Song.findAll(
      {
         where: {
-          userId: req.params.artistid
+          userId: req.params.userid
         }
   })
 
@@ -177,7 +175,7 @@ router.get('/playlists/current', restoreUser, requireAuth, async (req, res)=>{
   }
 })
 
-router.get('/users/:userid/playlists', async (req, res, next) => {
+router.get('/artists/:userid/playlists', async (req, res, next) => {
   const playlists = await Playlist.findAll({
     where: {
       userId: req.params.userid
@@ -346,6 +344,14 @@ router.post('/songs/:songid/comments', requireAuth, restoreUser, async (req, res
 
   const comment = await Comment.create({ userId, songId, body })
 
+
+  if(!comment) {
+    res.status(404).json({
+      message: "Song couldn't be found",
+      statusCode: 404
+    })
+  }
+
   res.json(comment)
 })
 
@@ -430,11 +436,11 @@ router.get('/albums/current', restoreUser, requireAuth, async (req, res)=>{
   }
 })
 
-router.get('/artists/:artistid/albums', async (req, res, next) => {
+router.get('/artists/:userid/albums', async (req, res, next) => {
   const albums = await Album.findAll(
      {
         where: {
-          userId: req.params.artistid
+          userId: req.params.userid
         }
   })
 
@@ -529,11 +535,11 @@ router.delete('/albums/:albumid', requireAuth, restoreUser, async (req, res, nex
 
 // Artist
 
-router.get('/artists/:artistid', async (req, res, next) => {
+router.get('/artists/:userid', async (req, res, next) => {
 
   const artist = await User.findOne({
     where: {
-      id: req.params.artistid
+      id: req.params.userid
     }
   })
 
