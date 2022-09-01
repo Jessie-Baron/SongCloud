@@ -143,6 +143,21 @@ router.delete('/songs/:songid', requireAuth, restoreUser, async (req, res, next)
 })
 
 // Playlists
+
+router.get('/playlists/current', restoreUser, requireAuth, async (req, res)=>{
+  const user = req.user
+  if(user){
+    const playlists = await Playlist.findAll({
+      where:{
+        userId: user.id
+      }
+    })
+    res.json({
+      Playlists: playlists
+    })
+  }
+})
+
 router.get('/users/:userid/playlists', async (req, res, next) => {
   const playlists = await Playlist.findAll({
     where: {
@@ -285,7 +300,6 @@ router.delete('/playlists/:playlistid', requireAuth, restoreUser, async (req, re
 })
 
 
-
 router.post('/albums', async (req, res, next) => {
   const userId = req.user.id
   const { title, description, imageUrl } = req.body
@@ -295,6 +309,8 @@ router.post('/albums', async (req, res, next) => {
   })
   res.json(album)
 })
+
+// Comments
 
 
 
