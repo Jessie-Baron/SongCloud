@@ -16,9 +16,28 @@ router.use('/users', usersRouter);
 
 // Songs
 router.get('/songs', async (req, res, next) => {
-  const songs = await Song.findAll()
+
+  let { size, page } = req.query
+  const pagination = {}
+
+  if (!page) page = 0
+  if (!size) size = 20
+  if (page > 10) page = 10
+  if (size > 20) size = 20
+
+  if(page >= 1 && size >= 1) {
+    pagination.limit = size
+    pagination.offset = (size * page - 1)
+}
+
+  const songs = await Song.findAll({
+    ...pagination
+  })
+
   res.json({
-    Songs: songs
+    Songs: songs,
+    page: parseInt(page),
+    size: parseInt(size)
   })
 })
 
@@ -509,5 +528,26 @@ router.delete('/albums/:albumid', requireAuth, restoreUser, async (req, res, nex
 })
 
 // Artist
+
+router.get('/artists/:artistid', async (req, res, next) => {
+
+  const artist = await User.findOne({
+    where: {
+      id: req.params.artistid
+    }
+  })
+
+  if(!artist) {
+    res.status(404)
+    res.json({
+      message: "Artist couldn't be found",
+      statusCode: 404
+    })
+  }
+
+  else {
+  res.json(artist)
+  }
+})
 
 module.exports = router;
