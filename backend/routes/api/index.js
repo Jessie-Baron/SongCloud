@@ -200,7 +200,7 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
   }
 
 const temp = await PlaylistSong.create({songId, playlistid})
-if(temp) res.send("hello")
+if(temp) return res.json(temp)
 
   const playlistSong = await PlaylistSong.findOne({
     where: {
