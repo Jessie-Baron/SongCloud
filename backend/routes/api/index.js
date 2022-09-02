@@ -57,7 +57,17 @@ router.post('/songs', requireAuth, restoreUser, async (req, res) => {
   const { title, description, url, imageUrl, albumId } = req.body
   const userId = req.user.id
 
-  if(albumId > 999) {
+  const albums = await Album.findAll()
+
+  const validator = albumId => {
+    let isValid = false
+    albums.forEach(album => {
+      if((album.id) == albumId) isValid = true
+    })
+    return isValid
+  }
+
+  if(!validator(albumId)) {
     res.status(404).json({
       statusCode: 404,
       message: "Album couldn't be found"
@@ -342,15 +352,24 @@ router.post('/songs/:songid/comments', requireAuth, restoreUser, async (req, res
   const userId = req.user.id
   const songId = req.params.songid
 
-  const comment = await Comment.create({ userId, songId, body })
+  const songs = await Song.findAll()
 
+  const validator = songId => {
+    let isValid = false
+    songs.forEach(song => {
+      if((song.id) == songId) isValid = true
+    })
+    return isValid
+  }
 
-  if(songId > 999) {
+  if(!validator(songId)) {
     res.status(404).json({
       message: "Song couldn't be found",
       statusCode: 404
     })
   }
+
+  const comment = await Comment.create({ userId, songId, body })
 
   res.json(comment)
 })
