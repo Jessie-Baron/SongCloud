@@ -20,6 +20,9 @@ router.get('/songs', async (req, res, next) => {
   let { size, page } = req.query
   const pagination = {}
 
+  if(!page) page = 0
+  if(!size) size = 20
+
   if (page > 10) page = 10
   if (size > 20) size = 20
 
@@ -67,7 +70,7 @@ router.post('/songs', requireAuth, restoreUser, async (req, res) => {
     return isValid
   }
 
-  if(!validator(albumId)) {
+  if(!validator(albumId) && albumId !== null) {
     res.status(404).json({
       statusCode: 404,
       message: "Album couldn't be found"
