@@ -15,6 +15,8 @@ router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 
 // Songs
+
+// Get all Songs
 router.get('/songs', async (req, res, next) => {
 
   let { size, page } = req.query
@@ -42,6 +44,7 @@ router.get('/songs', async (req, res, next) => {
   })
 })
 
+// Get all songs by current user
 router.get('/songs/current', async (req, res, next) => {
   const user = req.user.id
   if(user) {
@@ -56,6 +59,8 @@ router.get('/songs/current', async (req, res, next) => {
   }
 })
 
+
+// Create a song with or without an albumId
 router.post('/songs', requireAuth, restoreUser, async (req, res) => {
   const { title, description, url, imageUrl, albumId } = req.body
   const userId = req.user.id
@@ -82,6 +87,7 @@ router.post('/songs', requireAuth, restoreUser, async (req, res) => {
   res.json(song)
 })
 
+// Edit a song
 router.put('/songs/:songid', requireAuth, restoreUser, async (req, res, next) => {
   const { title, description, url, imageUrl, albumId } = req.body
 
@@ -106,6 +112,7 @@ router.put('/songs/:songid', requireAuth, restoreUser, async (req, res, next) =>
   res.json(song)
 })
 
+// Get all songs by an artist
 router.get('/artists/:userid/songs', async (req, res, next) => {
   const songs = await Song.findAll(
      {
@@ -126,7 +133,7 @@ router.get('/artists/:userid/songs', async (req, res, next) => {
   }
 })
 
-
+// Get details of a song
 router.get('/songs/:songid', async (req, res, next) => {
   const song = await Song.findOne({
     include: [{
@@ -153,6 +160,7 @@ router.get('/songs/:songid', async (req, res, next) => {
   }
 })
 
+// Delete a song
 router.delete('/songs/:songid', requireAuth, restoreUser, async (req, res, next) => {
   const song = await Song.findOne({
       where: {
@@ -174,6 +182,7 @@ router.delete('/songs/:songid', requireAuth, restoreUser, async (req, res, next)
 
 // Playlists
 
+// Get all playlists by current user
 router.get('/playlists/current', restoreUser, requireAuth, async (req, res)=>{
   const user = req.user
   if(user){
@@ -188,6 +197,7 @@ router.get('/playlists/current', restoreUser, requireAuth, async (req, res)=>{
   }
 })
 
+// Get all playlists by an artist
 router.get('/artists/:userid/playlists', async (req, res, next) => {
   const playlists = await Playlist.findAll({
     where: {
@@ -204,7 +214,7 @@ router.get('/artists/:userid/playlists', async (req, res, next) => {
 })
 
 
-
+// Create a playlist
 router.post('/playlists', requireAuth, restoreUser, async (req, res, next) => {
   const { name, imageUrl } = req.body
   const userId = req.user.id
@@ -214,6 +224,7 @@ router.post('/playlists', requireAuth, restoreUser, async (req, res, next) => {
   res.json(song)
 })
 
+// Add a song to a playlist
 router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req, res, next) => {
   const { songId } = req.body
   const { playlistid } = req.params
@@ -256,6 +267,7 @@ delete playlistSong.order
 res.json(playlistSong)
 })
 
+// Get details of a playlist
 router.get('/playlists/:playlistid', async (req, res, next) => {
 
   const playlist = await Playlist.findOne({
@@ -282,6 +294,8 @@ router.get('/playlists/:playlistid', async (req, res, next) => {
   }
 })
 
+
+// Edit a playlist
 router.put('/playlists/:playlistid', requireAuth, restoreUser, async (req, res, next) => {
   const { name, imageUrl } = req.body
 
@@ -310,6 +324,7 @@ router.put('/playlists/:playlistid', requireAuth, restoreUser, async (req, res, 
   })
 })
 
+// Delete a playlist
 router.delete('/playlists/:playlistid', requireAuth, restoreUser, async (req, res, next) => {
   const playlist = await Playlist.findOne({
       where: {
@@ -331,6 +346,7 @@ router.delete('/playlists/:playlistid', requireAuth, restoreUser, async (req, re
 
 // Comments
 
+// Get all comments of a song
 router.get('/songs/:songid/comments', async (req, res, next) => {
   const comments = await Comment.findAll({
     where: {
@@ -350,6 +366,8 @@ router.get('/songs/:songid/comments', async (req, res, next) => {
   res.json({Comments: comments})
 })
 
+
+// Create a comment
 router.post('/songs/:songid/comments', requireAuth, restoreUser, async (req, res, next) => {
   const { body } = req.body
   const userId = req.user.id
@@ -377,6 +395,7 @@ router.post('/songs/:songid/comments', requireAuth, restoreUser, async (req, res
   res.json(comment)
 })
 
+// Edit a comment
 router.put('/comments/:commentid', requireAuth, restoreUser, async (req, res, next) => {
   const { body } = req.body
 
@@ -404,6 +423,7 @@ router.put('/comments/:commentid', requireAuth, restoreUser, async (req, res, ne
   })
 })
 
+// Delete a comment
 router.delete('/comments/:commentid', requireAuth, restoreUser, async (req, res, next) => {
   const comment = await Comment.findOne({
       where: {
@@ -425,6 +445,7 @@ router.delete('/comments/:commentid', requireAuth, restoreUser, async (req, res,
 
 // Albums
 
+// Get all albums
 router.get('/albums', async (req, res, next) => {
 
   const albums = await Album.findAll()
@@ -444,6 +465,7 @@ router.post('/albums', async (req, res, next) => {
   res.json(album)
 })
 
+// Get all albums by current user
 router.get('/albums/current', restoreUser, requireAuth, async (req, res)=>{
   const user = req.user
   if(user){
@@ -458,6 +480,7 @@ router.get('/albums/current', restoreUser, requireAuth, async (req, res)=>{
   }
 })
 
+// Get all albums of an artist
 router.get('/artists/:userid/albums', async (req, res, next) => {
   const albums = await Album.findAll(
      {
@@ -478,6 +501,7 @@ router.get('/artists/:userid/albums', async (req, res, next) => {
   }
 })
 
+// Get details of an album
 router.get('/albums/:albumid', async (req, res, next) => {
 
   const album = await Album.findOne({
@@ -506,6 +530,7 @@ router.get('/albums/:albumid', async (req, res, next) => {
   }
 })
 
+// Edit an album
 router.put('/albums/:albumid', requireAuth, restoreUser, async (req, res, next) => {
   const { title, description, imageUrl } = req.body
 
@@ -536,6 +561,7 @@ router.put('/albums/:albumid', requireAuth, restoreUser, async (req, res, next) 
   })
 })
 
+// Delete an album
 router.delete('/albums/:albumid', requireAuth, restoreUser, async (req, res, next) => {
   const album = await Album.findOne({
       where: {
@@ -557,6 +583,7 @@ router.delete('/albums/:albumid', requireAuth, restoreUser, async (req, res, nex
 
 // Artist
 
+// Get details of an artist
 router.get('/artists/:userid', async (req, res, next) => {
 
   const artist = await User.findOne({
