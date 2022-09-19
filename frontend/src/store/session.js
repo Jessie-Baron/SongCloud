@@ -57,6 +57,7 @@ export const restoreUser = () => async dispatch => {
 
   export const signup = (user) => async (dispatch) => {
     const { firstName, lastName, username, email, password } = user;
+    console.log("signup thunk is running, this is user", user )
     const response = await csrfFetch("/api/users", {
       method: "POST",
       body: JSON.stringify({
@@ -68,7 +69,8 @@ export const restoreUser = () => async dispatch => {
       }),
     });
     const data = await response.json();
-    dispatch(setUser(data.user));
+    console.log('this is data from response', data)
+    dispatch(setUser(data));
     return response;
   };
 

@@ -8,7 +8,15 @@ const { handleValidationErrors } = require('../../utils/validation');
 const router = express.Router();
 
 const validateSignup = [
-    check('email')
+  check('firstName')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 4 })
+    .withMessage('Please provide a first name with at least 4 characters.'),
+  check('lastName')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 4 })
+    .withMessage('Please provide a last name with at least 4 characters.'),
+  check('email')
       .exists({ checkFalsy: true })
       .isEmail()
       .withMessage('Please provide a valid email.'),
@@ -38,15 +46,16 @@ router.post(
     const token = await setTokenCookie(res, user);
     const userObj = user.toJSON()
     userObj.token = token
-
-    return res.json({
-        id: userObj.id,
-        firstName: userObj.firstName,
-        lastName: userObj.lastName,
-        email: userObj.email,
-        username: userObj.username,
-        token: userObj.token
-    });
+    console.log('--------this is userObj from the backend', userObj)
+    res.json(userObj)
+    // return res.json({
+    //     id: userObj.id,
+    //     firstName: userObj.firstName,
+    //     lastName: userObj.lastName,
+    //     email: userObj.email,
+    //     username: userObj.username,
+    //     token: userObj.token
+    // });
   }
 );
 

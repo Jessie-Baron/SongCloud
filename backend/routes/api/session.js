@@ -53,7 +53,7 @@ router.post(
   );
 
   router.get(
-    '/', requireAuth,
+    '/',
     restoreUser,
     (req, res) => {
       const { user } = req;
@@ -61,7 +61,7 @@ router.post(
         return res.json({
           user: user.toSafeObject()
         });
-      } else return res.json({});
+      } else return res.json("");
     }
   );
 

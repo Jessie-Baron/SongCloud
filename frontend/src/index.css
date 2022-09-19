@@ -1,1 +1,11 @@
 /* TODO Add site wide styles */
+* {
+    font-family: Lucida,Verdana,Tahoma,sans-serif;
+    width: 1000px;
+    margin: 0 auto;
+}
+
+h1 {
+    font-family: Lucida,Verdana,Tahoma,sans-serif;
+    font-weight: 100
+}
