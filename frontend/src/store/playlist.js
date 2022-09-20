@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom';
+import { csrfFetch } from './csrf';
 
 export const LOAD_PLAYLISTS = "playlists/LOAD_PLAYLISTS";
 export const UPDATE_PLAYLIST = "playlists/UPDATE_PLAYLIST";
@@ -28,18 +29,19 @@ export const load = (playlists) => ({
 
   const initialState = {};
 
-  export const getPlaylistsByArtist = () => async dispatch => {
-    const { userId } = useParams()
-    const response = await fetch(`/api//artists/${userId}/playlists`);
+  export const getPlaylistsByArtist = (userId) => async dispatch => {
+
+    const response = await csrfFetch(`/api/artists/${userId}/playlists`);
 
     if (response.ok) {
       const list = await response.json();
+      console.log("this is the list item", list)
       dispatch(load(list));
     }
   };
 
   export const getPlaylistByUser = () => async dispatch => {
-    const response = await fetch(`/api/playlists/current`);
+    const response = await csrfFetch(`/api/playlists/current`);
 
     if (response.ok) {
       const list = await response.json();
@@ -48,9 +50,8 @@ export const load = (playlists) => ({
   };
 
   export const createPlaylist = (payload) => async dispatch => {
-  const response = await fetch(`/api/playlists`, {
+  const response = await csrfFetch(`/api/playlists`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload)
   })
 
@@ -62,7 +63,7 @@ export const load = (playlists) => ({
 
 export const updatePlaylist = () => async dispatch => {
   const { id } = useParams()
-  const response = await fetch(`/api/playlists/${id}`);
+  const response = await csrfFetch(`/api/playlists/${id}`);
 
   if (response.ok) {
     const list = await response.json();
@@ -72,7 +73,7 @@ export const updatePlaylist = () => async dispatch => {
 
 export const deletePlaylist = () => async dispatch => {
   const { id } = useParams()
-  const response = await fetch(`/api/playlists/${id}`);
+  const response = await csrfFetch(`/api/playlists/${id}`);
 
   if (response.ok) {
     const list = await response.json();
@@ -84,7 +85,8 @@ const playlistReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOAD_PLAYLISTS:
         const allPlaylists = {};
-        action.forEach(playlist => {
+        console.log("this is the action", action)
+        action.playlists.Playlists.forEach(playlist => {
           allPlaylists[playlist.id] = playlist;
         });
         return {

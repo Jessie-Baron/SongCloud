@@ -1,0 +1,22 @@
+form {
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    padding-bottom: 25px;
+    border: 2px black dashed;
+    margin-top: 75px;
+}
+
+label {
+    padding-left: 10px;
+}
+
+input {
+    margin-left: 5px;;
+}
+
+button {
+    margin-left: 10px;
+}
