@@ -34,7 +34,7 @@ const PlaylistIndex = () => {
                </div>
           ))
         }
-      <Link to="/playlists/new">Add New Playlist</Link>
+      <Link className="playlistForm" to="/playlists">Add New Playlist</Link>
     </div>
     </div>
   );
