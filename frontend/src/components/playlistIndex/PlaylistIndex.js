@@ -11,8 +11,8 @@ const PlaylistIndex = () => {
     console.log("this is the currentUser", currentUser)
 
     useEffect(() => {
-        dispatch(getPlaylistsByArtist(currentUser.id))
-    }, [currentUser.id, dispatch])
+        if(currentUser) dispatch(getPlaylistsByArtist(currentUser.id))
+    }, [currentUser, dispatch])
 
   const playlistObject = useSelector(state => state.playlist.allPlaylists)
   console.log("this is the playlistObject",playlistObject)
