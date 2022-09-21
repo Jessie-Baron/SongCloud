@@ -21,11 +21,11 @@ const PlaylistIndex = () => {
 
   return (
     <div>
-    <h2>{currentUser.firstName}'s Playlists</h2>
+    <h2>{currentUser?.firstName}'s Playlists</h2>
     <h3>Pick up where you left off!</h3>
     <div className='playlistSection'>
         {
-          playlists.map(playlist => (
+          playlists?.map(playlist => (
             <div className='box'>
               <li>
                 {playlist.imageUrl}
