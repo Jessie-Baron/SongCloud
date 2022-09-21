@@ -8,15 +8,16 @@ import './PlaylistIndex.css'
 const PlaylistIndex = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user)
+    console.log("this is the currentUser", currentUser)
 
     useEffect(() => {
         dispatch(getPlaylistsByArtist(currentUser.id))
-    }, [])
+    }, [currentUser.id, dispatch])
 
   const playlistObject = useSelector(state => state.playlist)
-  console.log(playlistObject)
+  console.log("this is the playlistObject",playlistObject)
   const playlists = Object.values(playlistObject);
-  console.log(playlists)
+  console.log("This is the playlists array",playlists)
 
   return (
     <div className='playlistSection'>

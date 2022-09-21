@@ -33,5 +33,15 @@ button {
 }
 
 .logout {
-    width: 55px;
+    width: 75px;
+    height: 30px;
+}
+
+.profile-dropdown {
+    display: flex;
+    color: white;
+}
+
+#root > div.navBar > ul > li > ul > li {
+    color: white;
 }
