@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getPlaylistDetails } from '../store/playlist';
-import { deletePlaylist } from '../store/playlist';
+import { getPlaylistDetails } from '../../store/playlist';
+import { deletePlaylist } from '../../store/playlist';
 
 const PlaylistIndexItem = ({ playlist }) => {
     const { id } = useParams();

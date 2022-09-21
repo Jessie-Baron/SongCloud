@@ -5,7 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PlaylistIndex from "./components/playlistIndex/PlaylistIndex.js";
-import PlaylistIndexItem from "./components/PlaylistIndexItem";
+import PlaylistIndexItem from "./components/playlistIndex/PlaylistIndexItem";
 
 function App() {
   const dispatch = useDispatch();
