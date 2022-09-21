@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { createPlaylist } from "../../store/playlist";
 import { Dispatch } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function PlaylistForm() {
   const [name, setName] = useState("");
@@ -10,6 +11,7 @@ function PlaylistForm() {
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const dispatch = useDispatch()
+  const history = useHistory()
 
   useEffect(() => {
     if (!name) {
@@ -42,6 +44,8 @@ function PlaylistForm() {
     setDescription("")
     setValidationErrors([]);
     setHasSubmitted(false);
+
+    history.push('/')
   };
 
   return (
