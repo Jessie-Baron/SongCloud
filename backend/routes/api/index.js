@@ -288,8 +288,8 @@ router.get('/playlists/:playlistid', async (req, res, next) => {
       statusCode: 404
     })
   }
-
   else {
+  console.log("this route is running")
   res.json(playlist)
   }
 })

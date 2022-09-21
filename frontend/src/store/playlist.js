@@ -27,7 +27,7 @@ export const load = (playlists) => ({
     playlistId
   })
 
-  const initialState = {};
+
 
   export const getPlaylistsByArtist = (userId) => async dispatch => {
 
@@ -47,7 +47,7 @@ export const load = (playlists) => ({
     if (response.ok) {
       const list = await response.json();
       console.log("this is the list item", list)
-      dispatch(load(list));
+      dispatch(add(list));
     }
   };
 
@@ -73,23 +73,26 @@ export const load = (playlists) => ({
 };
 
 
-export const deletePlaylist = () => async dispatch => {
-  const { id } = useParams()
-  const response = await csrfFetch(`/api/playlists/${id}`);
+export const deletePlaylist = (id) => async dispatch => {
+  const response = await csrfFetch(`/api/playlists/${id}`, {
+    method: 'DELETE'
+  });
 
   if (response.ok) {
     const list = await response.json();
-    dispatch(remove(list));
+    dispatch(remove(id));
   }
 }
+const initialState = {allPlaylists: {}, singlePlaylist: {}};
 
 const playlistReducer = (state = initialState, action) => {
+  let newState = {...state}
     switch (action.type) {
       case LOAD_PLAYLISTS:
-        return {
-          ...action.playlists.Playlists
-        };
-        case UPDATE_PLAYLIST:
+        newState = {...state, allPlaylists: {...state.allPlaylists}}
+        action.playlists.Playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
+        return newState;
+      case UPDATE_PLAYLIST:
           return {
             ...state,
             [action.playlist.id]: {
@@ -97,23 +100,13 @@ const playlistReducer = (state = initialState, action) => {
             }
           };
       case ADD_PLAYLIST:
-        if (!state[action.playlist.id]) {
-          const newState = {
-            ...state,
-            [action.playlist.id]: action.playlist
-          };
+        newState.allPlaylists[action.playlist.id] = action.playlist
+        newState.singlePlaylist = action.playlist
           return newState;
-        }
-        return {
-          ...state,
-          [action.playlist.id]: {
-            ...state[action.playlist.id],
-            ...action.playlist
-          }
-        };
       case REMOVE_PLAYLIST:
-        delete {...state[action.playlist.id]}
-        return {...state}
+        newState = {...state, allPlaylists: {...state.allPlaylists}}
+        delete newState.allPlaylists[action.playlistId]
+        return newState
       default:
         console.log('this is the current state:', state)
         return state;

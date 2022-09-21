@@ -14,7 +14,7 @@ const PlaylistIndex = () => {
         dispatch(getPlaylistsByArtist(currentUser.id))
     }, [currentUser.id, dispatch])
 
-  const playlistObject = useSelector(state => state.playlist)
+  const playlistObject = useSelector(state => state.playlist.allPlaylists)
   console.log("this is the playlistObject",playlistObject)
   const playlists = Object.values(playlistObject);
   console.log("This is the playlists array",playlists)
