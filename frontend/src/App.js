@@ -5,6 +5,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PlaylistIndex from "./components/playlistIndex/PlaylistIndex.js";
+import PlaylistIndexItem from "./components/PlaylistIndexItem";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ function App() {
           </Route>
           <Route exact path="/">
             <PlaylistIndex />
+          </Route>
+          <Route path="/playlists/:id">
+            <PlaylistIndexItem />
           </Route>
 
         </Switch>

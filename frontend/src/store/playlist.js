@@ -40,6 +40,17 @@ export const load = (playlists) => ({
     }
   };
 
+  export const getPlaylistDetails = (playlistId) => async dispatch => {
+
+    const response = await csrfFetch(`/api/playlists/${playlistId}`);
+
+    if (response.ok) {
+      const list = await response.json();
+      console.log("this is the list item", list)
+      dispatch(load(list));
+    }
+  };
+
   export const getPlaylistByUser = () => async dispatch => {
     const response = await csrfFetch(`/api/playlists/current`);
 
@@ -61,15 +72,6 @@ export const load = (playlists) => ({
   }
 };
 
-export const updatePlaylist = () => async dispatch => {
-  const { id } = useParams()
-  const response = await csrfFetch(`/api/playlists/${id}`);
-
-  if (response.ok) {
-    const list = await response.json();
-    dispatch(edit(list));
-  }
-};
 
 export const deletePlaylist = () => async dispatch => {
   const { id } = useParams()

@@ -1,12 +1,13 @@
 
 
 .playlistSection {
-    margin-top: 200px;
-    margin-left: 50px;
-    width: 350px;
-    height: 50px;
+    width: 650px;
+    margin-left: 60px;
+    height: 120px;
     display: flex;
+    justify-content: center;
     gap: 25px;
+    overflow-y: scroll;
 }
 
 li {
@@ -14,6 +15,23 @@ li {
     padding-right: 25px;
 }
 
-h5 {
-    margin-left: 35px;
+.playlist {
+    font-size: 14px;
+}
+
+h2 {
+    margin-top: 140px;
+    display:flex;
+    justify-content: center;
+    margin-right: 570px;
+}
+
+h3 {
+    display:flex;
+    justify-content: center;
+    margin-right: 550px;
+}
+
+.box {
+    box-sizing: border-box;
 }

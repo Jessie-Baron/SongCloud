@@ -20,18 +20,22 @@ const PlaylistIndex = () => {
   console.log("This is the playlists array",playlists)
 
   return (
+    <div>
+    <h2>{currentUser.firstName}'s Playlists</h2>
+    <h3>Pick up where you left off!</h3>
     <div className='playlistSection'>
         {
           playlists.map(playlist => (
-            <div>
+            <div className='box'>
               <li>
                 {playlist.imageUrl}
               </li>
-               <h5>{playlist.name}</h5>
+               <Link className="playlist" to={`/playlists/${playlist.id}`}>{playlist.name}</Link>
                </div>
           ))
         }
       <Link to="/playlists/new">Add New Playlist</Link>
+    </div>
     </div>
   );
 }
