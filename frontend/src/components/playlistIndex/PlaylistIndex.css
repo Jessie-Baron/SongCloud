@@ -2,14 +2,18 @@
 
 .playlistSection {
     margin-top: 200px;
-    margin-left: 150px;
+    margin-left: 50px;
     width: 350px;
     height: 50px;
     display: flex;
-    gap: 10px;
+    gap: 25px;
 }
 
 li {
     color: black;
     padding-right: 25px;
+}
+
+h5 {
+    margin-left: 35px;
 }
