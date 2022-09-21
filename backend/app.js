@@ -17,7 +17,9 @@ app.use(express.json());
 // Security Middleware
 if (!isProduction) {
     // enable cors only in development
-    app.use(cors());
+    app.use(cors({
+      origin: "https://jb-api-project.herokuapp.com/"
+    }));
   }
 
   // helmet helps set a variety of headers to better secure your app
