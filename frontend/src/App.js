@@ -6,7 +6,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import PlaylistIndex from "./components/playlistIndex/PlaylistIndex.js";
 import PlaylistIndexItem from "./components/playlistIndex/PlaylistIndexItem";
-import PlaylistForm from "./components/playlistIndex/PlaylistForm1";
+import PlaylistForm from "./components/playlistIndex/PlaylistForm";
 
 function App() {
   const dispatch = useDispatch();
