@@ -84,14 +84,8 @@ export const deletePlaylist = () => async dispatch => {
 const playlistReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOAD_PLAYLISTS:
-        const allPlaylists = {};
-        console.log("this is the action", action)
-        action.playlists.Playlists.forEach(playlist => {
-          allPlaylists[playlist.id] = playlist;
-        });
         return {
-          allPlaylists,
-          ...state
+          ...action.playlists.Playlists
         };
         case UPDATE_PLAYLIST:
           return {
