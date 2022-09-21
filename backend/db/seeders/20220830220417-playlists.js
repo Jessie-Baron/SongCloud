@@ -13,17 +13,17 @@ module.exports = {
     */
      await queryInterface.bulkInsert('Playlists', [
       {
-        userId: 1,
+        userId: 5,
         name: "Rock Playlist",
         imageUrl: "image.1"
       },
       {
-        userId: 1,
+        userId: 5,
         name: "Pop Playlist",
         imageUrl: "image.2"
       },
       {
-        userId: 1,
+        userId: 5,
         name: "Jazz Playlist",
         imageUrl: "image.3"
       },
