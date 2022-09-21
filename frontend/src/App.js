@@ -21,9 +21,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path="/">
+          {/* <Route exact path="/">
             <PlaylistIndex />
-          </Route>
+          </Route> */}
 
         </Switch>
       )}
