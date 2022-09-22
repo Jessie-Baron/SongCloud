@@ -45,7 +45,6 @@ export const load = (songs) => ({
 
     if (response.ok) {
       const list = await response.json();
-      console.log("this is the list item", list)
       dispatch(add(list));
     }
   };

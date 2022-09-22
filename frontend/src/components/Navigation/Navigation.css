@@ -28,9 +28,6 @@ button {
     color: white;
     margin-bottom: 8px;
 }
-.profile-dropdown {
-    display: flex;
-}
 
 .logout {
     width: 75px;
@@ -38,7 +35,7 @@ button {
 }
 
 .profile-dropdown {
-    display: flex;
+    height: 300px;
     color: white;
 }
 
