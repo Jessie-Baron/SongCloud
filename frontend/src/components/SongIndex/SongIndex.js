@@ -28,7 +28,7 @@ const SongIndex = () => {
           songs?.map(song => (
             <div className='box'>
               <li>
-                {song.imageUrl}
+                <img alt="" src={`${song.imageUrl}`} />
               </li>
                <Link className="song" to={`/songs/${song.id}`}>{song.title}</Link>
                </div>

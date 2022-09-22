@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSongDetails } from '../../store/song';
 import { deleteSong } from '../../store/song';
 import { Link } from 'react-router-dom';
-import SongToPlaylistForm from './SongToPlaylistForm';
+import SongEditForm from './SongEditForm';
 
 const SongIndexItem = ({ song }) => {
     const { id } = useParams();
@@ -15,6 +15,7 @@ const SongIndexItem = ({ song }) => {
 
     const dispatch = useDispatch()
     const history = useHistory()
+    const [showEdit, setShowEdit] = useState(false)
 
     useEffect(() =>{
         dispatch(getSongDetails(id))
@@ -26,15 +27,6 @@ const SongIndexItem = ({ song }) => {
         .then(() => history.push('/'))
       };
 
-      const editForm = () => {
-        const form = document.getElementsByClassName(`form`)[0];
-        form.toggleAttribute('hidden');
-      }
-
-      const playlistForm = () => {
-        const form = document.getElementsByClassName(`pform`)[0];
-        form.toggleAttribute('hidden');
-      }
 
 
     return (
@@ -52,9 +44,11 @@ const SongIndexItem = ({ song }) => {
                 <li>{singleSong?.description}</li>
             </ul>
             <button onClick={removeSong}>Delete Song</button>
-            <button onClick={SongToPlaylistForm}>Add Song to Playlist</button>
-            <button onClick={editForm}>Edit Song</button>
+            <button onClick={() => setShowEdit(!showEdit)}>Edit Song</button>
           </div>
+          {showEdit && (
+            <SongEditForm />
+          )}
 </div>
       );
     };
