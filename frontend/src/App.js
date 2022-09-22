@@ -11,6 +11,7 @@ import SongIndex from "./components/SongIndex/SongIndex";
 import AllSongsIndex from "./components/SongIndex/allSongsIndex";
 import SongIndexItem from "./components/SongIndex/SongIndexItem";
 import SongForm from "./components/SongIndex/SongForm";
+import SongEditForm from "./components/SongIndex/SongEditForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,9 +41,12 @@ function App() {
           </Route>
           <Route path="/songs/:id">
             <SongIndexItem />
+            <SongEditForm />
           </Route>
           <Route path="/songs">
             <SongForm />
+          </Route>
+          <Route exact path="/songs/:id/edit">
           </Route>
 
 

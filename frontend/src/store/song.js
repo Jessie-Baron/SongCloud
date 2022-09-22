@@ -70,6 +70,18 @@ export const load = (songs) => ({
   }
 };
 
+export const editSong = (songId, payload) => async dispatch => {
+  const response = await csrfFetch(`/api/songs/${songId}`, {
+    method: 'PUT',
+    body: JSON.stringify(payload)
+  })
+
+  if (response.ok) {
+    const song = await response.json();
+    dispatch(add(song));
+  }
+};
+
 
 export const deleteSong = (id) => async dispatch => {
   const response = await csrfFetch(`/api/songs/${id}`, {
@@ -91,12 +103,8 @@ const songReducer = (state = initialState, action) => {
         action.songs.Songs.forEach(song => newState.allSongs[song.id] = song)
         return newState;
       case UPDATE_SONG:
-          return {
-            ...state,
-            [action.song.id]: {
-              ...state[action.song.id]
-            }
-          };
+            newState.singleSong = action.song
+        return newState
       case ADD_SONG:
         newState.allSongs[action.song.id] = action.song
         newState.singleSong = action.song

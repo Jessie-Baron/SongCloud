@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSongDetails } from '../../store/song';
 import { deleteSong } from '../../store/song';
+import { Link } from 'react-router-dom';
 
 const SongIndexItem = ({ song }) => {
     const { id } = useParams();
@@ -24,6 +25,11 @@ const SongIndexItem = ({ song }) => {
         .then(() => history.push('/'))
       };
 
+      const editForm = () => {
+        const form = document.getElementsByClassName(`form`)[0];
+        form.toggleAttribute('hidden');
+      }
+
 
     return (
 <div className="song-detail-lists">
@@ -37,7 +43,9 @@ const SongIndexItem = ({ song }) => {
                     </div>
                 ))}
             </ul>
-            <button onClick={removeSong}>Delete song</button>
+            <button onClick={removeSong}>Delete Song</button>
+            <button onClick={removeSong}>Add Song to Playlist</button>
+            <button onClick={editForm}>Edit Song</button>
           </div>
 </div>
       );

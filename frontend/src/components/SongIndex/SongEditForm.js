@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { createSong } from "../../store/song";
 import { Dispatch } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import { editSong } from "../../store/song";
 
-function SongForm() {
+function SongEditForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("")
   const [imageUrl, setImageUrl] = useState("")
@@ -13,6 +13,7 @@ function SongForm() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const dispatch = useDispatch()
   const history = useHistory()
+  const { id } = useParams()
 
   useEffect(() => {
     if (!title) {
@@ -39,8 +40,7 @@ function SongForm() {
       imageUrl
     };
 
-    await dispatch(createSong(songForm))
-    .then(history.push('/'))
+    await dispatch(editSong(id, songForm))
 
     // Reset the form state.
     setTitle("");
@@ -49,10 +49,12 @@ function SongForm() {
     setUrl("")
     setValidationErrors([]);
     setHasSubmitted(false);
+
+    history.push(`/`)
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form className="form" hidden onSubmit={onSubmit}>
     <ul>
       {validationErrors.map((error, idx) => (
         <li key={idx}>{error}</li>
@@ -99,4 +101,4 @@ function SongForm() {
 );
 }
 
-export default SongForm;
+export default SongEditForm;
