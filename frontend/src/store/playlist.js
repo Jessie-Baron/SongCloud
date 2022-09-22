@@ -89,7 +89,7 @@ const playlistReducer = (state = initialState, action) => {
   let newState = {...state}
     switch (action.type) {
       case LOAD_PLAYLISTS:
-        newState = {...state, allPlaylists: {...state.allPlaylists}}
+        newState = {...state, allPlaylists: {}}
         action.playlists.Playlists.forEach(playlist => newState.allPlaylists[playlist.id] = playlist)
         return newState;
       case UPDATE_PLAYLIST:
@@ -104,8 +104,9 @@ const playlistReducer = (state = initialState, action) => {
         newState.singlePlaylist = action.playlist
           return newState;
       case REMOVE_PLAYLIST:
-        newState = {...state, allPlaylists: {...state.allPlaylists}}
+        newState = {...state, allPlaylists: {...state.allPlaylists}, singlePlaylist: {...state.singlePlaylist}}
         delete newState.allPlaylists[action.playlistId]
+        newState.singlePlaylist = {}
         return newState
       default:
         console.log('this is the current state:', state)

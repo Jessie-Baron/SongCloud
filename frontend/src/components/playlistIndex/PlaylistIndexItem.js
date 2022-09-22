@@ -23,8 +23,8 @@ const PlaylistIndexItem = ({ playlist }) => {
 
 
     const removePlaylist = () => {
-        dispatch(deletePlaylist(singlePlaylist.id))
-        history.push('/')
+        dispatch(deletePlaylist(id))
+        .then(() => history.push('/'))
       };
 
 

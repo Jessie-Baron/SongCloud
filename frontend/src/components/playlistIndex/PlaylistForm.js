@@ -23,7 +23,7 @@ function PlaylistForm() {
     if (!name.length) errors.push("Please enter your Name");
   }, [name]);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     // Prevent the default form behavior so the page doesn't reload.
     e.preventDefault();
 
@@ -37,7 +37,7 @@ function PlaylistForm() {
       imageUrl
     };
 
-    dispatch(createPlaylist(playlistForm))
+    await dispatch(createPlaylist(playlistForm))
 
     // Reset the form state.
     setName("");
