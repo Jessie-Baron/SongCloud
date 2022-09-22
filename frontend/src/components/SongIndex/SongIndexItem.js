@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { getSongDetails } from '../../store/song';
 import { deleteSong } from '../../store/song';
 import { Link } from 'react-router-dom';
+import SongToPlaylistForm from './SongToPlaylistForm';
 
 const SongIndexItem = ({ song }) => {
     const { id } = useParams();
@@ -30,21 +31,28 @@ const SongIndexItem = ({ song }) => {
         form.toggleAttribute('hidden');
       }
 
+      const playlistForm = () => {
+        const form = document.getElementsByClassName(`pform`)[0];
+        form.toggleAttribute('hidden');
+      }
+
 
     return (
 <div className="song-detail-lists">
         <div>
             <h2>{singleSong?.title}</h2>
             <ul>
-                {singleSong?.song?.map(song => (
+                {/* {singleSong?.song?.map(song => (
                     <div>
                     <li>{song.imageUrl}</li>
                     <li>{song.description}</li>
                     </div>
-                ))}
+                ))} */}
+                <li>{singleSong?.imageUrl}</li>
+                <li>{singleSong?.description}</li>
             </ul>
             <button onClick={removeSong}>Delete Song</button>
-            <button onClick={removeSong}>Add Song to Playlist</button>
+            <button onClick={SongToPlaylistForm}>Add Song to Playlist</button>
             <button onClick={editForm}>Edit Song</button>
           </div>
 </div>

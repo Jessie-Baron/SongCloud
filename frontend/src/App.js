@@ -12,6 +12,7 @@ import AllSongsIndex from "./components/SongIndex/allSongsIndex";
 import SongIndexItem from "./components/SongIndex/SongIndexItem";
 import SongForm from "./components/SongIndex/SongForm";
 import SongEditForm from "./components/SongIndex/SongEditForm";
+import SongToPlaylistForm from "./components/SongIndex/SongToPlaylistForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ function App() {
           <Route path="/songs/:id">
             <SongIndexItem />
             <SongEditForm />
+            <SongToPlaylistForm />
           </Route>
           <Route path="/songs">
             <SongForm />

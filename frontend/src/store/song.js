@@ -70,6 +70,19 @@ export const load = (songs) => ({
   }
 };
 
+export const addSongToPlaylist = (playlistId, payload) => async dispatch => {
+  const response = await csrfFetch(`/playlists/${playlistId}/songs`, {
+    method: 'POST',
+    body: JSON.stringify(payload)
+  })
+
+  if (response.ok) {
+    const song = await response.json();
+    dispatch(add(song));
+  }
+};
+
+
 export const editSong = (songId, payload) => async dispatch => {
   const response = await csrfFetch(`/api/songs/${songId}`, {
     method: 'PUT',
