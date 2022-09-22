@@ -1,0 +1,37 @@
+
+
+.songSection {
+    width: 650px;
+    margin-left: 60px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    overflow-y: scroll;
+}
+
+li {
+    color: black;
+    padding-right: 25px;
+}
+
+.song {
+    font-size: 14px;
+}
+
+h2 {
+    margin-top: 140px;
+    display:flex;
+    justify-content: center;
+    margin-right: 570px;
+}
+
+h3 {
+    display:flex;
+    justify-content: center;
+    margin-right: 550px;
+}
+
+.box {
+    box-sizing: border-box;
+}

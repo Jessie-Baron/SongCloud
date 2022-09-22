@@ -7,6 +7,7 @@ import Navigation from "./components/Navigation";
 import PlaylistIndex from "./components/playlistIndex/PlaylistIndex.js";
 import PlaylistIndexItem from "./components/playlistIndex/PlaylistIndexItem";
 import PlaylistForm from "./components/playlistIndex/PlaylistForm";
+import SongIndex from "./components/SongIndex/SongIndex";
 
 function App() {
   const dispatch = useDispatch();
@@ -25,6 +26,7 @@ function App() {
           </Route>
           <Route exact path="/">
             <PlaylistIndex />
+            <SongIndex />
           </Route>
           <Route path="/playlists/:id">
             <PlaylistIndexItem />
@@ -32,6 +34,7 @@ function App() {
           <Route path="/playlists">
             <PlaylistForm />
           </Route>
+
 
         </Switch>
       )}

@@ -50,8 +50,8 @@ export const load = (songs) => ({
     }
   };
 
-  export const getSongByUser = () => async dispatch => {
-    const response = await csrfFetch(`/api/songs/current`);
+  export const getSongsByUser = (userId) => async dispatch => {
+    const response = await csrfFetch(`/api/artists/${userId}/songs`);
 
     if (response.ok) {
       const list = await response.json();
@@ -89,7 +89,7 @@ const songReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOAD_SONG:
         newState = {...state, allSongs: {}}
-        action.Songs.songs.forEach(song => newState.allSongs[song.id] = song)
+        action.songs.Songs.forEach(song => newState.allSongs[song.id] = song)
         return newState;
       case UPDATE_SONG:
           return {
