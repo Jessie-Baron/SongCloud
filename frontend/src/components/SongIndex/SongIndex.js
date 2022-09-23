@@ -22,14 +22,11 @@ const SongIndex = () => {
   return (
     <div>
     <h2>{currentUser?.firstName}'s Songs</h2>
-    <h3>What are you in the mood for?</h3>
     <div className='songSection'>
         {
           songs?.map(song => (
             <div className='box'>
-              <li>
-                <img alt="" src={`${song.imageUrl}`} />
-              </li>
+                <img className="images" alt="" src={`${song.imageUrl}`} />
                <Link className="song" to={`/songs/${song.id}`}>{song.title}</Link>
                </div>
           ))

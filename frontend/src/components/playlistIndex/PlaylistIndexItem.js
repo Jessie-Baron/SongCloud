@@ -4,6 +4,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getPlaylistDetails } from '../../store/playlist';
 import { deletePlaylist } from '../../store/playlist';
+import { Link } from 'react-router-dom';
 
 const PlaylistIndexItem = ({ playlist }) => {
     const { id } = useParams();

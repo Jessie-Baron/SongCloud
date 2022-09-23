@@ -3,16 +3,11 @@
 .songSection {
     width: 650px;
     margin-left: 60px;
-    height: 120px;
+    height: 150px;
     display: flex;
     justify-content: center;
     gap: 25px;
-    overflow-y: scroll;
-}
-
-li {
-    color: black;
-    padding-right: 25px;
+    background-color: white;
 }
 
 .song {
@@ -20,18 +15,49 @@ li {
 }
 
 h2 {
-    margin-top: 140px;
     display:flex;
-    justify-content: center;
-    margin-right: 570px;
-}
-
-h3 {
-    display:flex;
-    justify-content: center;
-    margin-right: 550px;
+    align-items: left;
+    display: flex;
+    flex-direction: column;
+    margin-left: 6%;
+    padding-bottom: 4%;
+    padding-top: 10%;
+    font-size: 18px;
+    font-weight: 400;
 }
 
 .box {
     box-sizing: border-box;
+    display: flex;
+    vertical-align: auto;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.song {
+    text-align: center;
+    padding-top: 10px;
+    text-decoration: none;
+    color: #333333;
+}
+
+.images {
+    width: 125px;
+}
+
+.songForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    border: 3px solid orange;
+    border-radius: 7px;;
+    background-color: rgba(245, 161, 6, .2);
+    width: 150px;
+    height: 120px;
+    color: #38d
+}
+
+.songForm:hover {
+    color: #333333
 }

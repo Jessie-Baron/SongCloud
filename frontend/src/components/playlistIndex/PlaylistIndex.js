@@ -17,16 +17,13 @@ const PlaylistIndex = () => {
   const playlists = Object.values(playlistObject);
 
   return (
-    <div>
-    <h2>{currentUser?.firstName}'s Playlists</h2>
-    <h3>Pick up where you left off!</h3>
+    <div className='outer1'>
+    <h2 className='userPlay'>{currentUser?.firstName}'s Playlists</h2>
     <div className='playlistSection'>
         {
           playlists?.map(playlist => (
             <div className='box'>
-              <li>
-                {playlist.imageUrl}
-              </li>
+              <img className="images" alt="" src={`${playlist.imageUrl}`} />
                <Link className="playlist" to={`/playlists/${playlist.id}`}>{playlist.name}</Link>
                </div>
           ))
