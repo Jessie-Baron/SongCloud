@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { csrfFetch } from './csrf';
 
 export const LOAD_PLAYLISTS = "playlists/LOAD_PLAYLISTS";
@@ -35,7 +34,6 @@ export const load = (playlists) => ({
 
     if (response.ok) {
       const list = await response.json();
-      console.log("this is the list item", list)
       dispatch(load(list));
     }
   };
@@ -46,7 +44,6 @@ export const load = (playlists) => ({
 
     if (response.ok) {
       const list = await response.json();
-      console.log("this is the list item", list)
       dispatch(add(list));
     }
   };

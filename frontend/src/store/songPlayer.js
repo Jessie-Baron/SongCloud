@@ -26,10 +26,9 @@ export const load = (audios) => ({
   export const getAudio = (songId) => async dispatch => {
 
     const response = await csrfFetch(`/api/songs/${songId}`);
-    console.log("this is the response", response)
+
     if (response.ok) {
       const list = await response.json();
-      console.log("this is the list item", list)
       dispatch(add(list));
       return list
     }

@@ -30,7 +30,6 @@ function App() {
       <AudioPlayer
             autoPlay
             src={currentSong.url}
-            onPlay={e => console.log("onPlay")}
         />
       {isLoaded && (
         <Switch>

@@ -10,7 +10,6 @@ import './SongsIndex.css'
 const SongIndex = () => {
     const dispatch = useDispatch()
     const currentUser = useSelector(state => state.session.user)
-    console.log("this is the currentUser", currentUser)
 
     useEffect(() => {
         if(currentUser) dispatch(getSongsByUser(currentUser.id))

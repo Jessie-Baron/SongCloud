@@ -9,9 +9,7 @@ import SongEditForm from './SongEditForm';
 
 const SongIndexItem = ({ song }) => {
     const { id } = useParams();
-    console.log("this is the song Id", id)
     const singleSong = useSelector(state => state.songs.singleSong);
-    console.log("this is the song", singleSong)
 
     const dispatch = useDispatch()
     const history = useHistory()
