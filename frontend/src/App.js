@@ -11,11 +11,14 @@ import SongIndex from "./components/SongIndex/SongIndex";
 import AllSongsIndex from "./components/SongIndex/allSongsIndex";
 import SongIndexItem from "./components/SongIndex/SongIndexItem";
 import SongForm from "./components/SongIndex/SongForm";
-import SongEditForm from "./components/SongIndex/SongEditForm";
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [songUrl, setSongUrl] = useState("")
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
@@ -23,6 +26,11 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
+      <AudioPlayer
+            autoPlay
+            src={songUrl}
+            onPlay={e => console.log("onPlay")}
+        />
       {isLoaded && (
         <Switch>
           <Route path="/signup">
@@ -35,18 +43,30 @@ function App() {
           </Route>
           <Route path="/playlists/:id">
             <PlaylistIndexItem />
+            <AudioPlayer
+            autoPlay
+            src={songUrl}
+            onPlay={e => console.log("onPlay")}
+            />
           </Route>
           <Route path="/playlists">
             <PlaylistForm />
+            <AudioPlayer
+            autoPlay
+            src={songUrl}/>
           </Route>
           <Route path="/songs/:id">
             <SongIndexItem />
-            <SongEditForm />
+            <AudioPlayer
+            autoPlay
+            src={songUrl}
+            />
           </Route>
           <Route path="/songs">
             <SongForm />
-          </Route>
-          <Route exact path="/songs/:id/edit">
+            <AudioPlayer
+            autoPlay
+            src={songUrl}/>
           </Route>
         </Switch>
       )}

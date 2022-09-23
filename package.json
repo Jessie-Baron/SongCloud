@@ -16,6 +16,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pg": "^8.8.0"
+    "pg": "^8.8.0",
+    "react-h5-audio-player": "^3.8.5",
+    "react-multi-carousel": "^2.8.2"
   }
 }

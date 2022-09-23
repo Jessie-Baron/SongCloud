@@ -22,3 +22,10 @@ body:not(.navBar) {
     border-left: 60px solid rgb(213, 212, 212);
     border-right: 60px solid rgb(213, 212, 212);
 }
+
+#root > div.rhap_container.rhap_loop--off.rhap_play-status--paused {
+    position: fixed;
+    z-index: 1000;
+    width: 91%;
+    margin-top: 58%;
+}
