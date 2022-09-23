@@ -84,3 +84,20 @@ h2 {
 .songForm:hover {
     color: #333333
 }
+
+.right {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    font-size: 20px;
+    z-index: 999;
+    cursor: pointer;
+}
+
+.left {
+    position: absolute;
+    top: 50%;
+    font-size: 20px;
+    z-index: 999;
+    cursor: pointer;
+}

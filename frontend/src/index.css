@@ -29,3 +29,10 @@ body:not(.navBar) {
     width: 91%;
     margin-top: 58%;
 }
+
+#root > div.rhap_container.rhap_loop--off.rhap_play-status--playing {
+    position: fixed;
+    z-index: 1000;
+    width: 91%;
+    margin-top: 58%;
+}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
@@ -17,18 +17,19 @@ import 'react-h5-audio-player/lib/styles.css';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [songUrl, setSongUrl] = useState("")
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
+
+  const currentSong = useSelector(state => state.songPlayer.currentSong)
 
   return (
     <>
       <Navigation isLoaded={isLoaded} />
       <AudioPlayer
             autoPlay
-            src={songUrl}
+            src={currentSong.url}
             onPlay={e => console.log("onPlay")}
         />
       {isLoaded && (
@@ -43,30 +44,15 @@ function App() {
           </Route>
           <Route path="/playlists/:id">
             <PlaylistIndexItem />
-            <AudioPlayer
-            autoPlay
-            src={songUrl}
-            onPlay={e => console.log("onPlay")}
-            />
           </Route>
           <Route path="/playlists">
             <PlaylistForm />
-            <AudioPlayer
-            autoPlay
-            src={songUrl}/>
           </Route>
           <Route path="/songs/:id">
             <SongIndexItem />
-            <AudioPlayer
-            autoPlay
-            src={songUrl}
-            />
           </Route>
           <Route path="/songs">
             <SongForm />
-            <AudioPlayer
-            autoPlay
-            src={songUrl}/>
           </Route>
         </Switch>
       )}

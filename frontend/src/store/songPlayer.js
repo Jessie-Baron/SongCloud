@@ -1,8 +1,8 @@
 import { csrfFetch } from './csrf';
 
-export const LOAD_AUDIO = "audios/LOAD_audioS";
-export const REMOVE_AUDIO = "audios/REMOVE_audio";
-export const ADD_AUDIO = "audios/ADD_audio";
+export const LOAD_AUDIO = "audios/LOAD_AUDIOS";
+export const REMOVE_AUDIO = "audios/REMOVE_AUDIOS";
+export const ADD_AUDIO = "audios/ADD_AUDIOS";
 
 export const load = (audios) => ({
     type: LOAD_AUDIO,
@@ -26,11 +26,12 @@ export const load = (audios) => ({
   export const getAudio = (songId) => async dispatch => {
 
     const response = await csrfFetch(`/api/songs/${songId}`);
-
+    console.log("this is the response", response)
     if (response.ok) {
       const list = await response.json();
       console.log("this is the list item", list)
-      dispatch(load(list));
+      dispatch(add(list));
+      return list
     }
   };
 
@@ -78,11 +79,10 @@ const audioReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOAD_AUDIO:
         newState = {...state, currentPlaylist: {}}
-        action.currentPlaylist.playlist.forEach(song => newState.currentPlaylist[song.id] = song)
+        action.audios.playlist.forEach(song => newState.currentPlaylist[song.id] = song)
         return newState;
       case ADD_AUDIO:
-        newState.currentPlaylist[action.audio.id] = action.song
-        newState.currentSong = action.song
+        newState.currentSong = action.audio
           return newState;
       case REMOVE_AUDIO:
         newState = {...state, currentPlaylist: {...state.currentPlaylist}, currentSong: {...state.currentSong}}
