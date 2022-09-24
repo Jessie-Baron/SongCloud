@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { getSongsByUser } from '../../store/song';
 import { getAudio } from '../../store/songPlayer';
-import {FaArrowAltCircleRight, FaArrowAltCircleLeft} from 'react-icons/fa'
 import './SongsIndex.css'
 
 const SongIndex = () => {
@@ -20,17 +19,12 @@ const SongIndex = () => {
     }
 
   const songObject = useSelector(state => state.songs.allSongs)
-  console.log("this is the songObject",songObject)
   const songs = Object.values(songObject);
-  console.log("This is the songs array",songs)
-  const [currentSong, nextSong] = useState(songs[0])
-  const length = songs.length
 
   return (
     <div className='box'>
     <h2>{currentUser?.firstName}'s Songs</h2>
     <div className='songSection'>
-    <div><FaArrowAltCircleLeft className='left'  /></div>
         {
           songs?.map(song => (
             <div className='box'>
@@ -41,7 +35,6 @@ const SongIndex = () => {
           ))
         }
       <Link className="songForm" to="/songs">Add New Song</Link>
-      <div><FaArrowAltCircleRight className='right' /></div>
     </div>
     </div>
   );
