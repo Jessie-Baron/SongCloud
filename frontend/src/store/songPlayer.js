@@ -34,6 +34,17 @@ export const load = (audios) => ({
     }
   };
 
+  export const getPlaylistAudio = (playlistId) => async dispatch => {
+
+    const response = await csrfFetch(`/api/playlists/${playlistId}`);
+
+    if (response.ok) {
+      const list = await response.json();
+      dispatch(load(list));
+      return list
+    }
+  };
+
   export const createAudio = (payload) => async dispatch => {
   const response = await csrfFetch(`/api/songs`, {
     method: 'POST',
@@ -78,7 +89,7 @@ const audioReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOAD_AUDIO:
         newState = {...state, currentPlaylist: {}}
-        action.audios.playlist.forEach(song => newState.currentPlaylist[song.id] = song)
+        action.audios.Songs.forEach(song => newState.currentPlaylist[song.id] = song)
         return newState;
       case ADD_AUDIO:
         newState.currentSong = action.audio

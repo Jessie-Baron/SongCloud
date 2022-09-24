@@ -60,7 +60,6 @@
 
 .navItem {
     height: 20px;
-    width: 100%
 }
 
 .navItem:hover {
@@ -74,4 +73,33 @@
 
 .logout {
     margin-right: 5px;
+}
+
+.tabContainera {
+
+}
+
+.tabsContainer {
+    display: flex;
+    position: absolute;
+    margin-left: 8%;
+    top: 0;
+    gap: 15px;
+    color: white
+}
+
+.tabs {
+    height: 19px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.tabText {
+    color: white;
+    text-decoration: none;
+}
+
+.tabs:hover {
+    background-color: rgba(252, 113, 0, 0.899);
+    cursor: pointer;
 }

@@ -32,13 +32,14 @@ const PlaylistIndexItem = ({ playlist }) => {
     return (
 <div className="playlist-detail-lists">
         <div>
-            <h2>{singlePlaylist?.name}</h2>
-            <ul>
+        <center>
+            <img className="titleImage"alt="" src={singlePlaylist?.imageUrl} />
+        </center>
+            <h2 className="title">{singlePlaylist?.name}</h2>
                 {singlePlaylist?.Songs?.map(song => (
-                    <li>{song.title}</li>
+                    <p>{song.title}<button className="playSongButton">Play Song</button></p>
                 ))}
-            </ul>
-            <button onClick={removePlaylist}>Delete Playlist</button>
+            <button className="detailButton1" onClick={removePlaylist}>Delete Playlist</button>
           </div>
 </div>
       );

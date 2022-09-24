@@ -72,11 +72,12 @@ export const load = (songs) => ({
 export const addSongToPlaylist = (playlistId, songId) => async dispatch => {
   const response = await csrfFetch(`/playlists/${playlistId}/songs`, {
     method: 'POST',
-    body: JSON.stringify(songId)
+    body: JSON.stringify(playlistId, songId)
   })
 
   if (response.ok) {
     const song = await response.json();
+    console.log("adding song")
     dispatch(add(song));
   }
 };

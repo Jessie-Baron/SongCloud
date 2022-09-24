@@ -11,6 +11,7 @@ import SongIndex from "./components/SongIndex/SongIndex";
 import AllSongsIndex from "./components/SongIndex/allSongsIndex";
 import SongIndexItem from "./components/SongIndex/SongIndexItem";
 import SongForm from "./components/SongIndex/SongForm";
+import SongIndexItemNoAuth from "./components/SongIndex/SongIndexItemNoAuth";
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
@@ -23,7 +24,8 @@ function App() {
   }, [dispatch]);
 
   const currentSong = useSelector(state => state.songPlayer.currentSong)
-
+  const playlistObject = useSelector(state => state.songPlayer.currentPlaylist)
+  const currentPlaylist = Object.values(playlistObject)
   return (
     <>
       <Navigation isLoaded={isLoaded} />
@@ -40,6 +42,13 @@ function App() {
             <PlaylistIndex />
             <SongIndex />
             <AllSongsIndex />
+          </Route>
+          <Route exact path="/allSongs">
+            <SongIndex />
+            <AllSongsIndex />
+          </Route>
+          <Route exact path="/allPlaylists">
+            <PlaylistIndex />
           </Route>
           <Route path="/playlists/:id">
             <PlaylistIndexItem />

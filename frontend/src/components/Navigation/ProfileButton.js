@@ -31,6 +31,7 @@ function ProfileButton({ user }) {
 
   return (
     <>
+    <div className="tabContainera">
       <button className="sideBar" onClick={openMenu}>
         <i className="fas fa-user-circle" />
       </button>
@@ -42,9 +43,16 @@ function ProfileButton({ user }) {
           <div class="navItem">{<NavLink className="navText" exact to="/">Home</NavLink>}</div>
           <div class="navItem">{<NavLink className="navText" exact to="/playlists">Upload Playlist</NavLink>}</div>
           <div class="navItem">{<NavLink className="navText" exact to="/songs">Upload Song</NavLink>}</div>
+          <div class="navItem">{<NavLink className="navText" exact to="/allPlaylists">Playlists</NavLink>}</div>
+          <div class="navItem">{<NavLink className="navText" exact to="/allSongs">Songs</NavLink>}</div>
             <button className="logout" onClick={logout}>Log Out</button>
         </ul>
       )}
+      <div className="tabsContainer">
+        <h2 className='tabs'>{<NavLink className="tabText" exact to="/allSongs">Songs</NavLink>}</h2>
+        <h2 className="tabs" >{<NavLink className="tabText" exact to="/allPlaylists">Playlists</NavLink>}</h2>
+      </div>
+      </div>
     </>
   );
 }
