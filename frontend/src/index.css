@@ -11,6 +11,7 @@ h1 {
 
 body {
     margin-top: 0;
+    height: 3000px;
 }
 
 .border {
@@ -27,12 +28,12 @@ body:not(.navBar) {
     position: fixed;
     z-index: 1000;
     width: 91%;
-    margin-top: 58%;
+    bottom: 0
 }
 
 #root > div.rhap_container.rhap_loop--off.rhap_play-status--playing {
     position: fixed;
     z-index: 1000;
     width: 91%;
-    margin-top: 58%;
+    bottom: 0
 }

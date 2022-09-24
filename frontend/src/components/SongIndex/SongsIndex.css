@@ -6,7 +6,8 @@
     display: flex;
     gap: 25px;
     background-color: white;
-    margin-left: 5%
+    margin-left: 5%;
+    top: 0
 }
 
 .song {
@@ -50,6 +51,7 @@ h2 {
 
 .images:hover {
     opacity: .3;
+    cursor: pointer;
 }
 
 .playButton {
@@ -87,8 +89,9 @@ h2 {
 
 .right {
     position: absolute;
-    top: 50%;
+    top: 70%;
     right: 10px;
+    left: 90%;
     font-size: 20px;
     z-index: 999;
     cursor: pointer;
@@ -96,7 +99,7 @@ h2 {
 
 .left {
     position: absolute;
-    top: 50%;
+    top: 70%;
     font-size: 20px;
     z-index: 999;
     cursor: pointer;

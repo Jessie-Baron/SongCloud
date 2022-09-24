@@ -30,8 +30,7 @@ const SongIndex = () => {
     <div className='box'>
     <h2>{currentUser?.firstName}'s Songs</h2>
     <div className='songSection'>
-    <FaArrowAltCircleLeft className='left'  />
-    <FaArrowAltCircleRight className='right' />
+    <div><FaArrowAltCircleLeft className='left'  /></div>
         {
           songs?.map(song => (
             <div className='box'>
@@ -42,6 +41,7 @@ const SongIndex = () => {
           ))
         }
       <Link className="songForm" to="/songs">Add New Song</Link>
+      <div><FaArrowAltCircleRight className='right' /></div>
     </div>
     </div>
   );

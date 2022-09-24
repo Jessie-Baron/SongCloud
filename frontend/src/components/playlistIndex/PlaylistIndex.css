@@ -6,7 +6,8 @@
     display: flex;
     gap: 25px;
     background-color: white;
-    margin-left: 5%
+    margin-left: 5%;
+    bottom: 0;
 }
 
 .playlist {
