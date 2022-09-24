@@ -38,7 +38,10 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <div>{user.username}</div>
           <div>{user.email}</div>
-          <div>{<NavLink exact to="/">Home</NavLink>}</div>
+          <hr />
+          <div class="navItem">{<NavLink className="navText" exact to="/">Home</NavLink>}</div>
+          <div class="navItem">{<NavLink className="navText" exact to="/playlists">Upload Playlist</NavLink>}</div>
+          <div class="navItem">{<NavLink className="navText" exact to="/songs">Upload Song</NavLink>}</div>
             <button className="logout" onClick={logout}>Log Out</button>
         </ul>
       )}

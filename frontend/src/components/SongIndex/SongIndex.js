@@ -34,7 +34,7 @@ const SongIndex = () => {
             </div>
           ))
         }
-      <Link className="songForm" to="/songs">Add New Song</Link>
+      <button className="songForm"><Link className="songForm-text"to="/songs">Add New Song</Link></button>
     </div>
     </div>
   );

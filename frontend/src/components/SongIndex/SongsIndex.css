@@ -2,12 +2,14 @@
 
 .songSection {
     width: 90%;
-    height: 150px;
+    height: 200px;
     display: flex;
     gap: 25px;
     background-color: white;
     margin-left: 5%;
-    top: 0
+    overflow-x: scroll;
+    top: 0;
+    padding-top: 0;
 }
 
 .song {
@@ -75,15 +77,24 @@ h2 {
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    border: 3px solid orange;
-    border-radius: 7px;;
-    background-color: rgba(245, 161, 6, .1);
-    width: 150px;
-    height: 120px;
-    color: #38d
+    border: 3px solid rgba(252, 113, 0, 0.899);
+    background-color: rgba(252, 113, 0, 0.899);
+    width: 60px;
+    height: 50px;
+    color: #38d;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 3%
 }
 
-.songForm:hover {
+.songForm-text {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 12px;
+    text-align: center;
+}
+
+.songForm-text:hover {
     color: #333333
 }
 
