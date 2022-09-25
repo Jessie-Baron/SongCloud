@@ -20,7 +20,7 @@ const SplashSongs = () => {
 
   const songObject = useSelector(state => state.songs.allSongs)
   const songs = Object.values(songObject);
-  const sample = songs.slice(0, 7)
+  const sample = songs.slice(0, 8)
 
 
   return (
