@@ -46,7 +46,6 @@ router.post(
     const token = await setTokenCookie(res, user);
     const userObj = user.toJSON()
     userObj.token = token
-    console.log('--------this is userObj from the backend', userObj)
     res.json(userObj)
     // return res.json({
     //     id: userObj.id,

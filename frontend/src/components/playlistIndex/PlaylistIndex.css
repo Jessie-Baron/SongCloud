@@ -196,3 +196,8 @@ p {
 .playlistForm-text:hover {
     color: #333333
 }
+
+#root > form#form2 {
+    padding-bottom: 0px;
+    margin-bottom: 0;
+}

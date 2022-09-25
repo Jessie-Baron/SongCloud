@@ -49,6 +49,7 @@
 
 #root > header > div > li {
     display: flex;
+    width: 100%
 }
 
 .logo {
@@ -75,9 +76,6 @@
     margin-right: 5px;
 }
 
-.tabContainera {
-
-}
 
 .tabsContainer {
     display: flex;
@@ -100,6 +98,32 @@
 }
 
 .tabs:hover {
+    background-color: rgba(252, 113, 0, 0.899);
+    cursor: pointer;
+}
+
+.signUp {
+    color: white;
+    text-decoration: none;
+    height: 29px;
+    left: 0;
+    padding-top: 15px;
+}
+
+.signUp:hover {
+    background-color: rgba(252, 113, 0, 0.899);
+}
+
+#root > header > div > li > button {
+    border: none;
+    height: 44px;
+    width: 50px;
+    font-size: 14px;
+    background-color: #1c1c1c;
+    color: white
+}
+
+#root > header > div > li > button:hover {
     background-color: rgba(252, 113, 0, 0.899);
     cursor: pointer;
 }

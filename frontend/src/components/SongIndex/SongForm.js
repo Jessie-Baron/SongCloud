@@ -52,7 +52,7 @@ function SongForm() {
   };
 
   return (
-    <form noValidate onSubmit={onSubmit}>
+    <form id="form1" noValidate onSubmit={onSubmit}>
     <ul>
       {validationErrors.map((error, idx) => (
         <li key={idx}>{error}</li>
@@ -85,6 +85,7 @@ function SongForm() {
     <label>
         Url
       <input
+        className="url"
         type="text"
         value={url}
         onChange={(e) => setUrl(e.target.value)}

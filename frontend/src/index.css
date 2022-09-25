@@ -37,3 +37,61 @@ body:not(.navBar) {
     width: 91%;
     bottom: 0
 }
+
+.splash-pic {
+    width: 100%;
+    height: 400px;
+}
+
+#root > form {
+    position: absolute;
+    display: block;
+    margin-top: 20%;
+    flex-direction: column;
+    width: 550px;
+    height: 450px;
+    margin-left: 10%;
+    padding-top: 65px;
+    padding-right: 25px;
+    padding-bottom: 105px;
+    padding-left: 50px;;
+    border: 8px solid black;
+    border-top: 10px solid black;
+    border-right: 10px solid black;
+    color: grey;
+    text-align: left;
+}
+
+#root > form > label > input[type=text] {
+    width: 90%;
+    margin: 10px;
+}
+
+#root > form > label > input[type=password] {
+    width: 90%;
+    margin: 10px;
+}
+
+#root > form > button {
+    width: 350px;
+    height: 55px;
+    margin-left: 11%;
+    margin-top: 9%;
+    background-color: rgba(252, 113, 0, 0.899);
+    border: 1px solid rgba(252, 113, 0, 0.899);
+    font-size: 20px;
+    color: white;
+}
+
+#root > form > button:hover {
+    cursor: pointer;
+}
+
+#root > form > label {
+    text-align: left;
+    padding-left: 25px;
+}
+
+#root > form > ul {
+    list-style-type: none;
+}

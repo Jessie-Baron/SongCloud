@@ -9,9 +9,9 @@ import PlaylistIndexItem from "./components/playlistIndex/PlaylistIndexItem";
 import PlaylistForm from "./components/playlistIndex/PlaylistForm";
 import SongIndex from "./components/SongIndex/SongIndex";
 import AllSongsIndex from "./components/SongIndex/allSongsIndex";
+import SplashSongs from "./components/SongIndex/SplashSongs";
 import SongIndexItem from "./components/SongIndex/SongIndexItem";
 import SongForm from "./components/SongIndex/SongForm";
-import SongIndexItemNoAuth from "./components/SongIndex/SongIndexItemNoAuth";
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
@@ -23,9 +23,11 @@ function App() {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
+  const currentUser = useSelector(state => state.session.user)
   const currentSong = useSelector(state => state.songPlayer.currentSong)
   const playlistObject = useSelector(state => state.songPlayer.currentPlaylist)
   const currentPlaylist = Object.values(playlistObject)
+
   return (
     <>
       <Navigation isLoaded={isLoaded} />
@@ -39,6 +41,10 @@ function App() {
             <SignupFormPage />
           </Route>
           <Route exact path="/">
+            <img alt="" src="https://p300-americantownscom.netdna-ssl.com/img/article/fl-music-festival-1.jpg" className="splash-pic" />
+            <SplashSongs />
+          </Route>
+          <Route path="/home">
             <PlaylistIndex />
             <SongIndex />
             <AllSongsIndex />

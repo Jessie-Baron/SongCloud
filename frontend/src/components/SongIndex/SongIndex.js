@@ -23,7 +23,7 @@ const SongIndex = () => {
 
   return (
     <div className='box'>
-    <h2>{currentUser?.firstName}'s Songs</h2>
+    <h2>Your Songs</h2>
     <div className='songSection'>
         {
           songs?.map(song => (

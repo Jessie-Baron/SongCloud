@@ -1,22 +1,31 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 function LoginForm() {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory()
 
-  const handleSubmit = (e) => {
+  const  loginDemo = async () => {
+    dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }
+      ))
+      .then(history.pushState("/home"))
+        }
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(sessionActions.login({ credential, password })).catch(
+    dispatch(sessionActions.login({ credential, password })).catch(
       async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && data.errors) setErrors(data.errors)
       }
-    );
+    )
+    .then(history.push("/home"))
   };
 
   return (
@@ -44,7 +53,8 @@ function LoginForm() {
           required
         />
       </label>
-      <button type="submit">Log In</button>
+          <button type="submit" onClick={() => loginDemo()}>Demo User</button>
+      <button className='logIn' type="submit">Log In</button>
     </form>
   );
 }

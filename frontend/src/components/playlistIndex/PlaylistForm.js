@@ -50,7 +50,7 @@ function PlaylistForm() {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form id="form2" onSubmit={onSubmit}>
     <ul>
       {validationErrors.map((error, idx) => (
         <li key={idx}>{error}</li>
