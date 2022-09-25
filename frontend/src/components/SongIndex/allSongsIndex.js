@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react'
 import { getSongs } from '../../store/song';
 import { getAudio } from '../../store/songPlayer';
-import SongIndexItemNoAuth from './SongIndexItemNoAuth';
 import './SongsIndex.css'
 
 const AllSongsIndex = () => {

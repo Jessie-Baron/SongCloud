@@ -13,7 +13,7 @@ function LoginForm() {
   const  loginDemo = async () => {
     dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }
       ))
-      .then(history.pushState("/home"))
+      .then(history.push("/home"))
         }
 
   const handleSubmit = async (e) => {

@@ -24,7 +24,7 @@ const SongIndexItem = ({ song }) => {
 
     const removeSong = () => {
         dispatch(deleteSong(id))
-        .then(() => history.push('/'))
+        .then(() => history.push('/allSongs'))
       };
 
 

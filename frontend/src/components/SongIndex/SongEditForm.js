@@ -50,7 +50,7 @@ function SongEditForm() {
     setValidationErrors([]);
     setHasSubmitted(false);
 
-    history.push(`/`)
+    history.push(`/allSongs`)
   };
 
   return (

@@ -46,7 +46,7 @@ function PlaylistForm() {
     setValidationErrors([]);
     setHasSubmitted(false);
 
-    history.push('/')
+    history.push('/allPlaylists')
   };
 
   return (
