@@ -22,7 +22,7 @@ const PlaylistIndex = () => {
 
   return (
     <div className='outer1'>
-    <h2 className='userPlay'>{currentUser?.firstName}'s Playlists</h2>
+    <h2 className='userPlay'>Your Playlists</h2>
     <div className='playlistSection'>
         {
           playlists?.map(playlist => (
