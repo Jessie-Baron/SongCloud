@@ -225,7 +225,7 @@ router.post('/playlists', requireAuth, restoreUser, async (req, res, next) => {
 })
 
 // Add a song to a playlist
-router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req, res, next) => {
+router.post('/playlists/:playlistid/songs', restoreUser, async (req, res, next) => {
   const { songId } = req.body
   const { playlistid } = req.params
 
