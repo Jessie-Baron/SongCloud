@@ -100,7 +100,6 @@ const audioReducer = (state = initialState, action) => {
         newState.currentSong = {}
         return newState
       default:
-        console.log('this is the current state:', state)
         return state;
     }
   }
