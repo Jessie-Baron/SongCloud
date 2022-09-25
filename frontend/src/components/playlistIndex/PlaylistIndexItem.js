@@ -39,7 +39,7 @@ const PlaylistIndexItem = ({ playlist }) => {
                 {singlePlaylist?.Songs?.map(song => (
                     <p>{song.title}<button className="playSongButton">Play Song</button></p>
                 ))}
-            <button className="detailButton1" onClick={removePlaylist}>Delete Playlist</button>
+            <button className="detailButton3" onClick={removePlaylist}>Delete Playlist</button>
           </div>
 </div>
       );

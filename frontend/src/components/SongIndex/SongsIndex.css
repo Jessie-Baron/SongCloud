@@ -9,12 +9,20 @@
     overflow-x: scroll;
     top: 0;
     padding-top: 0;
+    gap: 15px;
 }
 
 .songSectionSplash {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     margin-top: 45px;
+
+}
+
+.songSectionAll {
+    display: grid;
+    grid-template-columns: repeat(14, 1fr);
+    margin-left: 25px;
 
 }
 
@@ -201,6 +209,10 @@ p {
     color: grey
 }
 
+.songHeader {
+    color: grey;
+}
+
 .pitch {
     display: flex;
     align-items: center;
@@ -213,7 +225,7 @@ p {
     height: 35px;
     align-items: center;
     justify-content: center;
-    margin-left: 44%;
+    margin-left: 46%;
     margin-top: 5%;
     border: 1px solid rgba(252, 113, 0, 0.899);
     background-color: rgba(252, 113, 0, 0.899);

@@ -13,6 +13,7 @@ import SplashSongs from "./components/SongIndex/SplashSongs";
 import SongIndexItem from "./components/SongIndex/SongIndexItem";
 import SongForm from "./components/SongIndex/SongForm";
 import AudioPlayer from 'react-h5-audio-player';
+import SongYouMightLike from "./components/SongIndex/SongsYouMightLike";
 import 'react-h5-audio-player/lib/styles.css';
 
 function App() {
@@ -47,11 +48,9 @@ function App() {
           <Route path="/home">
             <PlaylistIndex />
             <SongIndex />
-            <AllSongsIndex />
           </Route>
           <Route exact path="/allSongs">
-            <SongIndex />
-            <AllSongsIndex />
+            <SongYouMightLike />
           </Route>
           <Route exact path="/allPlaylists">
             <PlaylistIndex />

@@ -151,6 +151,14 @@ p {
     border: 1px solid black;
 }
 
+.detailButton3 {
+    margin-left: 48%;
+    margin-right: 2%;
+    margin-top: 4%;
+    background-color: #ffffff;
+    border: 1px solid black;
+}
+
 .detailButton2 {
     background-color: #ffffff;
     border: 1px solid black;
