@@ -21,9 +21,8 @@
 
 .songSectionAll {
     display: grid;
-    grid-template-columns: repeat(14, 1fr);
+    grid-template-columns: repeat(10, 1fr);
     margin-left: 25px;
-
 }
 
 .song {
@@ -242,4 +241,8 @@ p {
 
 #root > form#form1 {
     padding-bottom: 15px;;
+}
+
+#root > div.song-detail-lists > form > label > input[type=text] {
+    width: 90%
 }

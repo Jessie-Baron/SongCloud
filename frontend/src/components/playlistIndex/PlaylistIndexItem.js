@@ -25,7 +25,7 @@ const PlaylistIndexItem = ({ playlist }) => {
 
     const removePlaylist = () => {
         dispatch(deletePlaylist(id))
-        .then(() => history.push('/allPlaylists'))
+        .then(() => history.push('/home'))
       };
 
 

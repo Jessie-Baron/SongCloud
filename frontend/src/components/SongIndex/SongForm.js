@@ -40,7 +40,7 @@ function SongForm() {
     };
 
     await dispatch(createSong(songForm))
-    .then(history.push('/allSongs'))
+    .then(history.push('/home'))
 
     // Reset the form state.
     setTitle("");

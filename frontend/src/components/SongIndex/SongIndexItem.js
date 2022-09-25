@@ -15,7 +15,7 @@ const SongIndexItem = ({ song }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [showEdit, setShowEdit] = useState(false)
-    
+
     useEffect(() =>{
         dispatch(getSongDetails(id))
     }, [id])
@@ -23,7 +23,7 @@ const SongIndexItem = ({ song }) => {
 
     const removeSong = () => {
         dispatch(deleteSong(id))
-        .then(() => history.push('/allSongs'))
+        .then(() => history.push('/home'))
       };
 
 
