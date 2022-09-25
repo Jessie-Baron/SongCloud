@@ -15,8 +15,7 @@ const SongIndexItem = ({ song }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [showEdit, setShowEdit] = useState(false)
-    const [showButton, setShowButton] = useState(false)
-
+    
     useEffect(() =>{
         dispatch(getSongDetails(id))
     }, [id])
