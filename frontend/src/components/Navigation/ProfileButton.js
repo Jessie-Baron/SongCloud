@@ -44,7 +44,7 @@ function ProfileButton({ user }) {
           <div>{user.username}</div>
           <div>{user.email}</div>
           <hr />
-          <div className="navItem">{<NavLink className="navText" exact to="/">Home</NavLink>}</div>
+          <div className="navItem">{<NavLink className="navText" exact to="/home">Home</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/playlists">Upload Playlist</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/songs">Upload Song</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/allPlaylists">Playlists</NavLink>}</div>
