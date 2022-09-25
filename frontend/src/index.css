@@ -1,11 +1,12 @@
 /* TODO Add site wide styles */
 * {
     margin: 0 0;
-    font-family: Lucida,Verdana,Tahoma,sans-serif;
+    font-family: Verdana,Tahoma,sans-serif;
     font-weight: 100;
+    color: grey;
 }
 h1 {
-    font-family: Lucida,Verdana,Tahoma,sans-serif;
+    font-family: Verdana,Tahoma,sans-serif;
     font-weight: 100
 }
 
@@ -46,7 +47,7 @@ body:not(.navBar) {
 #root > form {
     position: absolute;
     display: block;
-    margin-top: 20%;
+    margin-top: 10%;
     flex-direction: column;
     width: 550px;
     height: 450px;

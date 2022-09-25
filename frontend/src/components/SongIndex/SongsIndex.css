@@ -231,6 +231,7 @@ p {
     background-color: rgba(252, 113, 0, 0.899);
     color: white;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .pitchSection {

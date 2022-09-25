@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react'
@@ -8,6 +8,7 @@ import './SongsIndex.css'
 
 const SplashSongs = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
 
     useEffect(() => {
         dispatch(getSongs())
@@ -41,7 +42,7 @@ const SplashSongs = () => {
     <div className="pitchSection">
     <h4 className="pitch">Ready to join the community?</h4>
     <h6 className="pitch">Sign up today to start sharing music for FREE</h6>
-    <button className="pitchButton">Sign Up</button>
+    <Link to="/signup"><button className="pitchButton">Sign Up</button></Link>
     </div>
     </div>
   );

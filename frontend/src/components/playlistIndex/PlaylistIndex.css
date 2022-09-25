@@ -19,6 +19,8 @@
 
 .playlist {
     font-size: 14px;
+    color: grey;
+    margin-top: 80%;
 }
 
 h2 {
@@ -51,6 +53,12 @@ h2 {
 }
 
 .images {
+    width: 125px;
+    position: absolute;
+
+}
+
+.imagesPlaylist {
     width: 125px;
     position: absolute;
 
