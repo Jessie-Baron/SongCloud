@@ -15,7 +15,7 @@
 .songSectionSplash {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(14, 1fr);
+    grid-template-rows: repeat(12, 1fr);
     margin-top: 45px;
 
 }
