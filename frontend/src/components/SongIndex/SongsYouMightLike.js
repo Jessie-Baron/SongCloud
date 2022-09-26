@@ -2,24 +2,23 @@ import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react'
-import { getSongsByUser } from '../../store/song';
+import { getSongs } from '../../store/song';
 import { getAudio } from '../../store/songPlayer';
 import './SongsIndex.css'
 
 const SongYouMightLike = () => {
     const dispatch = useDispatch()
-    const currentUser = useSelector(state => state.session.user)
-
+    
     useEffect(() => {
-        if(currentUser) dispatch(getSongsByUser(currentUser.id))
-    }, [currentUser, dispatch])
+        dispatch(getSongs())
+    }, [dispatch])
 
     const playSong = async (id) => {
       await dispatch(getAudio(id))
     }
 
-  const songObject = useSelector(state => state.songs.allSongs)
-  const songs = Object.values(songObject);
+    const songObject = useSelector(state => state.songs.allSongs)
+    const songs = Object.values(songObject);
 
   return (
     <div className='box'>

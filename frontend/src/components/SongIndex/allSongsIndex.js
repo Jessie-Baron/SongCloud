@@ -18,9 +18,8 @@ const AllSongsIndex = () => {
     }
 
   const songObject = useSelector(state => state.songs.allSongs)
-  console.log("this is the songObject",songObject)
   const songs = Object.values(songObject);
-  console.log("This is the songs array",songs)
+
 
   return (
     <div>
