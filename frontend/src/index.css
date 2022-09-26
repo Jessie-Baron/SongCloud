@@ -95,4 +95,9 @@ body:not(.navBar) {
 
 #root > form > ul {
     list-style-type: none;
+    padding-bottom: 10px;
+}
+
+#modal-content > form > ul {
+    list-style-type: none;
 }
