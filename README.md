@@ -11,13 +11,13 @@ SongCloud is a dynamic clone of SoundCloud with built in features and a fully fu
 
 ## Technologies
   
-  Javascript
-  React
-  Redux
-  HTML
-  CSS
-  Express
-  Node.js
+  Javascript <br>
+  React <br>
+  Redux <br>
+  HTML <br>
+  CSS <br>
+  Express <br>
+  Node.js 
   
 ## Database
   
