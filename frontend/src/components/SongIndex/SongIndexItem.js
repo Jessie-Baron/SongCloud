@@ -6,6 +6,7 @@ import { getSongDetails } from '../../store/song';
 import { deleteSong } from '../../store/song';
 import { Link } from 'react-router-dom';
 import SongEditForm from './SongEditForm';
+import { getAudio } from '../../store/songPlayer';
 
 const SongIndexItem = ({ song }) => {
     const { id } = useParams();
@@ -15,6 +16,10 @@ const SongIndexItem = ({ song }) => {
     const dispatch = useDispatch()
     const history = useHistory()
     const [showEdit, setShowEdit] = useState(false)
+
+    const playSong = async (id) => {
+      await dispatch(getAudio(id))
+    }
 
     useEffect(() =>{
         dispatch(getSongDetails(id))
@@ -37,8 +42,11 @@ const SongIndexItem = ({ song }) => {
             <h2 className="title">{singleSong?.title}</h2>
             <p>{singleSong?.description}</p>
 
+            <div className="detailButtons">
             <button className="detailButton1" onClick={removeSong}>Delete Song</button>
+            <button className="detailButton4" onClick={() => playSong(singleSong.id)}>Play Song</button>
             <button className="detailButton2" onClick={() => setShowEdit(!showEdit)}>Edit Song</button>
+            </div>
           </div>
           {showEdit && (
             <SongEditForm />

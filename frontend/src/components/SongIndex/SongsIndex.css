@@ -184,14 +184,18 @@ p {
 }
 
 .detailButton1 {
-    margin-left: 44%;
-    margin-right: 2%;
     margin-top: 4%;
+    margin-left: 40%;
     background-color: #ffffff;
     border: 1px solid black;
 }
 
 .detailButton2 {
+    background-color: #ffffff;
+    border: 1px solid black;
+}
+
+.detailButton4 {
     background-color: #ffffff;
     border: 1px solid black;
 }
@@ -246,4 +250,11 @@ p {
 
 #root > div.song-detail-lists > form > label > input[type=text] {
     width: 90%
+}
+x
+.detailButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
