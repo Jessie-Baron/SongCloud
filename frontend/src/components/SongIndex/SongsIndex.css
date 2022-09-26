@@ -15,7 +15,6 @@
 .songSectionSplash {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: repeat(12, 1fr);
     margin-top: 45px;
 
 }
@@ -23,6 +22,7 @@
 .songSectionAll {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(12, 1fr);
     margin-left: 25px;
 }
 
@@ -241,7 +241,7 @@ p {
 .pitchSection {
     display: flex;
     flex-direction: column;
-    margin-top: 5%
+    margin-top: 5%;
 }
 
 #root > form#form1 {
