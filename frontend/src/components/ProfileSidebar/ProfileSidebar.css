@@ -1,0 +1,10 @@
+#root > div.fixed-sideBar {
+    position: fixed;
+    border: 1px solid rgb(230, 230, 230);
+    width: 17%;
+    margin-top: 2.4%;
+    margin-left: 49%;
+    height: 83%;
+    z-index: 1;
+    background-color: white;
+}

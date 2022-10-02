@@ -54,7 +54,7 @@ function LoginForm() {
         />
       </label>
           <button type="submit" onClick={() => loginDemo()}>Demo User</button>
-      <button className='logIn' type="submit">Log In</button>
+      <button className='logIn' type="submit">Sign In</button>
     </form>
   );
 }

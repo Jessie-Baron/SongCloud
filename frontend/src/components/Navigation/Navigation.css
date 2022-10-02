@@ -1,11 +1,11 @@
 .profile-dropdown {
     position: absolute;
+    width: 170px;
     background-color: white;
-    z-index: 1;
+    z-index: 99999999999;
     display: flex;
     flex-direction: column;
     align-items: left;
-    gap: 15px;
     border: 1px solid black;
     border-top: none;
     box-sizing: border-box;
@@ -13,25 +13,13 @@
     padding-left: 5px;
     padding-top: 20px;
     padding-bottom: 20px;
-    margin-left: 20px;
+    margin-left: 58.6%;
     margin-top: 0;
     top: 45px;
 }
 
-.sideBar {
-    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ7iyAU6QpXywY6ViXlfrNh3OtZuzUtcjzJA&usqp=CAU);
-    background-size: cover;
-    width: 50px;
-    height: 45px;
-    padding-top: 0;
-    border:none;
-    margin-left: 55px;
-    margin-bottom: 5px;
-}
-
-.sideBar:hover {
-    background-image: none;
-    background-color: rgba(252, 113, 0, 0.899);
+#root > header > div > li > ul > div {
+    padding-bottom: 10px;
 }
 
 .navBar {
@@ -42,7 +30,7 @@
     top: 0;
     left: 0;
     right: 0;
-    background-color: #1c1c1c;
+    background-color: #333333;
     position: fixed;
     z-index: 1000;
 }
@@ -52,78 +40,166 @@
     width: 100%
 }
 
-.logo {
-    margin-left: 80%;
-    width: 95px;
-    height: 45px;
-    display: flex;
-}
-
 .navItem {
+    display: block;
     height: 20px;
+    padding: 10px 8px;
 }
 
 .navItem:hover {
-    background-color: rgba(252, 113, 0, 0.899);
+    background-color: #dbdbdb;
 }
 
-.navText {
+#root > header > div > li > ul > div > a {
     text-decoration: none;
-    color: #1c1c1c;
-}
-
-.logout {
-    margin-right: 5px;
+    font-size: 12px;
+    color: #333333;
+    font-weight: 700;
 }
 
 
 .tabsContainer {
     display: flex;
     position: absolute;
-    margin-left: 8%;
+    margin-left: 16.4%;
     top: 0;
-    gap: 15px;
-    color: white
+    color: white;
+    width: 100%;
 }
 
 .tabs {
-    height: 19px;
-    padding-left: 10px;
-    padding-right: 10px;
+    flex-direction: row;
+    padding-bottom: 14px;
+    font-size: 14px;
+    margin-left: 0%;
+    padding-top: 12px;
+    font-weight: 100;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-left: 1px solid black;
+
 }
 
+
 .tabText {
-    color: white;
+    color: #cac6c6;
     text-decoration: none;
 }
 
-.tabs:hover {
-    background-color: rgba(252, 113, 0, 0.899);
+.tabText:hover {
+    color: white;
+    cursor: pointer;
+}
+
+#tab3 {
+    border-right: 1px solid black;
+}
+
+#menu-icon {
+    font-size: 25px;
+    margin-left: 35%;
+    margin-top: 9px;
+    display: flex;
+    color: #cac6c6;
+}
+
+#menu-icon:hover {
+    cursor: pointer;
+    color: white;
+}
+
+#logo {
+    font-size: 45px;
+    width: 65px;
+    padding-left: 6px;
+    color: white;
+    background-color: black;
+    margin-left: 17%;
+}
+
+#logout {
+    font-size: 12px;
+    font-weight: 700;
+    color: #333333;
+}
+
+#logout:hover {
     cursor: pointer;
 }
 
 .signUp {
     color: white;
     text-decoration: none;
-    height: 29px;
-    left: 0;
-    padding-top: 15px;
-}
-
-.signUp:hover {
-    background-color: rgba(252, 113, 0, 0.899);
+    font-size: 14px;
+    line-height: 23px;
+    border: 1px solid #f50;
+    padding: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 3px;
+    background-color: #f50;
+    margin-left: 10px;
+    margin-top: 7px;
 }
 
 #root > header > div > li > button {
-    border: none;
-    height: 44px;
-    width: 50px;
+    border-style: none;
+    background-color: transparent;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-top: 2px;
+    margin-left: 42%;
     font-size: 14px;
-    background-color: #1c1c1c;
-    color: white
+    font-weight: 100;
 }
 
 #root > header > div > li > button:hover {
-    background-color: rgba(252, 113, 0, 0.899);
+    border-color: white;
     cursor: pointer;
+}
+
+#login-icon {
+    color: white;
+    font-size: 25px;
+    margin-top: 10px;
+}
+
+.favicon {
+    display: flex;
+    width: 250px;
+    margin-left: 17%;
+}
+
+.favicon-text {
+    padding-left: 5px;
+    font-size: 18px;
+    color: white;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 1600px) {
+    .tabsContainer {
+        margin-left: 20.5%
+    }
+
+    #logo {
+        margin-left: 23%
+    }
+
+    #menu-icon {
+        margin-left: 18%;
+    }
+
+    .favicon {
+        margin-left: 22%;
+    }
+
+    #root > header > div > li > button {
+        margin-left: 26%
+    }
+
+    .profile-dropdown {
+        margin-left: 47%;
+    }
 }

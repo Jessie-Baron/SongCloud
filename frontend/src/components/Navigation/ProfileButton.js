@@ -35,11 +35,13 @@ function ProfileButton({ user }) {
 
   return (
     <>
-    <div className="tabContainera">
-      <button className="sideBar" onClick={openMenu}>
-        <i className="fas fa-user-circle" />
-      </button>
-      {showMenu && (
+        <i class="fa-brands fa-soundcloud" id="logo"></i>      <div className="tabsContainer">
+        <h2 className='tabs'>{<NavLink className="tabText" exact to="/allSongs">Home</NavLink>}</h2>
+        <h2 className="tabs" >{<NavLink className="tabText" exact to="/allPlaylists">Feed</NavLink>}</h2>
+        <h2 className="tabs" id="tab3">{<NavLink className="tabText" exact to="/allPlaylists">Library</NavLink>}</h2>
+        <i class="fa-solid fa-ellipsis" id="menu-icon"onClick={openMenu}></i>
+      </div>
+        {showMenu && (
         <ul className="profile-dropdown">
           <div>{user.username}</div>
           <div>{user.email}</div>
@@ -49,14 +51,9 @@ function ProfileButton({ user }) {
           <div className="navItem">{<NavLink className="navText" exact to="/songs">Upload Song</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/allPlaylists">Playlists</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/allSongs">Songs</NavLink>}</div>
-            <button className="logout" onClick={logout}>Log Out</button>
+          <div className="navItem" id="logout"onClick={logout}>Log Out</div>
         </ul>
       )}
-      <div className="tabsContainer">
-        <h2 className='tabs'>{<NavLink className="tabText" exact to="/allSongs">Songs</NavLink>}</h2>
-        <h2 className="tabs" >{<NavLink className="tabText" exact to="/allPlaylists">Playlists</NavLink>}</h2>
-      </div>
-      </div>
     </>
   );
 }

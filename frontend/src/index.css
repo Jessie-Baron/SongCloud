@@ -21,21 +21,21 @@ body {
 
 body:not(.navBar) {
     z-index: 3;
-    border-left: 60px solid rgb(213, 212, 212);
-    border-right: 60px solid rgb(213, 212, 212);
+    border-left: 325px solid rgb(213, 212, 212);
+    border-right: 325px solid rgb(213, 212, 212);
 }
 
 #root > div.rhap_container.rhap_loop--off.rhap_play-status--paused {
     position: fixed;
     z-index: 1000;
-    width: 91%;
+    width: 66%;
     bottom: 0
 }
 
 #root > div.rhap_container.rhap_loop--off.rhap_play-status--playing {
     position: fixed;
     z-index: 1000;
-    width: 91%;
+    width: 66%;
     bottom: 0
 }
 
