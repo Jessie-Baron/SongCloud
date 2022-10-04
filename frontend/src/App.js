@@ -32,7 +32,6 @@ function App() {
   return (
     <>
       <Navigation isLoaded={isLoaded} />
-      <ProfileSidebar />
       <AudioPlayer
             autoPlay
             src={currentSong.url}
@@ -47,6 +46,7 @@ function App() {
             <SplashSongs />
           </Route>
           <Route path="/home">
+            <ProfileSidebar />
             <PlaylistIndex />
             <SongIndex />
           </Route>
@@ -54,6 +54,7 @@ function App() {
             <SongYouMightLike />
           </Route>
           <Route exact path="/allPlaylists">
+            <ProfileSidebar />
             <PlaylistIndex />
           </Route>
           <Route path="/playlists/:id">

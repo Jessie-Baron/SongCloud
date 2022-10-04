@@ -4,7 +4,63 @@
     width: 17%;
     margin-top: 2.4%;
     margin-left: 49%;
-    height: 83%;
+    height: 84%;
     z-index: 1;
     background-color: white;
+}
+
+.sideBar-profile {
+    width: 150px;
+    margin-top: 7%;
+    margin-left: 23%;
+}
+.bio {
+    font-size: 14px;
+    padding-left: 3%;
+    padding-right: 5%;
+    padding-top: 7%;
+    color: #333333;
+}
+.social-header {
+    margin-top: 5%;
+    margin-left: 3%;
+    font-size: 18px;
+    color: #333333;
+}
+
+.social-subHeader {
+    margin-top: 1%;
+    margin-left: 3%;
+    font-size: 14px;
+    color: rgb(173, 170, 170)
+}
+.sideBar-seperator {
+    border: 1px solid rgb(239, 237, 237);
+    width: 90%;
+    margin-left: 4%;
+}
+
+.social-footer {
+    display: flex;
+    font-size: 10px;
+    justify-content: space-between;
+    margin-top: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
+    color: rgb(141, 141, 141)
+}
+
+.socials {
+    font-size: 13px;
+    margin-left: 3%;
+}
+
+.socialsContainer {
+    display: flex;
+    width: 100%;
+}
+
+.socialIcon {
+    width: 40px;
+    padding-right: 5px;
 }
