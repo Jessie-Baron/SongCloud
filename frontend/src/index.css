@@ -101,3 +101,21 @@ body:not(.navBar) {
 #modal-content > form > ul {
     list-style-type: none;
 }
+
+@media screen and (max-width: 1600px) {
+
+#root > div.rhap_container.rhap_loop--off.rhap_play-status--paused {
+    position: fixed;
+    z-index: 1000;
+    width: 55%;
+    bottom: 0
+}
+
+#root > div.rhap_container.rhap_loop--off.rhap_play-status--playing {
+    position: fixed;
+    z-index: 1000;
+    width: 55%;
+    bottom: 0
+}
+
+}

@@ -262,4 +262,12 @@ x
     .songSectionSplash {
         grid-template-columns: repeat(5, 1fr);
     }
+
+    .pitch{
+        margin-left: 0%;
+    }
+
+    .pitchButton {
+        margin-left: 42%;
+    }
 }
