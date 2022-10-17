@@ -64,3 +64,15 @@
     width: 40px;
     padding-right: 5px;
 }
+@media screen and (max-width: 1600px) {
+#root > div.fixed-sideBar {
+    position: fixed;
+    border: 1px solid rgb(230, 230, 230);
+    width: 17%;
+    margin-top: 2.4%;
+    margin-left: 38%;
+    height: 82%;
+    z-index: 1;
+    background-color: white;
+}
+}
