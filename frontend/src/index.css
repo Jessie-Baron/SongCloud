@@ -107,15 +107,21 @@ body:not(.navBar) {
 #root > div.rhap_container.rhap_loop--off.rhap_play-status--paused {
     position: fixed;
     z-index: 1000;
-    width: 55%;
+    width: 68%;
     bottom: 0
 }
 
 #root > div.rhap_container.rhap_loop--off.rhap_play-status--playing {
     position: fixed;
     z-index: 1000;
-    width: 55%;
+    width: 68%;
     bottom: 0
+}
+
+body:not(.navBar) {
+    z-index: 3;
+    border-left: 225px solid rgb(213, 212, 212);
+    border-right: 225px solid rgb(213, 212, 212);
 }
 
 }
