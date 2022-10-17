@@ -202,4 +202,12 @@
     .profile-dropdown {
         margin-left: 47%;
     }
+
+    #root > form {
+        margin-left: 5%
+    }
+
+    #root > form > button {
+        margin-left: 15%
+    }
 }
