@@ -71,8 +71,9 @@
     width: 17%;
     margin-top: 2.4%;
     margin-left: 38%;
-    height: 82%;
+    height: 84%;
     z-index: 1;
     background-color: white;
+    font-size: 10px;
 }
 }
