@@ -6,7 +6,6 @@
     display: flex;
     background-color: white;
     margin-left: 5%;
-    overflow-x: scroll;
     top: 0;
     padding-top: 0;
     gap: 15px;

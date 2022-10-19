@@ -53,7 +53,9 @@ function App() {
             <SongYouMightLike />
             <SongYouMightLike />
             <SongYouMightLike />
-            <SongIndex />
+            <SongYouMightLike />
+            <SongYouMightLike />
+            <SongYouMightLike />
           </Route>
           <Route exact path="/allSongs">
             <SongYouMightLike />
