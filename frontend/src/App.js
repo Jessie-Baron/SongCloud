@@ -48,6 +48,11 @@ function App() {
           <Route path="/home">
             <ProfileSidebar />
             <PlaylistIndex />
+            <SongYouMightLike />
+            <SongYouMightLike />
+            <SongYouMightLike />
+            <SongYouMightLike />
+            <SongYouMightLike />
             <SongIndex />
           </Route>
           <Route exact path="/allSongs">

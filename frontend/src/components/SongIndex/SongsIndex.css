@@ -258,6 +258,12 @@ x
     justify-content: center;
     gap: 10px;
 }
+
+.songFiller {
+    display: flex;
+    gap: 5px;
+    margin-left: 50px;
+}
 @media screen and (max-width: 1600px) {
     .songSectionSplash {
         grid-template-columns: repeat(6, 1fr);
