@@ -261,7 +261,7 @@ x
 
 .songFiller {
     display: flex;
-    gap: 5px;
+    gap: 15px;
     margin-left: 50px;
 }
 @media screen and (max-width: 1600px) {
