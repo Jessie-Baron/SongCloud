@@ -263,6 +263,21 @@ x
     gap: 15px;
     margin-left: 50px;
 }
+
+.songLibrary {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-left: 5%
+}
+.soundContainer {
+    display: flex;
+    gap: 25px;
+}
+.soundImage {
+    width: 450px;
+    height: 130px;
+}
 @media screen and (max-width: 1600px) {
     .songSectionSplash {
         grid-template-columns: repeat(6, 1fr);

@@ -19,11 +19,11 @@ const SongYouMightLike = () => {
 
     const songObject = useSelector(state => state.songs.allSongs)
     const songs = Object.values(songObject);
-    const sample = songs.slice(0, 5)
+    const sample = songs.slice(24, 29)
 
   return (
     <div className='box'>
-    <h2 className="songHeader">We Made This List For You!</h2>
+    <h2 className="songHeader">The Best of Today's Hits</h2>
     <div className='songFiller'>
         {
           sample?.map(song => (

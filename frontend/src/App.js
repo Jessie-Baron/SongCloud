@@ -14,6 +14,15 @@ import SongForm from "./components/SongIndex/SongForm";
 import AudioPlayer from 'react-h5-audio-player';
 import ProfileSidebar from "./components/ProfileSidebar/ProfileSidebar";
 import SongYouMightLike from "./components/SongIndex/SongsYouMightLike";
+import SongYouMightLike2 from "./components/SongIndex/SongYouMightLike2";
+import SongYouMightLike3 from "./components/SongIndex/SongsYouMightLike3";
+import SongYouMightLike4 from "./components/SongIndex/SongsYouMightLike4";
+import SongYouMightLike5 from "./components/SongIndex/SongsYouMightLike5";
+import SongYouMightLike6 from "./components/SongIndex/SongsYouMightLike6";
+import SongYouMightLike7 from "./components/SongIndex/SongsYouMightLike7";
+import SongYouMightLike8 from "./components/SongIndex/SongsYouMightLike8";
+import SongYouMightLike10 from "./components/SongIndex/SongsYouMightLike10";
+import SongLibrary from "./components/SongIndex/SongLibrary"
 import 'react-h5-audio-player/lib/styles.css';
 
 function App() {
@@ -47,22 +56,22 @@ function App() {
           </Route>
           <Route path="/home">
             <ProfileSidebar />
-            <PlaylistIndex />
             <SongYouMightLike />
-            <SongYouMightLike />
-            <SongYouMightLike />
-            <SongYouMightLike />
-            <SongYouMightLike />
-            <SongYouMightLike />
-            <SongYouMightLike />
-            <SongYouMightLike />
+            <SongYouMightLike2 />
+            <SongYouMightLike3 />
+            <SongYouMightLike4 />
+            <SongYouMightLike5 />
+            <SongYouMightLike6 />
+            <SongYouMightLike7 />
+            <SongYouMightLike8 />
+            <SongYouMightLike10/>
           </Route>
           <Route exact path="/allSongs">
             <SongYouMightLike />
           </Route>
           <Route exact path="/allPlaylists">
             <ProfileSidebar />
-            <PlaylistIndex />
+            <SongLibrary />
           </Route>
           <Route path="/playlists/:id">
             <PlaylistIndexItem />
