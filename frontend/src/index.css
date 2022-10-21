@@ -12,7 +12,7 @@ h1 {
 
 body {
     margin-top: 0;
-    height: 3200px;
+    height: 2000px;
 }
 
 .border {
@@ -107,14 +107,14 @@ body:not(.navBar) {
 #root > div.rhap_container.rhap_loop--off.rhap_play-status--paused {
     position: fixed;
     z-index: 1000;
-    width: 68%;
+    width: 68.5%;
     bottom: 0
 }
 
 #root > div.rhap_container.rhap_loop--off.rhap_play-status--playing {
     position: fixed;
     z-index: 1000;
-    width: 68%;
+    width: 68.5%;
     bottom: 0
 }
 
