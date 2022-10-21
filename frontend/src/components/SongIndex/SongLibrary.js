@@ -35,7 +35,7 @@ const AllSongsIndex = () => {
             <Link className="song" to={`/songs/${song.id}`}>{song.title}</Link>
                </div>
             <div className='soundWave'>
-                <img className='soundImage' alt="" src="https://d2j6dbq0eux0bg.cloudfront.net/images/1643118/579356637.jpg"></img>
+                <img className='soundImage' alt="" onClick={() => playSong(song.id)} src="https://d2j6dbq0eux0bg.cloudfront.net/images/1643118/579356637.jpg"></img>
             </div>
             </div>
           ))
