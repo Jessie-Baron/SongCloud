@@ -277,7 +277,6 @@ x
 .soundImage {
     width: 500px;
     height: 130px;
-    border: 1px solid black;
 }
 
 .soundImage:hover {
