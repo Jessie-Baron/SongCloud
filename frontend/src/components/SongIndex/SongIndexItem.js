@@ -39,9 +39,8 @@ const SongIndexItem = ({ song }) => {
           <center>
             <img className="titleImage"alt="" src={singleSong?.imageUrl} />
           </center>
-            <h2 className="title">{singleSong?.title}</h2>
-            <p>{singleSong?.description}</p>
 
+          <h5 className="title">{singleSong?.title}</h5>
             <div className="detailButtons">
             <button className="detailButton1" onClick={removeSong}>Delete Song</button>
             <button className="detailButton4" onClick={() => playSong(singleSong.id)}>Play Song</button>
