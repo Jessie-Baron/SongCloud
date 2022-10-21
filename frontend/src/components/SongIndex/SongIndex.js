@@ -20,7 +20,7 @@ const SongIndex = () => {
 
   const songObject = useSelector(state => state.songs.allSongs)
   const songs = Object.values(songObject);
-  const sample = songs.slice(0, 6)
+  const sample = songs.slice(0, 5)
 
   return (
     <div className='box'>

@@ -283,6 +283,16 @@ x
     opacity: .6;
     cursor: pointer;
 }
+
+.soundSong {
+    margin-left: 25px;
+    text-align: center;
+    padding-top: 35px;
+    width: 125px;
+    word-wrap: break-word;
+    text-decoration: none;
+    color: #333333;
+}
 @media screen and (max-width: 1600px) {
     .songSectionSplash {
         grid-template-columns: repeat(6, 1fr);
