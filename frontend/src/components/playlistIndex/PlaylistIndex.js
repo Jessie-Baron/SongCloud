@@ -32,9 +32,6 @@ const PlaylistIndex = () => {
                </div>
           ))
         }
-        <div>
-        <button className="playlistForm" ><Link className="playlistForm-text" to="/playlists">Add New Playlist</Link></button>
-      </div>
     </div>
     </div>
   );

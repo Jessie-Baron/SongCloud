@@ -37,8 +37,8 @@ function ProfileButton({ user }) {
     <>
         <i class="fa-brands fa-soundcloud" id="logo"></i>      <div className="tabsContainer">
         <h2 className='tabs'>{<NavLink className="tabText" exact to="/home">Home</NavLink>}</h2>
-        <h2 className="tabs" >{<NavLink className="tabText" exact to="/allPlaylists">Feed</NavLink>}</h2>
-        <h2 className="tabs" id="tab3">{<NavLink className="tabText" exact to="/allPlaylists">Library</NavLink>}</h2>
+        <h2 className="tabs" >{<NavLink className="tabText" exact to="/feed">Feed</NavLink>}</h2>
+        <h2 className="tabs" id="tab3">{<NavLink className="tabText" exact to="/library">Library</NavLink>}</h2>
         <i class="fa-solid fa-ellipsis" id="menu-icon"onClick={openMenu}></i>
       </div>
         {showMenu && (
@@ -49,8 +49,8 @@ function ProfileButton({ user }) {
           <div className="navItem">{<NavLink className="navText" exact to="/home">Home</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/playlists">Upload Playlist</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/songs">Upload Song</NavLink>}</div>
-          <div className="navItem">{<NavLink className="navText" exact to="/allPlaylists">Feed</NavLink>}</div>
-          <div className="navItem">{<NavLink className="navText" exact to="/allSongs">Library</NavLink>}</div>
+          <div className="navItem">{<NavLink className="navText" exact to="/feed">Feed</NavLink>}</div>
+          <div className="navItem">{<NavLink className="navText" exact to="/library">Library</NavLink>}</div>
           <div className="navItem" id="logout"onClick={logout}>Log Out</div>
         </ul>
       )}

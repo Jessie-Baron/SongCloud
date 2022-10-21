@@ -64,12 +64,18 @@ function App() {
             <SongYouMightLike6 />
             <SongYouMightLike7 />
             <SongYouMightLike8 />
-            <SongYouMightLike10/>
           </Route>
-          <Route exact path="/allSongs">
+          <Route exact path="/library">
+            <PlaylistIndex />
+            <SongIndex />
+            <SongYouMightLike4 />
+            <SongYouMightLike8 />
+            <SongYouMightLike10 />
+            <SongYouMightLike2 />
             <SongYouMightLike />
+            <SongYouMightLike3 />
           </Route>
-          <Route exact path="/allPlaylists">
+          <Route exact path="/feed">
             <ProfileSidebar />
             <SongLibrary />
           </Route>
