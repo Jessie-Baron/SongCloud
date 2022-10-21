@@ -73,7 +73,6 @@ function App() {
             <SongYouMightLike10 />
             <SongYouMightLike2 />
             <SongYouMightLike />
-            <SongYouMightLike3 />
           </Route>
           <Route exact path="/feed">
             <ProfileSidebar />
