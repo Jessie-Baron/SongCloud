@@ -15,10 +15,10 @@ const ProfileSidebar = () => {
             <br></br>
         <div className='socialsContainer'>
         <div className='socials'>
-            <img className="socialIcon" alt="" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/twitter_tile_logo_icon_167744.png"></img>
+            <a href="https://twitter.com/CapnJessieBaron"><img className="socialIcon" id="socialIcon1" alt="" src="https://cdn.icon-icons.com/icons2/2699/PNG/512/twitter_tile_logo_icon_167744.png"></img></a>
         </div>
         <div className='socials'>
-        <img className="socialIcon" alt="" src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></img>
+            <a href="https://www.linkedin.com/in/jessie-baron/"><img className="socialIcon" id="socialIcon2" alt="" src="https://cdn-icons-png.flaticon.com/512/174/174857.png"></img></a>
         </div>
         </div>
         <br></br>
@@ -29,7 +29,7 @@ const ProfileSidebar = () => {
         <br></br>
         <br></br>
         <div className='socials'>
-            <img className="socialIcon" alt="" src="https://cdn-icons-png.flaticon.com/512/5968/5968866.png"></img>
+            <a href="https://github.com/jbaron94"><img className="socialIcon" alt="" src="https://cdn-icons-png.flaticon.com/512/5968/5968866.png"></img></a>
         </div>
         <br></br>
         <hr className='sideBar-seperator'></hr>

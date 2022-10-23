@@ -64,6 +64,7 @@
     width: 40px;
     padding-right: 5px;
 }
+
 @media screen and (max-width: 1600px) {
 #root > div.fixed-sideBar {
     position: fixed;

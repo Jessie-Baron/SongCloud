@@ -138,9 +138,10 @@ h2 {
 
 .title {
     display: flex;
-    align-items: center;
-    margin-right: 4%;
+    padding-top: 5%;
+    align-items: left;
     font-size: 20px;
+    color: #333333;
 }
 
 p {
@@ -153,9 +154,8 @@ p {
 
 
 .detailButton3 {
-    margin-left: 48%;
+    margin-left: 5%;
     margin-right: 2%;
-    margin-top: 4%;
     background-color: #ffffff;
     border: 1px solid black;
 }
