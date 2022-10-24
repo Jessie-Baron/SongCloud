@@ -176,7 +176,6 @@ h2 {
 #root > div.song-detail-lists > div > h5 {
     padding-left: 1%;
     padding-top: 10px;
-    padding-bottom: 10px;
     font-size: 20px;
     color: #333333;
 }
@@ -189,7 +188,7 @@ p {
 }
 
 .detailButton1 {
-    margin-top: 4%;
+    margin-top: 2%;
     margin-left: 5%;
     background-color: #ffffff;
     border: 1px solid black;
@@ -202,6 +201,7 @@ p {
 
 .detailButton4 {
     background-color: #ffffff;
+    margin-top: 2%;
     border: 1px solid black;
 }
 

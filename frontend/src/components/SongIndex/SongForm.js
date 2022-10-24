@@ -64,6 +64,7 @@ function SongForm() {
         type="text"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        required
       />
     </label>
     <label>
@@ -72,6 +73,7 @@ function SongForm() {
         type="text"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
+        required
       />
     </label>
     <label>
@@ -80,6 +82,7 @@ function SongForm() {
         type="text"
         value={imageUrl}
         onChange={(e) => setImageUrl(e.target.value)}
+        required
       />
     </label>
     <label>
@@ -89,6 +92,7 @@ function SongForm() {
         type="text"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
+        required
       />
     </label>
     <button type="submit">Submit</button>
