@@ -4,7 +4,7 @@
     width: 90%;
     height: 200px;
     display: flex;
-    gap: 25px;
+    gap: 15px;
     background-color: white;
     margin-left: 5%;
     top: 0;
@@ -139,6 +139,7 @@ h2 {
 .title {
     display: flex;
     padding-top: 5%;
+    margin-left: 5%;
     align-items: left;
     font-size: 20px;
     color: #333333;

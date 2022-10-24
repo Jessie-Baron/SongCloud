@@ -6,7 +6,7 @@ import { getPlaylistDetails } from '../../store/playlist';
 import { deletePlaylist } from '../../store/playlist';
 import { Link } from 'react-router-dom';
 
-const PlaylistIndexItem = ({ playlist }) => {
+const PlaylistIndexItemNoAuth = ({ playlist }) => {
     const { id } = useParams();
     // console.log("this is the id of the playlist", id)
     const singlePlaylist = useSelector(state => state.playlist.singlePlaylist);
@@ -40,10 +40,9 @@ const PlaylistIndexItem = ({ playlist }) => {
                 {singlePlaylist?.Songs?.map(song => (
                     <p>{song.title}<button className="playSongButton">Play Song</button></p>
                 ))}
-            <button disabled={currentUser.id !== singlePlaylist.userId} className="detailButton3" onClick={removePlaylist}>Delete Playlist</button>
           </div>
 </div>
       );
     };
 
-export default PlaylistIndexItem
+export default PlaylistIndexItemNoAuth

@@ -24,6 +24,7 @@ import SongYouMightLike8 from "./components/SongIndex/SongsYouMightLike8";
 import SongYouMightLike10 from "./components/SongIndex/SongsYouMightLike10";
 import SongLibrary from "./components/SongIndex/SongLibrary"
 import 'react-h5-audio-player/lib/styles.css';
+import SongIndexItemNoAuth from "./components/SongIndex/SongIndexItemNoAuth";
 
 function App() {
   const dispatch = useDispatch();
@@ -84,6 +85,9 @@ function App() {
           </Route>
           <Route path="/songs/:id">
             <SongIndexItem />
+          </Route>
+          <Route path="/viewsongs/:id">
+            <SongIndexItemNoAuth />
           </Route>
           <Route path="/songs">
             <SongForm />

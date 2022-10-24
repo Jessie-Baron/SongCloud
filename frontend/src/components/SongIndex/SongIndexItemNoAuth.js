@@ -6,14 +6,20 @@ import { getSongDetails } from '../../store/song';
 import { deleteSong } from '../../store/song';
 import { Link } from 'react-router-dom';
 import SongEditForm from './SongEditForm';
+import { getAudio } from '../../store/songPlayer';
 
 const SongIndexItemNoAuth = ({ song }) => {
     const { id } = useParams();
     const singleSong = useSelector(state => state.songs.singleSong);
+    const currentUser = useSelector(state => state.session.user)
 
     const dispatch = useDispatch()
     const history = useHistory()
     const [showEdit, setShowEdit] = useState(false)
+
+    const playSong = async (id) => {
+      await dispatch(getAudio(id))
+    }
 
     useEffect(() =>{
         dispatch(getSongDetails(id))
@@ -22,7 +28,7 @@ const SongIndexItemNoAuth = ({ song }) => {
 
     const removeSong = () => {
         dispatch(deleteSong(id))
-        .then(() => history.push('/allSongs'))
+        .then(() => history.push('/home'))
       };
 
 
@@ -30,18 +36,14 @@ const SongIndexItemNoAuth = ({ song }) => {
     return (
 <div className="song-detail-lists">
         <div>
-            <h2>{singleSong?.title}</h2>
-            <ul>
-                {/* {singleSong?.song?.map(song => (
-                    <div>
-                    <li>{song.imageUrl}</li>
-                    <li>{song.description}</li>
-                    </div>
-                ))} */}
-                <li>{singleSong?.imageUrl}</li>
-                <li>{singleSong?.description}</li>
-            </ul>
-            <button onClick={removeSong}>Delete Song</button>
+          <center>
+            <img className="titleImage"alt="" src={singleSong?.imageUrl} />
+          </center>
+
+          <h5 className="titleNoAuth">{singleSong?.title}</h5>
+            <div className="detailButtons">
+            <button className="detailButton4" onClick={() => playSong(singleSong.id)}>Play Song</button>
+            </div>
           </div>
 </div>
       );
