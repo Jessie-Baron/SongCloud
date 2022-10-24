@@ -12,7 +12,8 @@
 }
 
 #root > div.outer1 {
-    padding-top: 10%
+    padding-top: 10%;
+    padding-bottom: 25px;
 }
 
 .playSongButton {
