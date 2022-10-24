@@ -11,6 +11,10 @@
     padding-top: 0;
 }
 
+#root > div.outer1 {
+    padding-top: 10%
+}
+
 .playSongButton {
     border: 1px solid black;
     background-color: white
@@ -29,7 +33,6 @@ h2 {
     flex-direction: column;
     margin-left: 6%;
     padding-bottom: 4%;
-    padding-top: 10%;
     font-size: 18px;
     font-weight: 400;
 }
