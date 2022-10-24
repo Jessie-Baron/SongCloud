@@ -218,6 +218,7 @@ p {
 
 .songHeader {
     color: grey;
+    padding-top: 6%;
 }
 
 .pitch {
@@ -279,7 +280,7 @@ x
     gap: 25px;
 }
 .soundImage {
-    width: 500px;
+    width: 600px;
     height: 130px;
 }
 
@@ -316,4 +317,10 @@ x
         background-color: #ffffff;
         border: 1px solid black;
     }
+
+    .soundImage {
+        width: 500px;
+        height: 130px;
+    }
+
 }
