@@ -63,7 +63,6 @@ function App() {
             <SongYouMightLike5 />
             <SongYouMightLike6 />
             <SongYouMightLike7 />
-            <SongYouMightLike8 />
           </Route>
           <Route exact path="/library">
             <PlaylistIndex />
@@ -72,7 +71,6 @@ function App() {
             <SongYouMightLike8 />
             <SongYouMightLike10 />
             <SongYouMightLike2 />
-            <SongYouMightLike />
           </Route>
           <Route exact path="/feed">
             <ProfileSidebar />
