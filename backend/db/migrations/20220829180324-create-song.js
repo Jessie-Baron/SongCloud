@@ -14,12 +14,6 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      albumId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'Albums' },
-        onDelete: 'CASCADE',
-        allowNull: true
-      },
       userId: {
         type: Sequelize.INTEGER,
         references: { model: 'Users' },
