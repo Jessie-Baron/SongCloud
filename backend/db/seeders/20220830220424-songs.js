@@ -21,7 +21,6 @@ module.exports = {
      options.tableName = 'Songs';
      await queryInterface.bulkInsert(options, [
       {
-        albumId: 1,
         userId: 1,
         title: "Rock Song",
         description: "This Song Rocks",
@@ -29,7 +28,6 @@ module.exports = {
         imageUrl: "image.1"
       },
       {
-        albumId: 1,
         userId: 1,
         title: "Country Song",
         description: "This Song Rocks twice",
@@ -37,7 +35,6 @@ module.exports = {
         imageUrl: "image.2"
       },
       {
-        albumId: 2,
         userId: 2,
         title: "Rap Song",
         description: "This Song Rocks three times",
@@ -45,7 +42,6 @@ module.exports = {
         imageUrl: "image.3"
       },
       {
-        albumId: 2,
         userId: 2,
         title: "Pop Song",
         description: "This Song Rocks four times",
@@ -53,7 +49,6 @@ module.exports = {
         imageUrl: "image.4"
       },
       {
-        albumId: 3,
         userId: 3,
         title: "Jazz Song",
         description: "This Song Rocks five times",
@@ -73,7 +68,6 @@ module.exports = {
      options.tableName = 'Songs';
      await queryInterface.bulkDelete(options, [
       {
-        albumId: 1,
         userId: 1,
         title: "Rock Song",
         description: "This Song Rocks",
@@ -81,7 +75,6 @@ module.exports = {
         imageUrl: "image.1"
       },
       {
-        albumId: 1,
         userId: 1,
         title: "Country Song",
         description: "This Song Rocks",
@@ -89,7 +82,6 @@ module.exports = {
         imageUrl: "image.1"
       },
       {
-        albumId: 2,
         userId: 2,
         title: "Rap Song",
         description: "This Song Rocks",
@@ -97,7 +89,6 @@ module.exports = {
         imageUrl: "image.1"
       },
       {
-        albumId: 2,
         userId: 2,
         title: "Pop Song",
         description: "This Song Rocks",
@@ -105,7 +96,6 @@ module.exports = {
         imageUrl: "image.1"
       },
       {
-        albumId: 3,
         userId: 3,
         title: "Jazz Song",
         description: "This Song Rocks",
