@@ -4,7 +4,6 @@ let options = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
-
 module.exports = {
   async up (queryInterface, Sequelize) {
     /**
@@ -72,17 +71,17 @@ module.exports = {
         imageUrl: "image.2"
       },
       {
-        userId: 2,
+        userId: 1,
         name: "Jazz Playlist",
         imageUrl: "image.3"
       },
       {
-        userId: 3,
+        userId: 2,
         name: "Country Playlist",
         imageUrl: "image.4"
       },
       {
-        userId: 3,
+        userId: 2,
         name: "Rap Playlist",
         imageUrl: "image.5"
       },
