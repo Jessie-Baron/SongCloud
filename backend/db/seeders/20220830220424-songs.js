@@ -1,5 +1,10 @@
 'use strict';
 
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 const { url } = require("inspector");
 
 module.exports = {
@@ -13,7 +18,8 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-     await queryInterface.bulkInsert('Songs', [
+     options.tableName = 'Songs';
+     await queryInterface.bulkInsert(options, [
       {
         albumId: 1,
         userId: 1,
@@ -64,7 +70,8 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-     await queryInterface.bulkDelete('Songs', [
+     options.tableName = 'Songs';
+     await queryInterface.bulkDelete(options, [
       {
         albumId: 1,
         userId: 1,
