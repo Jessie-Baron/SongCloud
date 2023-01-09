@@ -32,33 +32,33 @@ module.exports = {
         albumId: 1,
         userId: 1,
         title: "Country Song",
-        description: "This Song Rocks",
-        url: 'url.1',
-        imageUrl: "image.1"
+        description: "This Song Rocks twice",
+        url: 'url.2',
+        imageUrl: "image.2"
       },
       {
         albumId: 2,
         userId: 2,
         title: "Rap Song",
-        description: "This Song Rocks",
-        url: 'url.1',
-        imageUrl: "image.1"
+        description: "This Song Rocks three times",
+        url: 'url.3',
+        imageUrl: "image.3"
       },
       {
         albumId: 2,
         userId: 2,
         title: "Pop Song",
-        description: "This Song Rocks",
-        url: 'url.1',
-        imageUrl: "image.1"
+        description: "This Song Rocks four times",
+        url: 'url.4',
+        imageUrl: "image.4"
       },
       {
         albumId: 3,
         userId: 3,
         title: "Jazz Song",
-        description: "This Song Rocks",
-        url: 'url.1',
-        imageUrl: "image.1"
+        description: "This Song Rocks five times",
+        url: 'url.5',
+        imageUrl: "image.5"
       }
     ])
   },

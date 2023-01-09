@@ -30,13 +30,13 @@ module.exports = {
         imageUrl: 'image.3'
       },
       {
-        email: 'user2@user.io',
+        email: 'user3@user.io',
         username: 'FakeUser3',
         hashedPassword: bcrypt.hashSync('password4'),
         imageUrl: 'image.4'
       },
       {
-        email: 'user2@user.io',
+        email: 'user4@user.io',
         username: 'FakeUser4',
         hashedPassword: bcrypt.hashSync('password5'),
         imageUrl: 'image.5'
