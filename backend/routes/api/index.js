@@ -3,7 +3,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const { restoreUser } = require("../../utils/auth.js");
 const { requireAuth } = require("../../utils/auth.js");
-const { Song, Album, User, Playlist, PlaylistSong, Comment } = require('../../db/models');
+const { Song, User, Playlist, PlaylistSong, Comment } = require('../../db/models');
 const { Op } = require('sequelize')
 // Connect restoreUser middleware to the API router
   // If current user session is valid, set req.user to the user in the database
@@ -60,36 +60,19 @@ router.get('/songs/current', async (req, res, next) => {
 })
 
 
-// Create a song with or without an albumId
+// Create a song
 router.post('/songs', requireAuth, restoreUser, async (req, res) => {
-  const { title, description, url, imageUrl, albumId } = req.body
+  const { title, description, url, imageUrl } = req.body
   const userId = req.user.id
 
-  const albums = await Album.findAll()
-
-  const validator = albumId => {
-    let isValid = false
-    albums.forEach(album => {
-      if((album.id) == albumId) isValid = true
-    })
-    return isValid
-  }
-
-  if(!validator(albumId) && albumId !== null) {
-    res.status(404).json({
-      statusCode: 404,
-      message: "Album couldn't be found"
-    })
-  }
-
-  const song = await Song.create({ title, description, url, imageUrl, albumId, userId })
+  const song = await Song.create({ title, description, url, imageUrl, userId })
 
   res.json(song)
 })
 
 // Edit a song
 router.put('/songs/:songid', requireAuth, restoreUser, async (req, res, next) => {
-  const { title, description, url, imageUrl, albumId } = req.body
+  const { title, description, url, imageUrl } = req.body
 
   const song = await Song.findOne({
     where: {
@@ -106,7 +89,6 @@ router.put('/songs/:songid', requireAuth, restoreUser, async (req, res, next) =>
   if(description) song.description = description
   if(url) song.url = url
   if(imageUrl) song.imageUrl = imageUrl
-  if(albumId) song.albumId = albumId
   song.save()
 
   res.json(song)
@@ -139,10 +121,6 @@ router.get('/songs/:songid', async (req, res, next) => {
     include: [{
       model: User, as: 'Artist',
       attributes: ['id', 'username', 'imageUrl']
-    },
-    {
-      model: Album,
-      attributes: ['id', 'title', 'imageUrl']
     }],
       where: {
         id: req.params.songid
@@ -437,144 +415,6 @@ router.delete('/comments/:commentid', requireAuth, restoreUser, async (req, res,
   })
 
   comment.destroy()
-  res.json({
-    message: "Successfully deleted",
-    statusCode: 200
-  })
-})
-
-// Albums
-
-// Get all albums
-router.get('/albums', async (req, res, next) => {
-
-  const albums = await Album.findAll()
-
-  res.json({
-    Albums: albums
-  })
-})
-
-router.post('/albums', async (req, res, next) => {
-  const userId = req.user.id
-  const { title, description, imageUrl } = req.body
-
-  const album = await Album.create({
-    title, description, imageUrl, userId
-  })
-  res.json(album)
-})
-
-// Get all albums by current user
-router.get('/albums/current', restoreUser, requireAuth, async (req, res)=>{
-  const user = req.user
-  if(user){
-    const albums = await Album.findAll({
-      where:{
-        userId: user.id
-      }
-    })
-    res.json({
-      Albums: albums
-    })
-  }
-})
-
-// Get all albums of an artist
-router.get('/artists/:userid/albums', async (req, res, next) => {
-  const albums = await Album.findAll(
-     {
-        where: {
-          userId: req.params.userid
-        }
-  })
-
-  if(!albums.length) {
-  res.status(404)
-  res.json({
-    message: "Artist couldn't be found",
-    statusCode: 404
-  })
-}
-  else {
-    res.json({Albums: albums})
-  }
-})
-
-// Get details of an album
-router.get('/albums/:albumid', async (req, res, next) => {
-
-  const album = await Album.findOne({
-    where: {
-      id: req.params.albumid
-    },
-    include: [{
-      model: User, as: 'Artist',
-      attributes: ['id', 'username', 'imageUrl']
-    },
-    {
-      model: Song
-    }],
-  })
-
-  if(!album) {
-    res.status(404)
-    res.json({
-      message: "Album couldn't be found",
-      statusCode: 404
-    })
-  }
-
-  else {
-  res.json(album)
-  }
-})
-
-// Edit an album
-router.put('/albums/:albumid', requireAuth, restoreUser, async (req, res, next) => {
-  const { title, description, imageUrl } = req.body
-
-  const album = await Album.findOne({
-    where: {
-      id: req.params.albumid
-    }
-  })
-
-  if(!album) res.status(404).json({
-    message: "Album couldn't be found",
-    statusCode: 404
-  })
-
-  if(title) album.title = title
-  if(description) album.description = description
-  if(imageUrl) album.imageUrl = imageUrl
-
-  album.save()
-
-  res.json({
-    id: album.id,
-    userId: album.userId,
-    description: album.description,
-    createdAt: album.createdAt,
-    updatedAt: album.updatedAt,
-    previewImage: album.imageUrl
-  })
-})
-
-// Delete an album
-router.delete('/albums/:albumid', requireAuth, restoreUser, async (req, res, next) => {
-  const album = await Album.findOne({
-      where: {
-        id: req.params.albumid
-      }
-  })
-
-  if(!album) res.status(404).json({
-    message: "Comment couldn't be found",
-    statusCode: 404
-  })
-
-  album.destroy()
   res.json({
     message: "Successfully deleted",
     statusCode: 200
