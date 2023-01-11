@@ -4,7 +4,7 @@ const ProfileSidebar = () => {
 
     return (
         <div className="fixed-sideBar">
-            <img className="sideBar-profile" alt="" src="https://scontent.ftpa1-1.fna.fbcdn.net/v/t1.18169-9/17353106_1458753287489168_7879488182718636679_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_ohc=XoZy9rZ4X0UAX-efnI8&_nc_ht=scontent.ftpa1-1.fna&oh=00_AT8_38jlseNN6JAGQqYDgCaVnLEe2Kb02eASt1zH036FUQ&oe=6379B0B3"></img>
+            <img className="sideBar-profile" alt="" src="https://avatars.githubusercontent.com/u/101578812?s=400&u=d576b7ce3cebfdac8ec77f47941b09b0ed662519&v=4"></img>
             <p className='bio'>Hey There! 👋 My name's Jessie! I'm a Full Stack Developer and the creator of this website! Want to know more about me? look below!
             </p>
             <br></br>
