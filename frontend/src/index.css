@@ -102,6 +102,7 @@ body:not(.navBar) {
     list-style-type: none;
 }
 
+
 @media screen and (max-width: 1600px) {
 
 #root > div.rhap_container.rhap_loop--off.rhap_play-status--paused {

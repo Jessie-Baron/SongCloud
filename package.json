@@ -17,10 +17,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "node-sass": "^8.0.0",
     "pg": "^8.8.0",
     "react-elastic-carousel": "^0.11.5",
     "react-h5-audio-player": "^3.8.5",
     "react-icons": "^4.4.0",
-    "react-multi-carousel": "^2.8.2"
+    "react-multi-carousel": "^2.8.2",
+    "swiper": "^8.0.0"
   }
 }

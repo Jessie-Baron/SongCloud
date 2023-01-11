@@ -25,6 +25,7 @@ import SongYouMightLike10 from "./components/SongIndex/SongsYouMightLike10";
 import SongLibrary from "./components/SongIndex/SongLibrary"
 import 'react-h5-audio-player/lib/styles.css';
 import SongIndexItemNoAuth from "./components/SongIndex/SongIndexItemNoAuth";
+import SplashCarousel from "./components/SplashCarousel";
 
 function App() {
   const dispatch = useDispatch();
@@ -43,16 +44,16 @@ function App() {
     <>
       <Navigation isLoaded={isLoaded} />
       <AudioPlayer
-            autoPlay
-            src={currentSong.url}
-        />
+        autoPlay
+        src={currentSong.url}
+      />
       {isLoaded && (
         <Switch>
           <Route path="/signup">
             <SignupFormPage />
           </Route>
           <Route exact path="/">
-            <img alt="" src="https://p300-americantownscom.netdna-ssl.com/img/article/fl-music-festival-1.jpg" className="splash-pic" />
+            <SplashCarousel />
             <SplashSongs />
           </Route>
           <Route path="/home">

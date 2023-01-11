@@ -72,7 +72,6 @@ h2 {
 .imagesSplash {
     width: 125px;
     position: absolute;
-    z-index: 999;
 }
 
 .imagesSplash:hover {
