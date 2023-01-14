@@ -318,6 +318,128 @@ x
     padding-top: 5%;
     cursor: pointer;
 }
+
+.textarea-comments {
+    width: 80%;
+    height: 40px;
+    margin-left: 5%;
+}
+
+.comment-profile-image-wrapper {
+    display: flex;
+}
+
+.comment-profile-image {
+    top: 0;
+    height: 50px;
+}
+
+#form1 {
+    width: 100%;
+    height: 30px;
+    border: none;
+    background-color: #f2f2f2;
+    padding-top: 2px;
+    padding-bottom: 17px;
+    left: 0
+}
+
+#form1 > div > input[type=text] {
+    width: 91.4%;
+    margin-left: 10px;
+    margin-top: 12.4px;
+    height: 22px;
+    resize: none;
+    border-radius: 4px;
+    outline: none;
+    border: none;
+}
+
+#form1 > div > input[type=text]::placeholder {
+    color: #999;
+}
+
+.comment-divider {
+    width: 70%;
+    margin-left: 14%;
+    margin-top: 1%;
+    opacity: .2;
+    border-color: rgb(237, 234, 234);
+}
+
+.comment-summary {
+    font-size: 12px;
+    margin-left: 14%;
+    margin-top: 2%;
+}
+
+.comment-wrapper2 {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2%;
+}
+
+.item-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-left: 5%;
+    color: #999;
+    font-size: 12px
+}
+.two-item-comment {
+    display: flex;
+    gap: 5px;
+}
+.comment-body {
+    margin-top: 5px;
+    top: 0;
+    font-size: 12px;
+    color: #333;
+    width: 600px;
+}
+
+.comment-buttons {
+    margin-left: 11.5%;
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.5);;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#root > div.song-detail-lists > div.scroll-body > div > div.comment-buttons > div.detail-button1 {
+
+    font-size: 12px;
+    color: #999;
+    border: none;
+    margin-left: 90px;
+}
+
+.comment-text {
+    color: #333;
+    width: 75%;
+    display: block;
+    overflow-wrap: break-word;
+}
+
+.comment-username {
+    color: #999;
+}
+
+.detail-button2 {
+    font-size: 12px;
+    color: #999;
+}
+
+.profileImage2 {
+    width: 40px;
+    height: 35px;
+    border-radius: 50%;
+    margin-left: 100px;
+}
+
 @media screen and (max-width: 1600px) {
     .songSectionSplash {
         grid-template-columns: repeat(6, 1fr);

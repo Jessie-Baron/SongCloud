@@ -15,48 +15,50 @@ const CommentForm = (songId) => {
         dispatch(getComments())
     }, [dispatch])
 
-  const user = useSelector((state) => state.session.user);
-  const newSongId = (Object.values(songId)[0])
-  const [body, setBody] = useState("");
-  const [validationErrors, setValidationErrors] = useState([]);
-  const [hasSubmitted, setHasSubmitted] = useState(false);
+    const user = useSelector((state) => state.session.user);
+    const newSongId = (Object.values(songId)[0])
+    const [body, setBody] = useState("");
+    const [validationErrors, setValidationErrors] = useState([]);
+    const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  const onSubmit = async (e) => {
-    // Prevent the default form behavior so the page doesn't reload.
-    e.preventDefault();
-    setHasSubmitted(true);
+    const onSubmit = async (e) => {
+        // Prevent the default form behavior so the page doesn't reload.
+        e.preventDefault();
+        setHasSubmitted(true);
 
-    // Create a new object for the song form information.
-    const commentForm = { body };
+        // Create a new object for the song form information.
+        const commentForm = { body };
 
-    await dispatch(createComment(newSongId, commentForm))
-    await dispatch(getComments(newSongId))
+        await dispatch(createComment(newSongId, commentForm))
+        await dispatch(getComments(newSongId))
 
-    // Reset the form state.
-    setBody("");
-    setValidationErrors([]);
-    setHasSubmitted(false);
-  };
+        // Reset the form state.
+        setBody("");
+        setValidationErrors([]);
+        setHasSubmitted(false);
+    };
 
-  return (
-    <form id="form1" noValidate onSubmit={onSubmit}>
-      <ul>
-        {validationErrors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      {user && <label>
-        <input
-          type="text"
-          value={body}
-          onChange={(e) => setBody(e.target.value)}
-          required={true}
-        />
-      </label>}
-      {user && <button className={!body || body.length > 300 ? 'comment-button' : 'comment-button-active'} disabled={!body || body.length > 300} type="submit">Respond</button>}
-      {!user && <div className="comment-signin-wrapper"><NavLink to='/' className="signin-text-comments">Please log in to comment</NavLink></div>}
-    </form>
-  );
+    return (
+        <form id="form1" noValidate onSubmit={onSubmit}>
+            <ul>
+                {validationErrors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
+            <div className="comment-profile-image-wrapper">
+                <img className="comment-profile-image" alt="profile" src={user.imageUrl}></img>
+                {user && <input
+                    type="text"
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                    required={true}
+                    placeholder="Write a comment"
+                />}
+            </div>
+            {/* {user && <button className={!body || body.length > 300 ? 'comment-button' : 'comment-button-active'} disabled={!body || body.length > 300} type="submit">Respond</button>} */}
+            {!user && <div className="comment-signin-wrapper"><NavLink to='/' className="signin-text-comments">Please log in to comment</NavLink></div>}
+        </form>
+    );
 }
 
 export default CommentForm;

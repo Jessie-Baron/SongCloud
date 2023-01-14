@@ -12,6 +12,7 @@ function SignupFormPage() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [imageUrl, ssetImageUrl] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const history = useHistory()
@@ -22,7 +23,7 @@ function SignupFormPage() {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      const user = dispatch(sessionActions.signup({ firstName, lastName, email, username, password }))
+      const user = dispatch(sessionActions.signup({ firstName, lastName, imageUrl, email, username, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -89,6 +90,15 @@ function SignupFormPage() {
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          required
+        />
+      </label>
+      <label>
+        Upload a Picture of Yourself!
+        <input
+          type="text"
+          value={imageUrl}
+          onChange={(e) => ssetImageUrl(e.target.value)}
           required
         />
       </label>

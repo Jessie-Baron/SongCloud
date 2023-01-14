@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import SongEditForm from './SongEditForm';
 import { getAudio } from '../../store/songPlayer';
 import CommentForm from './CommentForm';
+import CommentEditForm from '../CommentEditForm';
 import { getComments, deleteComment } from '../../store/comment';
 
 const SongIndexItem = ({ song }) => {
@@ -26,6 +27,8 @@ const SongIndexItem = ({ song }) => {
   const [showEdit2, setShowEdit2] = useState(false);
   const [editId, setEditId] = useState(-1);
   const [editId2, setEditId2] = useState(-1);
+  const [playlistAdd, setPlaylistAdd] = useState(false)
+
 
   const playSong = async (id) => {
     await dispatch(getAudio(id))
@@ -45,10 +48,15 @@ const SongIndexItem = ({ song }) => {
       .then(() => history.push('/home'))
   };
 
+  const handlePlaylistAdd = () => {
+    if(playlistAdd) setPlaylistAdd(false)
+    else setPlaylistAdd(true)
+  }
+
   const handleDelete = async (commentId, songId) => {
     await dispatch(deleteComment(commentId, songId))
     await dispatch(getComments(singleSong.id))
-};
+  };
 
 
 
@@ -61,35 +69,44 @@ const SongIndexItem = ({ song }) => {
 
         <h5 className="title">{singleSong?.title}</h5>
         <div className="detailButtons">
-          <button className="detailButton1" onClick={removeSong}>Delete Song</button>
+          {singleSong?.userId === user?.id && <button className="detailButton1" onClick={removeSong}>Delete Song</button>}
           <button className="detailButton4" onClick={() => playSong(singleSong.id)}>Play Song</button>
-          <button className="detailButton2" onClick={() => setShowEdit(!showEdit)}>Edit Song</button>
+          {singleSong?.userId === user?.id && <button className="detailButton2" onClick={() => setShowEdit(!showEdit)}>Edit Song</button>}
+          <button className="detailButton2" onClick={() => handlePlaylistAdd()}><i class="fa-solid fa-ellipsis"></i> More</button>
         </div>
       </div>
       {showEdit && (
         <SongEditForm />
+      )}
+      {playlistAdd && (
+        <div>placeholder</div>
       )}
       <div className="textarea-comments">
         <CommentForm
           songId={singleSong?.id} />
       </div>
       <div className="scroll-body">
+        <div className='comment-summary'><i class="fa-solid fa-message"></i> {comments.length} comments</div>
+        <hr className='comment-divider' />
         {comments?.map((comment) => (
           <div className="comment-wrapper2">
-            <div className="item-header">
-              <img
-                src={comment.User.image_url}
-                alt="Profile"
-                className="profileImage2"
-              ></img>
-              <div>{comment.User.username}</div>
+            <div className='two-item-comment'>
+              <div className="item-header">
+                <img
+                  src={comment.User.imageUrl}
+                  alt="Profile"
+                  className="profileImage2"
+                ></img>
+              </div>
+              <div className="comment-body">
+                <div className='comment-username'>{comment.User.username}</div>
+                <div className='comment-text'>{comment.body}</div>
+              </div>
             </div>
-
-            <div className="comment-body">{comment.body}</div>
             {comment?.userId === user?.id && (
               <div className="comment-buttons">
                 <div
-                  className="detailButton1"
+                  className="detail-button1"
                   onClick={() => handleDelete(comment.id, singleSong.id)}
                 >
                   <div className='delete-button'>Delete</div>
@@ -97,7 +114,7 @@ const SongIndexItem = ({ song }) => {
                 <div
                   id={comment.id}
                   value={comment.id}
-                  className="detailButton2"
+                  className="detail-button2"
                   onClick={() => {
                     if (editId === comment.id) {
                       setEditId(-1);
@@ -112,18 +129,18 @@ const SongIndexItem = ({ song }) => {
                 </div>
               </div>
             )}
-            {/* <div className="editform">
+            <div className="editform">
               {editId === comment.id && (
                 <CommentEditForm
                   className="comment-edit-form"
-                  songId={song.id}
+                  songId={singleSong.id}
                   comment={comment}
                   setCommentBody={setCommentBody}
                   commentBody={commentBody}
                   setEditId={setEditId}
                 />
               )}
-            </div> */}
+            </div>
           </div>
 
         ))}

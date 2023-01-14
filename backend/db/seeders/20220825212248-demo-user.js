@@ -15,7 +15,7 @@ module.exports = {
         email: 'demo@user.io',
         username: 'Demo-lition',
         hashedPassword: bcrypt.hashSync('password'),
-        imageUrl: 'image.1'
+        imageUrl: 'https://i.etsystatic.com/36532523/r/il/712f21/4436521427/il_340x270.4436521427_64xx.jpg'
       },
       {
         email: 'user1@user.io',
