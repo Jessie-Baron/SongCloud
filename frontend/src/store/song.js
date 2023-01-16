@@ -69,18 +69,18 @@ export const load = (songs) => ({
   }
 };
 
-export const addSongToPlaylist = (playlistId, songId) => async dispatch => {
-  const response = await csrfFetch(`/playlists/${playlistId}/songs`, {
-    method: 'POST',
-    body: JSON.stringify(playlistId, songId)
-  })
+// export const addSongToPlaylist = (playlistId, songId) => async dispatch => {
+//   const response = await csrfFetch(`/api/playlists/${playlistId}/songs`, {
+//     method: 'POST',
+//     body: JSON.stringify(playlistId, songId)
+//   })
 
-  if (response.ok) {
-    const song = await response.json();
-    console.log("adding song")
-    dispatch(add(song));
-  }
-};
+//   if (response.ok) {
+//     const song = await response.json();
+//     console.log("adding song")
+//     dispatch(add(song));
+//   }
+// };
 
 
 export const editSong = (songId, payload) => async dispatch => {

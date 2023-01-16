@@ -10,7 +10,7 @@ const PlaylistIndexItem = ({ playlist }) => {
     const { id } = useParams();
     // console.log("this is the id of the playlist", id)
     const singlePlaylist = useSelector(state => state.playlist.singlePlaylist);
-    const currentUser = useSelector(state => state.session.user)
+    const user = useSelector(state => state.session.user)
     // const playlists = Object.values(playlistsObj)
     // console.log("this is the playlists array", playlists)
     // const singlePlaylist = playlists.filter(playlist => playlist.id === Number(id))[0]
@@ -37,10 +37,14 @@ const PlaylistIndexItem = ({ playlist }) => {
             <img className="titleImage"alt="" src={singlePlaylist?.imageUrl} />
         </center>
             <h2 className="title">{singlePlaylist?.name}</h2>
+            {singlePlaylist?.userId === user?.id && <button className="detailButton3" onClick={removePlaylist}>Delete Playlist</button>}
                 {singlePlaylist?.Songs?.map(song => (
-                    <p>{song.title}<button className="playSongButton">Play Song</button></p>
+                    <div className='playlist-line-item'>
+                    <img src={song.imageUrl} alt="song cover" />
+                    <p>{song.id} {song.Artist?.username} {song.title}
+                    <button className="playSongButton"><i class="fa-solid fa-play"></i></button></p>
+                    </div>
                 ))}
-            <button disabled={currentUser.id !== singlePlaylist.userId} className="detailButton3" onClick={removePlaylist}>Delete Playlist</button>
           </div>
 </div>
       );

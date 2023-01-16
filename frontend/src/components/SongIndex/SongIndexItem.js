@@ -3,13 +3,16 @@ import { useDispatch } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSongDetails } from '../../store/song';
+import { getPlaylistsByArtist } from '../../store/playlist';
 import { deleteSong } from '../../store/song';
+import { addSongToPlaylist, createPlaylistSong } from '../../store/playlistSong';
 import { Link } from 'react-router-dom';
 import SongEditForm from './SongEditForm';
 import { getAudio } from '../../store/songPlayer';
 import CommentForm from './CommentForm';
 import CommentEditForm from '../CommentEditForm';
 import { getComments, deleteComment } from '../../store/comment';
+import { toast } from 'react-hot-toast';
 
 const SongIndexItem = ({ song }) => {
   const { id } = useParams();
@@ -18,6 +21,8 @@ const SongIndexItem = ({ song }) => {
   const commentsObj = useSelector(state => state.comment.allComments)
   const allComments = Object.values(commentsObj)
   const comments = allComments.filter(comment => comment.songId === singleSong.id)
+  const playlistObject = useSelector(state => state.playlist.allPlaylists)
+  const playlists = Object.values(playlistObject);
 
   const dispatch = useDispatch()
   const history = useHistory()
@@ -27,12 +32,16 @@ const SongIndexItem = ({ song }) => {
   const [showEdit2, setShowEdit2] = useState(false);
   const [editId, setEditId] = useState(-1);
   const [editId2, setEditId2] = useState(-1);
-  const [playlistAdd, setPlaylistAdd] = useState(false)
+  const [playlistDrop, setPlaylistDrop] = useState(false)
 
 
   const playSong = async (id) => {
     await dispatch(getAudio(id))
   }
+
+  useEffect(() => {
+    if (user) dispatch(getPlaylistsByArtist(user.id))
+  }, [user, dispatch])
 
   useEffect(() => {
     dispatch(getSongDetails(id))
@@ -48,9 +57,21 @@ const SongIndexItem = ({ song }) => {
       .then(() => history.push('/home'))
   };
 
-  const handlePlaylistAdd = () => {
-    if(playlistAdd) setPlaylistAdd(false)
-    else setPlaylistAdd(true)
+  const handlePlaylistDrop = () => {
+    if (playlistDrop) setPlaylistDrop(false)
+    else setPlaylistDrop(true)
+  }
+
+  const handlePlaylistAdd = async (playlistId, songId) => {
+    console.log("this is the playlistSong pair", playlistId, songId)
+
+    const payload = {
+      playlistId,
+      songId
+    }
+
+    await dispatch(createPlaylistSong(payload))
+    return toast.success('Added to Playlist!')
   }
 
   const handleDelete = async (commentId, songId) => {
@@ -72,14 +93,20 @@ const SongIndexItem = ({ song }) => {
           {singleSong?.userId === user?.id && <button className="detailButton1" onClick={removeSong}>Delete Song</button>}
           <button className="detailButton4" onClick={() => playSong(singleSong.id)}>Play Song</button>
           {singleSong?.userId === user?.id && <button className="detailButton2" onClick={() => setShowEdit(!showEdit)}>Edit Song</button>}
-          <button className="detailButton2" onClick={() => handlePlaylistAdd()}><i class="fa-solid fa-ellipsis"></i> More</button>
+          <button className="detailButton2" onClick={() => handlePlaylistDrop()}><i class="fa-solid fa-ellipsis"></i> More</button>
         </div>
       </div>
       {showEdit && (
         <SongEditForm />
       )}
-      {playlistAdd && (
-        <div>placeholder</div>
+      {playlistDrop && (
+        <div className="playlist-dropdown">
+          {playlists?.map(playlist => (
+            <li onClick={() => handlePlaylistAdd(playlist.id, singleSong.id)}className='playlistAdd-item'>
+              <i class="fa-solid fa-plus"></i> Add to {playlist.name}
+            </li>
+          ))}
+        </div>
       )}
       <div className="textarea-comments">
         <CommentForm

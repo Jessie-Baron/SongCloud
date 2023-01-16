@@ -204,12 +204,11 @@ router.post('/playlists', requireAuth, restoreUser, async (req, res, next) => {
 
 // Add a song to a playlist
 router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req, res, next) => {
-  const { songId } = req.body
-  const { playlistid } = req.params
+  const { songId, playlistId } = req.body
 
   const playlist = await Playlist.findOne({
     where: {
-      id: playlistid
+      id: playlistId
     }
   })
 
@@ -226,6 +225,9 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
     }
   })
 
+  console.log(song)
+  console.log(playlist)
+
   if(!song) {
     res.status(404).json({
       message: "Song couldn't be found",
@@ -233,7 +235,7 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
     })
   }
 
-const newSong = await PlaylistSong.create({songId, playlistId: +playlistid})
+const newSong = await PlaylistSong.create({songId, playlistId})
 
 const playlistSong = newSong.toJSON()
 
@@ -255,7 +257,12 @@ router.get('/playlists/:playlistid', async (req, res, next) => {
     include: [
     {
       model: Song,
-      through: {attributes: []}
+      through: {attributes: []},
+      include: [
+        {
+          model: User, as: 'Artist'
+        }
+      ]
     }],
   })
 
@@ -443,6 +450,15 @@ router.get('/artists/:userid', async (req, res, next) => {
   else {
   res.json(artist)
   }
+})
+
+router.post('/playlistSongs', requireAuth, restoreUser, async (req, res, next) => {
+  const { songId, playlistId } = req.body
+  const userId = req.user.id
+
+  const playlistSong = await PlaylistSong.create({ songId, playlistId })
+
+  res.json(playlistSong)
 })
 
 module.exports = router;

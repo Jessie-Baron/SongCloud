@@ -26,6 +26,7 @@ import SongLibrary from "./components/SongIndex/SongLibrary"
 import 'react-h5-audio-player/lib/styles.css';
 import SongIndexItemNoAuth from "./components/SongIndex/SongIndexItemNoAuth";
 import SplashCarousel from "./components/SplashCarousel";
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
   const dispatch = useDispatch();
@@ -95,6 +96,7 @@ function App() {
           </Route>
         </Switch>
       )}
+       <Toaster />
     </>
   );
 }

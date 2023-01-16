@@ -25,8 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     songId: DataTypes.INTEGER,
-    playlistId: DataTypes.INTEGER,
-    order: DataTypes.INTEGER
+    playlistId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'PlaylistSong',

@@ -24,9 +24,6 @@ module.exports = {
         references: { model: 'Playlists' },
         onDelete: 'CASCADE'
       },
-      order: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

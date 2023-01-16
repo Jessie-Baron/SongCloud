@@ -5,13 +5,15 @@ import sessionReducer from './session';
 import songReducer from './song';
 import audioReducer from './songPlayer';
 import commentReducer from './comment';
+import playlistSongReducer from './playlistSong';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   playlist: playlistReducer,
   songs: songReducer,
   songPlayer: audioReducer,
-  comment: commentReducer
+  comment: commentReducer,
+  playlistSong: playlistSongReducer
 });
 
 let enhancer;
