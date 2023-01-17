@@ -88,9 +88,6 @@ function App() {
           <Route path="/songs/:id">
             <SongIndexItem />
           </Route>
-          <Route path="/viewsongs/:id">
-            <SongIndexItemNoAuth />
-          </Route>
           <Route path="/songs">
             <SongForm />
           </Route>

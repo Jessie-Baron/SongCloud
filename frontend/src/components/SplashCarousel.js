@@ -12,8 +12,8 @@ import "./SplashStyles.css"
 import { Pagination, Autoplay } from "swiper";
 
 export default function App() {
-    return (
-<>
+  return (
+    <>
       <Swiper spaceBetween={30}
         centeredSlides={true}
         autoplay={{
@@ -24,9 +24,21 @@ export default function App() {
           clickable: true,
         }}
         modules={[Autoplay, Pagination]} className="mySwiper">
-        <SwiperSlide><img src="https://thumbs.dreamstime.com/b/crowd-raised-hands-concert-festival-banner-166852445.jpg"></img></SwiperSlide>
-        <SwiperSlide><img src="https://m.media-amazon.com/images/I/A14CNedaZGL._CR3,0,1914,1080_SR684,386_.jpg" /></SwiperSlide>
+        <SwiperSlide>
+          <div className='splash-1'>
+            <h1 className='splash-text-1'>What's next in music is first on SongCloud</h1>
+            <br />
+            <h3 className='splash-text-2'>Upload your first track and begin your journey. SoundCloud gives you space to create, find your fans, and connect with other artists.</h3>
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className='splash-2'>
+            <h1 className='splash-text-3'>Discover more with SongCloud Go+</h1>
+            <br />
+            <h3 className='splash-text-4'>SongCloud Go+ lets you listen offline, ad-free, with over 150 million tracks — and&nbsp;growing.</h3>
+          </div>
+        </SwiperSlide>
       </Swiper>
     </>
-    );
-  }
+  );
+}

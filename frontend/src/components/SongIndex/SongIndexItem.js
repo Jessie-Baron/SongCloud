@@ -91,7 +91,7 @@ const SongIndexItem = ({ song }) => {
         <h5 className="title">{singleSong?.title}</h5>
         <div className="detailButtons">
           {singleSong?.userId === user?.id && <button className="detailButton1" onClick={removeSong}>Delete Song</button>}
-          <button className="detailButton4" onClick={() => playSong(singleSong.id)}>Play Song</button>
+          <button className={singleSong?.userId === user?.id ? "detailButton4" : "detailButton5"} onClick={() => playSong(singleSong.id)}>Play Song</button>
           {singleSong?.userId === user?.id && <button className="detailButton2" onClick={() => setShowEdit(!showEdit)}>Edit Song</button>}
           <button className="detailButton2" onClick={() => handlePlaylistDrop()}><i class="fa-solid fa-ellipsis"></i> More</button>
         </div>

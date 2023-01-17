@@ -202,6 +202,13 @@ p {
     margin-top: 2%;
     border: 1px solid black;
 }
+.detailButton5 {
+    background-color: #ffffff;
+    margin-top: 2%;
+    border: 1px solid black;
+    margin-left: 5%;
+    margin-top: 4%;
+}
 
 .form {
     margin-left: 26%;
@@ -452,7 +459,7 @@ x
     border-top: none;
     box-sizing: border-box;
     list-style: none;
-    margin-left: 25%;
+    margin-left: 18.2%;
     border: 1px solid rgba(0, 0, 0, 0.04);
     box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.14);
 }
@@ -495,6 +502,22 @@ x
     .soundImage {
         width: 500px;
         height: 130px;
+    }
+
+    .playlist-dropdown {
+        margin-left: 23.3%;
+    }
+
+    .comment-divider {
+        width: 55%;
+    }
+
+    #form1 {
+        width: 80%;
+    }
+
+    #form1 > div > input[type=text] {
+        width: 85.4%;
     }
 
 }
