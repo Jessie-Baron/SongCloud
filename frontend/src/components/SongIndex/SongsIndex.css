@@ -250,7 +250,7 @@ p {
     height: 35px;
     align-items: center;
     justify-content: center;
-    margin-left: 46%;
+    margin-left: 45%;
     margin-top: 5%;
     border: 1px solid rgba(252, 113, 0, 0.899);
     background-color: rgba(252, 113, 0, 0.899);
@@ -489,7 +489,7 @@ x
     }
 
     .pitchButton {
-        margin-left: 42%;
+        margin-left: 43%;
     }
 
     .detailButton1 {

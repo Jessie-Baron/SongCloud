@@ -1,0 +1,129 @@
+#root > div > div.sideBar-items > div.suggested-feed > ul > div > img {
+    width: 30px;
+    border-radius: 33px;
+    height: 30px;
+}
+
+#root > div > div.sideBar-items > div.suggested-feed > ul {
+    padding-left: 0;
+    margin-left: 0;
+    left: 0;
+}
+
+.user-suggested {
+    display: flex;
+    gap: 10px;
+    color: rgb(156, 155, 155);
+    font-size: 14px;
+    padding-top: 5%;
+    padding-bottom: 5px;
+    border-radius: 7px;
+}
+
+
+#root > div > div.sideBar-items > div.suggested-feed > ul > div > div > a {
+    display: flex;
+    gap: 10px;
+    color: rgba(255, 255, 255, .75);
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+}
+
+.suggested-text {
+    display: flex;
+    flex-direction: column;
+    padding-top: 15px;
+}
+.user-page-headline {
+    margin-left: 35%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.user-profile-image {
+    width: 100px;
+    height: 100px;
+    margin-top: 25%;
+    border-radius: 53px;
+}
+
+.profile {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.profile-title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    margin-bottom: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.profile-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.user-followers {
+    margin-left: 36%;
+    margin-top: 15px;
+    display: flex;
+    gap: 50px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.user-followers-count {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+.video-user-wrapper {
+    display: grid;
+    width: 700px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-left: 33%;
+    margin-top: 25px;
+}
+
+.user-bio {
+    margin-left: 36%;
+    margin-top: 1%;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 22px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.caption-user {
+    margin-left: 10%;
+    margin-top: 3%;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 200px;
+    max-height: 20px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-decoration: none;
+    display: block;
+}
+
+.users-name {
+    color: #999;
+    font-size: 11px;
+    line-height: 12px;
+}
+
+.user-header {
+    text-decoration: none;
+}

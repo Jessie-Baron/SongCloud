@@ -1,14 +1,19 @@
+import UsersList from '../UserList'
 import './ProfileSidebar.css'
 
 const ProfileSidebar = () => {
 
     return (
         <div className="fixed-sideBar">
+            <div className='users-header'>
+            <i class="fa-solid fa-user-group"></i><h2 className='users-header-text'>Artists you should follow</h2>
+            </div>
+            <UsersList />
             <img className="sideBar-profile" alt="" src="https://avatars.githubusercontent.com/u/101578812?s=400&u=d576b7ce3cebfdac8ec77f47941b09b0ed662519&v=4"></img>
             <p className='bio'>Hey There! 👋 My name's Jessie! I'm a Full Stack Developer and the creator of this website! Want to know more about me? look below!
             </p>
             <br></br>
-            👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
+            👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇👇
             <h3 className='social-header' >Interested in hiring me?</h3>
             <h4 className='social-subHeader' >Let's Connect!</h4>
             <br></br>

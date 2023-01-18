@@ -1,5 +1,5 @@
 .swiper {
-    height: 600px;
+    height: 500px;
     width: 100%;
     padding-top: 25px;
     z-index: -1;
@@ -39,14 +39,14 @@
 
   .splash-1 {
     background-image: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists@2x-00444712.jpg);
-    background-size: 1300px 600px;
+    background-size: 1300px 500px;
     width: 100%;
     height: 100%;
     color: rgb(255, 255, 255);
   }
 
   .splash-text-1 {
-    margin-top: 17%;
+    margin-top: 13%;
     margin-left: 2%;
     color: rgb(255, 255, 255);
     font-size: 36px;
@@ -61,14 +61,14 @@
 
   .splash-2 {
     background-image: url(https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_a-3bb2d420.jpg);
-    background-size: 1250px 600px;
+    background-size: 1250px 500px;
     width: 100%;
     height: 100%;
     color: white;
   }
 
   .splash-text-3 {
-    margin-top: 17%;
+    margin-top: 13%;
     margin-left: 2%;
     color: white;
     font-size: 36px;

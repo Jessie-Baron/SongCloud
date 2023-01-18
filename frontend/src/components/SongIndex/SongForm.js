@@ -52,7 +52,7 @@ function SongForm() {
   };
 
   return (
-    <form id="form1" noValidate onSubmit={onSubmit}>
+    <form id="songForm" noValidate onSubmit={onSubmit}>
     <ul>
       {validationErrors.map((error, idx) => (
         <li key={idx}>{error}</li>
