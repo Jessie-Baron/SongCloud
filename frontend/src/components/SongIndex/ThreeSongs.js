@@ -18,6 +18,10 @@ const ThreeSongs = () => {
     await dispatch(getAudio(id))
   }
 
+  const getRandomArbitrary = (min, max) => {
+    return Math.random() * (max - min) + min;
+  }
+
   const songObject = useSelector(state => state.songs.allSongs)
   const songs = Object.values(songObject);
   const sample = songs.slice(0, 3)
@@ -36,6 +40,9 @@ const ThreeSongs = () => {
               </p>
               <p className='users-name'>
               <i class="fa-solid fa-play" onClick={() => playSong(song.id)}></i>
+              &nbsp;
+              {Math.round(getRandomArbitrary(1, 100)) + 'k'}
+              &nbsp;
               &nbsp;
               <Link to={`/songs/${song.id}`}><i class="fa-solid fa-message"></i></Link>
               &nbsp;

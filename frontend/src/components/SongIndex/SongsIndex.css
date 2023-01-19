@@ -1,14 +1,8 @@
 
 
 .songSection {
-    width: 90%;
-    height: 200px;
     display: flex;
-    background-color: white;
-    margin-left: 5%;
-    top: 0;
-    padding-top: 0;
-    gap: 15px;
+    gap: 75px;
 }
 
 .songSectionSplash {
@@ -25,10 +19,6 @@
     margin-left: 25px;
 }
 
-.song {
-    font-size: 14px;
-}
-
 h2 {
     display:flex;
     align-items: left;
@@ -43,18 +33,24 @@ h2 {
 .box {
     box-sizing: border-box;
     display: flex;
-    vertical-align: center;
     flex-direction: column;
     position: relative;
+    justify-content: left;
 }
 
 .song {
-    text-align: center;
-    padding-top: 35px;
+    text-align: left;
+    padding-top: 65px;
     width: 125px;
     word-wrap: break-word;
     text-decoration: none;
     color: #333333;
+    font-size: 14px;
+}
+
+.song-description {
+    font-size: 11px;
+    text-align: left;
 }
 
 .images {
@@ -71,7 +67,8 @@ h2 {
 }
 
 .imagesSplash {
-    width: 125px;
+    width: 175px;
+    height: 175px;
     position: absolute;
 }
 
@@ -87,11 +84,11 @@ h2 {
 }
 
 .playButton {
-    width: 75px;
-    display: flex;
-    align-items: center;
-    margin-left: 20px;
-    margin-top: 19px;
+    width: 70px;
+    height: 70px;
+    margin-top: 35%;
+    margin-left: 40%;
+
 }
 
 .playButton:hover {
@@ -283,7 +280,7 @@ x
 
 .songFiller {
     display: flex;
-    gap: 70px;
+    gap: 75px;
     margin-left: 50px;
     width: 65.6%;
     border-right: 1px solid white;
@@ -325,6 +322,11 @@ x
     border-radius: 3px;
     background-color: #fff;
     margin-left: 5px;
+    margin-bottom: 40px;
+}
+
+.songs-left-arrow:hover {
+    border-color: #f50;
 }
 
 #left-arrow {
@@ -336,7 +338,6 @@ x
 }
 
 #right-arrow {
-    padding-top: 5%;
     cursor: pointer;
     z-index: 99;
     padding: 10px;
@@ -347,9 +348,14 @@ x
     z-index: 99;
     border: 1px solid black;
     margin-left: 5px;
+    margin-bottom: 40px;
     border: 1px solid #e5e5e5;
     border-radius: 3px;
     background-color: #fff;
+}
+
+.songs-right-arrow:hover {
+    border-color: #f50;
 }
 
 .arrows-wrapper {
