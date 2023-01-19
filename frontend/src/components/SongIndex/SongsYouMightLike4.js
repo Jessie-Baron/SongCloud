@@ -21,7 +21,7 @@ const SongYouMightLike = () => {
   const songObject = useSelector(state => state.songs.allSongs)
   const songs = Object.values(songObject);
   const sample = songs.slice(18, 23)
-  const sample2 = songs.slice(22, 27)
+  const sample2 = songs.slice(22, 26)
 
   return (
        <div className='box'>
