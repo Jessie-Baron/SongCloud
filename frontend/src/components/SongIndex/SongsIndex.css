@@ -9,6 +9,7 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     margin-top: 45px;
+    margin-left: 3%;
 
 }
 
@@ -53,6 +54,11 @@ h2 {
     text-align: left;
 }
 
+.song-description-splash {
+    font-size: 11px;
+    text-align: left;
+}
+
 .images {
     width: 175px;
     height: 175px;
@@ -63,7 +69,6 @@ h2 {
 .boxSpash {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .imagesSplash {
@@ -99,9 +104,9 @@ h2 {
 }
 
 .playButtonSplash {
-    width: 75px;
-    margin-top: 20px;
-    left: 0;
+    width: 70px;
+    margin-top: 25%;
+    margin-left: 25%;
 }
 
 .playButtonSplash:hover {
@@ -546,6 +551,16 @@ x
     flex-direction: column;
     align-items: baseline;
     gap: 2px;
+}
+
+.songSplash {
+    text-align: left;
+    padding-top: 55px;
+    width: 125px;
+    word-wrap: break-word;
+    text-decoration: none;
+    color: #333333;
+    font-size: 14px;
 }
 
 @media screen and (max-width: 1600px) {
