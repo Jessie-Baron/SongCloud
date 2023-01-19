@@ -34,6 +34,14 @@ router.get('/songs', async (req, res, next) => {
 }
 
   const songs = await Song.findAll({
+    include: [{
+      model: User, as: 'Artist',
+      attributes: ['id', 'username', 'imageUrl']
+    },
+    {
+      model: Comment,
+      attributes: ['body']
+    }],
     ...pagination
   })
 
