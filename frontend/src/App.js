@@ -27,6 +27,7 @@ import 'react-h5-audio-player/lib/styles.css';
 import SongIndexItemNoAuth from "./components/SongIndex/SongIndexItemNoAuth";
 import SplashCarousel from "./components/SplashCarousel";
 import toast, { Toaster } from 'react-hot-toast';
+import ProfileSidebarIndexItem from "./components/ProfileSidebar/ProfileSideBarIndexItem";
 
 function App() {
   const dispatch = useDispatch();
@@ -80,6 +81,7 @@ function App() {
             <SongLibrary />
           </Route>
           <Route path="/playlists/:id">
+            <ProfileSidebarIndexItem />
             <PlaylistIndexItem />
           </Route>
           <Route path="/playlists">
