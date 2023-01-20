@@ -23,6 +23,8 @@
     "react-h5-audio-player": "^3.8.5",
     "react-icons": "^4.4.0",
     "react-multi-carousel": "^2.8.2",
-    "swiper": "^8.0.0"
+    "swiper": "^8.0.0",
+    "waveform-react": "^0.2.3",
+    "wavesurfer.js": "^6.4.0"
   }
 }
