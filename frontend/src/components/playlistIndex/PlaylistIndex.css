@@ -14,7 +14,15 @@
     margin-left: 55px;
     padding-bottom: 15px;
     padding-top: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
     border-bottom: 1px solid #f2f2f2;
+}
+
+.playlist-line-item:hover {
+    cursor: pointer;
+    background-color: #dfdfdf;
+    border-radius: 7px;
 }
 
 #root > div.outer1 {
@@ -86,6 +94,8 @@
 .song-title-playlist-item {
     font-size: 14px;
     color: #333333;
+    text-decoration: none;
+    margin-top: 10px;
 }
 
 h2 {

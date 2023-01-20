@@ -57,7 +57,7 @@ const PlaylistIndexItem = ({ playlist }) => {
                                 <img className='playlist-item-image' src={song.imageUrl} alt="song cover" />&nbsp;&nbsp;&nbsp;{idx + 1}
                             </p>
                             <p className='users-name-playlist-item'>{song.Artist?.username} - </p>
-                            <p className='song-title-playlist-item'>{song.title}</p>
+                            <Link className='song-title-playlist-item' to={`/songs/${song.id}`}>{song.title}</Link>
                         </div>
                         <div className='playlist-item-right'>
                             <p className='users-name'>
