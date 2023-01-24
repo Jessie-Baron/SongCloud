@@ -43,10 +43,9 @@ router.post(
 
       return res.json({
           id: userObj.id,
-          firstName: userObj.firstName,
-          lastName: userObj.lastName,
           email: userObj.email,
           username: userObj.username,
+          imageUrl: userObj.imageUrl,
           token: userObj.token
         });
     }

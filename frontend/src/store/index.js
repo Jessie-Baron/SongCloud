@@ -6,6 +6,7 @@ import songReducer from './song';
 import audioReducer from './songPlayer';
 import commentReducer from './comment';
 import playlistSongReducer from './playlistSong';
+import followReducer from './follow';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -13,7 +14,8 @@ const rootReducer = combineReducers({
   songs: songReducer,
   songPlayer: audioReducer,
   comment: commentReducer,
-  playlistSong: playlistSongReducer
+  playlistSong: playlistSongReducer,
+  follow: followReducer
 });
 
 let enhancer;

@@ -443,12 +443,66 @@ x
     color: #999;
 }
 
+.comment-follow-wrapper {
+    display: flex;
+    margin-left: 5%;
+    margin-top: 3%;
+}
+
 .comment-divider {
-    width: 70%;
+    width: 102%;
     margin-left: 14%;
     margin-top: 1%;
     opacity: .2;
     border-color: rgb(237, 234, 234);
+}
+
+.scroll-divider {
+    width: 80%;
+    margin-left: 5%;
+    margin-top: 2%;
+    opacity: .2;
+    border-color: rgb(237, 234, 234);
+}
+
+#user-icon-1 {
+    color: #fff;
+}
+
+#user-icon-2 {
+    color: #f50;
+}
+
+.follow-button-unfollowed {
+    position: absolute;
+    background-color: #f50;
+    border-color: #f50;
+    color: #fff;
+    font-size: 10px;
+    padding: 2px 11px 2px 11px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.follow-button-followed {
+    position: absolute;
+    border: 1px solid #f50;
+    color: #f50;
+    font-size: 10px;
+    padding: 2px 11px 2px 11px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 5px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.follow-username {
+    font-size: 12px;
+    color: #333;
 }
 
 .comment-summary {
@@ -484,13 +538,19 @@ x
 }
 
 .comment-buttons {
-    margin-left: 11.5%;
+    margin-left: 24.5%;
     margin-top: 10px;
     display: flex;
     gap: 10px;
     color: rgba(255, 255, 255, 0.5);;
     font-size: 14px;
     cursor: pointer;
+}
+
+.follow-profile-picture {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
 }
 
 #root > div.song-detail-lists > div.scroll-body > div > div.comment-buttons > div.detail-button1 {
@@ -509,6 +569,11 @@ x
 }
 
 .comment-username {
+    color: #999;
+}
+
+.detail-button1 {
+    font-size: 12px;
     color: #999;
 }
 

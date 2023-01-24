@@ -16,6 +16,7 @@ const CommentForm = (songId) => {
     }, [dispatch])
 
     const user = useSelector((state) => state.session.user);
+    console.log("this is the current user", user)
     const newSongId = (Object.values(songId)[0])
     const [body, setBody] = useState("");
     const [validationErrors, setValidationErrors] = useState([]);

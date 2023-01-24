@@ -50,6 +50,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.hasMany(models.Comment, { foreignKey: "userId" })
       User.hasMany(models.Song, { foreignKey: "userId" })
+      User.hasMany(models.Follow, { foreignKey: "followedId" })
+      User.hasMany(models.Follow, { foreignKey: "followerId" })
     }
   };
 

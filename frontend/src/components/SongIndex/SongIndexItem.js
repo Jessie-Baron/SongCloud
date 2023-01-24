@@ -12,6 +12,8 @@ import CommentForm from './CommentForm';
 import CommentEditForm from '../CommentEditForm';
 import { getComments, deleteComment } from '../../store/comment';
 import { toast } from 'react-hot-toast';
+import * as followActions from '../../store/follow'
+import FollowButton from '../FollowButton';
 
 const SongIndexItem = ({ song }) => {
   const { id } = useParams();
@@ -23,6 +25,7 @@ const SongIndexItem = ({ song }) => {
   const playlistObject = useSelector(state => state.playlist.allPlaylists)
   const playlists = Object.values(playlistObject);
 
+
   const dispatch = useDispatch()
   const history = useHistory()
   const [showEdit, setShowEdit] = useState(false)
@@ -31,6 +34,11 @@ const SongIndexItem = ({ song }) => {
   const [showEdit2, setShowEdit2] = useState(false);
   const [editId, setEditId] = useState(-1);
   const [editId2, setEditId2] = useState(-1);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const followingsObj = useSelector((state) => (state.follow?.following))
+  const followings = Object.values(followingsObj)
+  const filtered = followings.filter(follow => follow.followerId === user.id)
+  const [following, setFollowing] = useState(filtered.length > 0)
   const [playlistDrop, setPlaylistDrop] = useState(false)
 
 
@@ -78,6 +86,19 @@ const SongIndexItem = ({ song }) => {
     await dispatch(getComments(singleSong.id))
   };
 
+  useEffect(() => {
+    if (user) {
+
+    }
+  }, [dispatch, followings]);
+
+  useEffect(() => {
+    if (user) {
+      dispatch(followActions.followingList(user.id))
+      .then(() => setIsLoaded(true))
+    }
+  }, [dispatch, isLoaded]);
+
 
 
   return (
@@ -101,7 +122,7 @@ const SongIndexItem = ({ song }) => {
       {playlistDrop && (
         <div className="playlist-dropdown">
           {playlists?.map(playlist => (
-            <li onClick={() => handlePlaylistAdd(playlist.id, singleSong.id)}className='playlistAdd-item'>
+            <li onClick={() => handlePlaylistAdd(playlist.id, singleSong.id)} className='playlistAdd-item'>
               <i class="fa-solid fa-plus"></i> Add to {playlist.name}
             </li>
           ))}
@@ -111,65 +132,77 @@ const SongIndexItem = ({ song }) => {
         <CommentForm
           songId={singleSong?.id} />
       </div>
-      <div className="scroll-body">
-        <div className='comment-summary'><i class="fa-solid fa-message"></i> {comments.length} comments</div>
-        <hr className='comment-divider' />
-        {comments?.map((comment) => (
-          <div className="comment-wrapper2">
-            <div className='two-item-comment'>
-              <div className="item-header">
-                <img
-                  src={comment.User.imageUrl}
-                  alt="Profile"
-                  className="profileImage2"
-                ></img>
-              </div>
-              <div className="comment-body">
-                <div className='comment-username'>{comment.User.username}</div>
-                <div className='comment-text'>{comment.body}</div>
-              </div>
-            </div>
-            {comment?.userId === user?.id && (
-              <div className="comment-buttons">
-                <div
-                  className="detail-button1"
-                  onClick={() => handleDelete(comment.id, singleSong.id)}
-                >
-                  <div className='delete-button'>Delete</div>
-                </div>
-                <div
-                  id={comment.id}
-                  value={comment.id}
-                  className="detail-button2"
-                  onClick={() => {
-                    if (editId === comment.id) {
-                      setEditId(-1);
-                      setEditId("");
-                      return;
-                    }
-                    setEditId(comment.id);
-                    setCommentBody(comment.body);
-                  }}
-                >
-                  <div className='edit-button'>Edit</div>
-                </div>
-              </div>
-            )}
-            <div className="editform">
-              {editId === comment.id && (
-                <CommentEditForm
-                  className="comment-edit-form"
-                  songId={singleSong.id}
-                  comment={comment}
-                  setCommentBody={setCommentBody}
-                  commentBody={commentBody}
-                  setEditId={setEditId}
-                />
-              )}
-            </div>
+      <hr className='scroll-divider' />
+      <div className='comment-follow-wrapper'>
+        <div>
+          <div>
+            <img className='follow-profile-picture' src={singleSong.Artist?.imageUrl} />
           </div>
+          <div className='follow-username'>
+            {singleSong.Artist?.username}
+          </div>
+          <FollowButton song={singleSong} />
+        </div>
+        <div className="scroll-body">
+          <div className='comment-summary'><i class="fa-solid fa-message"></i> {comments.length} comments</div>
+          <hr className='comment-divider' />
+          {comments?.map((comment) => (
+            <div className="comment-wrapper2">
+              <div className='two-item-comment'>
+                <div className="item-header">
+                  <img
+                    src={comment.User.imageUrl}
+                    alt="Profile"
+                    className="profileImage2"
+                  ></img>
+                </div>
+                <div className="comment-body">
+                  <div className='comment-username'>{comment.User.username}</div>
+                  <div className='comment-text'>{comment.body}</div>
+                </div>
+              </div>
+              {comment?.userId === user?.id && (
+                <div className="comment-buttons">
+                  <div
+                    className="detail-button1"
+                    onClick={() => handleDelete(comment.id, singleSong.id)}
+                  >
+                    <div className='delete-button'>Delete</div>
+                  </div>
+                  <div
+                    id={comment.id}
+                    value={comment.id}
+                    className="detail-button2"
+                    onClick={() => {
+                      if (editId === comment.id) {
+                        setEditId(-1);
+                        setEditId("");
+                        return;
+                      }
+                      setEditId(comment.id);
+                      setCommentBody(comment.body);
+                    }}
+                  >
+                    <div className='edit-button'>Edit</div>
+                  </div>
+                </div>
+              )}
+              <div className="editform">
+                {editId === comment.id && (
+                  <CommentEditForm
+                    className="comment-edit-form"
+                    songId={singleSong.id}
+                    comment={comment}
+                    setCommentBody={setCommentBody}
+                    commentBody={commentBody}
+                    setEditId={setEditId}
+                  />
+                )}
+              </div>
+            </div>
 
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

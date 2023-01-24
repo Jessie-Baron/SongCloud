@@ -3,8 +3,8 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const { restoreUser } = require("../../utils/auth.js");
 const { requireAuth } = require("../../utils/auth.js");
-const { Song, User, Playlist, PlaylistSong, Comment } = require('../../db/models');
-const { Op } = require('sequelize')
+const { Song, User, Playlist, PlaylistSong, Comment, Follow } = require('../../db/models');
+const { Op } = require('sequelize');
 // Connect restoreUser middleware to the API router
   // If current user session is valid, set req.user to the user in the database
   // If current user session is not valid, set req.user to null
@@ -465,8 +465,84 @@ router.post('/playlistSongs', requireAuth, restoreUser, async (req, res, next) =
   const userId = req.user.id
 
   const playlistSong = await PlaylistSong.create({ songId, playlistId })
+  console.log("this is the playlistSong object", playlistSong)
 
   res.json(playlistSong)
+})
+
+router.delete('/playlistSongs', requireAuth, restoreUser, async (req, res, next) => {
+  const { songId, playlistId } = req.body
+
+  const playlistSong = await PlaylistSong.findOne({
+    where: {
+      songId: songId,
+      playlistId: playlistId
+    }
+  })
+
+  if(!playlistSong) res.status(404).json({
+    message: "Comment couldn't be found",
+    statusCode: 404
+  })
+
+  playlistSong.destroy()
+  res.json({
+    message: "Successfully deleted",
+    statusCode: 200
+  })
+})
+
+router.get('/followers/:userId', requireAuth, restoreUser, async (req, res, next) => {
+
+  const follows = await Follow.findAll({
+    where: {
+      followerId: req.params.userId
+    }
+  })
+
+  if(!follows) {
+    res.status(404)
+    res.json({
+      message: "Follows couldn't be found",
+      statusCode: 404
+    })
+  }
+  else {
+  console.log("this route is running")
+  res.json(follows)
+  }
+})
+
+router.post('/followers', requireAuth, restoreUser, async (req, res, next) => {
+  const {followerId, followedId } = req.body
+
+  const follow = await Follow.create({followerId, followedId})
+  console.log("this is the follow object", follow)
+
+  res.json(follow)
+})
+
+router.delete('/followers', requireAuth, restoreUser, async (req, res, next) => {
+  const {followerId, followedId } = req.body
+  console.log("this is the backend pair", followerId, followedId)
+
+  const follow = await Follow.findOne({
+    where: {
+      followedId: followedId,
+      followerId: followerId
+    }
+  })
+
+  if(!follow) res.status(404).json({
+    message: "Comment couldn't be found",
+    statusCode: 404
+  })
+
+  follow.destroy()
+  res.json({
+    message: "Successfully deleted",
+    statusCode: 200
+  })
 })
 
 module.exports = router;
