@@ -179,6 +179,7 @@ h2 {
 
 .detailButtons {
     margin-left: 15%;
+    cursor: pointer;
 }
 
 .title-image {
@@ -208,17 +209,20 @@ p {
     margin-left: 5%;
     background-color: #ffffff;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .detailButton2 {
     background-color: #ffffff;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .detailButton4 {
     background-color: #ffffff;
     margin-top: 2%;
     border: 1px solid black;
+    cursor: pointer;
 }
 
 .detailButton5 {
@@ -227,6 +231,7 @@ p {
     border: 1px solid black;
     margin-left: 5%;
     margin-top: 4%;
+    cursor: pointer;
 }
 
 .form {
@@ -626,7 +631,7 @@ x .detailButtons {
     margin-left: 100px;
 }
 
-.playlist-dropdown {
+.playlist-dropdown-nonuser {
     position: absolute;
     width: 100px;
     background-color: white;
@@ -638,7 +643,24 @@ x .detailButtons {
     border-top: none;
     box-sizing: border-box;
     list-style: none;
-    margin-left: 18.2%;
+    margin-left: 24%;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.14);
+}
+
+.playlist-dropdown-user {
+    position: absolute;
+    width: 100px;
+    background-color: white;
+    z-index: 99999999999;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    border: 1px solid black;
+    border-top: none;
+    box-sizing: border-box;
+    list-style: none;
+    margin-left: 34%;
     border: 1px solid rgba(0, 0, 0, 0.04);
     box-shadow: 0 6px 14px 2px rgba(0, 0, 0, 0.14);
 }

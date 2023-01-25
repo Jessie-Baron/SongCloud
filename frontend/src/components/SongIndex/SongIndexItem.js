@@ -131,7 +131,7 @@ const SongIndexItem = ({ song }) => {
         <SongEditForm />
       )}
       {playlistDrop && (
-        <div className="playlist-dropdown">
+        <div className={singleSong.userId === user.id ? "playlist-dropdown-user" : "playlist-dropdown-nonuser"}>
           {playlists?.map(playlist => (
             <li onClick={() => handlePlaylistAdd(playlist.id, singleSong.id)} className='playlistAdd-item'>
               <i class="fa-solid fa-plus"></i> Add to {playlist.name}

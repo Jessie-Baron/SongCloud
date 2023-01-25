@@ -21,8 +21,9 @@ const SongIndex = () => {
 
   const songObject = useSelector(state => state.songs.allSongs)
   const songs = Object.values(songObject);
-  const sample = songs.slice(0, 4)
-  const sample2 = songs.slice(4, 9)
+  const filtered = songs.filter(song => song.userId === currentUser.id)
+  const sample = filtered.slice(0, 4)
+  const sample2 = filtered.slice(4, 9)
 
   return (
     <div className='box'>
