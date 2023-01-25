@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getSongDetails } from '../../store/song';
 import { getPlaylistsByArtist } from '../../store/playlist';
@@ -147,11 +147,11 @@ const SongIndexItem = ({ song }) => {
       <div className='comment-follow-wrapper'>
         <div className='follow-wrapper'>
           <div>
-            <img className='follow-profile-picture' src={singleSong.Artist?.imageUrl} />
+            <img className='follow-profile-picture' alt='' src={singleSong.Artist?.imageUrl} />
           </div>
-          <div className='follow-username'>
+          <Link className='follow-username' to={`/users/${singleSong.Artist?.id}`}>
             {singleSong.Artist?.username}
-          </div>
+          </Link>
           <div className='follow-metrics'>
             <i class="fa-solid fa-user-group"></i> {Math.round(getRandomArbitrary(1, 100)) + 'k'}
             &nbsp;
@@ -159,7 +159,7 @@ const SongIndexItem = ({ song }) => {
             &nbsp;
             <i class="fa-solid fa-podcast"></i> {filtered3.length}
           </div>
-          {user.id !== singleSong.Artist?.id && <FollowButton song={singleSong} />}
+          {user.id !== singleSong.Artist?.id && <FollowButton artist={singleSong.Artist} />}
         </div>
         <div className="scroll-body">
           {comments.length > 0 && <div className='comment-summary'><i class="fa-solid fa-message"></i> {comments.length} comments</div>}

@@ -25,6 +25,20 @@
     background-color: white;
 }
 
+.fixed-sideBar-profile {
+    position: absolute;
+    border: 1px solid rgb(230, 230, 230);
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    width: 350px;
+    margin-top: 21%;
+    margin-left: 64.2%;
+    padding-bottom: 20px;
+    z-index: 1;
+    background-color: white;
+}
+
 #root > div.fixed-sideBar::-webkit-scrollbar-thumb {
     width: 6px;
     height: 100%;

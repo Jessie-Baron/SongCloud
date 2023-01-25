@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { getSongs } from '../../store/song';
 import { getAudio } from '../../store/songPlayer';
-import Waveform from 'waveform-react';
 import './SongsIndex.css'
 
 const AllSongsIndex = () => {

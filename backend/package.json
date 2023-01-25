@@ -29,7 +29,8 @@
     "per-env": "^1.0.2",
     "pg": "^8.8.0",
     "sequelize": "^6.21.4",
-    "sequelize-cli": "^6.4.1"
+    "sequelize-cli": "^6.4.1",
+    "wavesurfer-react": "^2.2.2"
   },
   "devDependencies": {
     "dotenv-cli": "^6.0.0",

@@ -30,6 +30,8 @@ import SongIndexItemNoAuth from "./components/SongIndex/SongIndexItemNoAuth";
 import SplashCarousel from "./components/SplashCarousel";
 import toast, { Toaster } from 'react-hot-toast';
 import ProfileSidebarIndexItem from "./components/ProfileSidebar/ProfileSideBarIndexItem";
+import User from "./components/User";
+import ProfileSidebarProfile from "./components/ProfileSidebar/ProfileSidebarProfile";
 
 function App() {
   const dispatch = useDispatch();
@@ -95,6 +97,10 @@ function App() {
           </Route>
           <Route path="/songs">
             <SongForm />
+          </Route>
+          <Route path="/users/:id">
+            <ProfileSidebarProfile />
+            <User />
           </Route>
         </Switch>
       )}

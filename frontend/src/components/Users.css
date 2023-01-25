@@ -127,3 +127,94 @@
 .user-header {
     text-decoration: none;
 }
+
+.title-image-user {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.title-image-wrapper-user-1 {
+    background-image: url(https://images.pexels.com/photos/6827398/pexels-photo-6827398.jpeg?auto=compress&cs=tinysrgb&w=1600);
+    display: flex;
+    align-items: center;
+    margin-left: 17.2%;
+    margin-right: 17.2%;
+    margin-bottom: 5%;
+    padding-left: 3%;
+    gap: 5%;
+}
+.title-image-wrapper-user-2 {
+    background-image: url(https://images.pexels.com/photos/9264012/pexels-photo-9264012.jpeg?auto=compress&cs=tinysrgb&w=1600);
+    display: flex;
+    align-items: center;
+    margin-left: 17.2%;
+    margin-right: 17.2%;
+    margin-bottom: 5%;
+    padding-left: 3%;
+    gap: 5%;
+}
+.title-image-wrapper-user-3 {
+    background-image: url(https://images.pexels.com/photos/7464822/pexels-photo-7464822.jpeg?auto=compress&cs=tinysrgb&w=1600);
+    display: flex;
+    align-items: center;
+    margin-left: 17.2%;
+    margin-right: 17.2%;
+    margin-bottom: 5%;
+    padding-left: 3%;
+    gap: 5%;
+}
+.title-image-wrapper-user-4 {
+    background-image: url(https://images.pexels.com/photos/4200745/pexels-photo-4200745.jpeg?auto=compress&cs=tinysrgb&w=1600);
+    display: flex;
+    align-items: center;
+    margin-left: 17.2%;
+    margin-right: 17.2%;
+    margin-bottom: 5%;
+    padding-left: 3%;
+    gap: 5%;
+}
+.title-image-wrapper-user-5 {
+    background-image: url(https://images.pexels.com/photos/5472601/pexels-photo-5472601.jpeg?auto=compress&cs=tinysrgb&w=1600);
+    display: flex;
+    align-items: center;
+    margin-left: 17.2%;
+    margin-right: 17.2%;
+    margin-bottom: 5%;
+    padding-left: 3%;
+    gap: 5%;
+}
+.title-image-wrapper-user-6 {
+    background-image: url(https://images.pexels.com/photos/3230516/pexels-photo-3230516.jpeg?auto=compress&cs=tinysrgb&w=1600);
+    display: flex;
+    align-items: center;
+    margin-left: 17.2%;
+    margin-right: 17.2%;
+    margin-bottom: 5%;
+    padding-left: 3%;
+    gap: 5%;
+}
+.title-image-wrapper-user-7 {
+    background-image: url(https://images.pexels.com/photos/2090881/pexels-photo-2090881.jpeg?auto=compress&cs=tinysrgb&w=1600);
+    display: flex;
+    align-items: center;
+    margin-left: 17.2%;
+    margin-right: 17.2%;
+    margin-bottom: 5%;
+    padding-left: 3%;
+    gap: 5%;
+}
+
+.title-wrapper-user {
+    margin-bottom: 10%;
+    width: 500px;
+}
+
+.follow-feed-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.follow-wrapper-user {
+    margin-left: 32%;
+}

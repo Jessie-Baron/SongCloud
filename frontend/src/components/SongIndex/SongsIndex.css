@@ -536,6 +536,7 @@ x .detailButtons {
     color: #333;
     margin-top: 3px;
     margin-bottom: 3px;
+    text-decoration: none;
 }
 
 .follow-metrics {
