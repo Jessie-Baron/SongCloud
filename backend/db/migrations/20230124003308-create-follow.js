@@ -10,12 +10,10 @@ module.exports = {
       },
       followerId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Users' },
         onDelete: 'CASCADE'
       },
       followedId: {
         type: Sequelize.INTEGER,
-        references: { model: 'Users' },
         onDelete: 'CASCADE'
       },
       createdAt: {
