@@ -27,7 +27,7 @@ module.exports = {
         email: 'user2@user.io',
         username: 'Renee Crawford',
         hashedPassword: bcrypt.hashSync('password3'),
-        imageUrl: 'https://learn.zoner.com/wp-content/uploads/2019/01/how-can-you-get-good-profile-photos-watch-for-these-6-things.jpg'
+        imageUrl: 'https://t3.ftcdn.net/jpg/03/67/46/48/360_F_367464887_f0w1JrL8PddfuH3P2jSPlIGjKU2BI0rn.jpg'
       },
       {
         email: 'user3@user.io',
@@ -52,5 +52,3 @@ module.exports = {
     }, {});
   }
 };
-
-
