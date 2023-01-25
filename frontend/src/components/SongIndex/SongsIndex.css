@@ -1,5 +1,3 @@
-
-
 .songSection {
     display: flex;
     gap: 75px;
@@ -22,7 +20,7 @@
 }
 
 h2 {
-    display:flex;
+    display: flex;
     align-items: left;
     display: flex;
     flex-direction: column;
@@ -44,10 +42,12 @@ h2 {
     text-align: left;
     padding-top: 65px;
     width: 125px;
+    height: 20px;
     word-wrap: break-word;
     text-decoration: none;
     color: #333333;
     font-size: 14px;
+    overflow-y: hidden;
 }
 
 .song-description {
@@ -162,20 +162,25 @@ h2 {
     cursor: pointer;
 }
 
-.titleImage {
-    width: 52.5%;
-    height: 400px;
+.title-image-wrapper {
+    background-color: aqua;
     display: flex;
-    padding-top: 5%;
-    padding-left: 45%;
-    padding-bottom: 2.5%;
-    padding-right: 2.5%;
-    border: 1px solid black;
-    background-color: grey;
+    align-items: center;
+    padding-left: 5%;
+    gap: 10%;
+    margin-top: 3%;
+    height: 495px;
+}
+
+.title-image {
+    width: 450px;
+    height: 425px;
+    display: flex;
+    padding-top: 3%;
 }
 
 
-#root > div.song-detail-lists > div > h5 {
+#root>div.song-detail-lists>div>h5 {
     padding-left: 1%;
     padding-top: 10px;
     font-size: 20px;
@@ -206,6 +211,7 @@ p {
     margin-top: 2%;
     border: 1px solid black;
 }
+
 .detailButton5 {
     background-color: #ffffff;
     margin-top: 2%;
@@ -221,7 +227,7 @@ p {
     padding-right: 10px;
 }
 
-#root > div.song-detail-lists > form > button {
+#root>div.song-detail-lists>form>button {
     width: 300px;
     height: 55px;
     margin-left: 8%;
@@ -269,15 +275,16 @@ p {
     margin-top: 5%;
 }
 
-#root > form#form1 {
-    padding-bottom: 15px;;
+#root>form#form1 {
+    padding-bottom: 15px;
+    ;
 }
 
-#root > div.song-detail-lists > form > label > input[type=text] {
+#root>div.song-detail-lists>form>label>input[type=text] {
     width: 90%
 }
-x
-.detailButtons {
+
+x .detailButtons {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -305,10 +312,12 @@ x
     gap: 55px;
     margin-left: 5%
 }
+
 .soundContainer {
     display: flex;
     gap: 115px;
 }
+
 .soundImage {
     width: 550px;
     height: 50px;
@@ -323,22 +332,20 @@ x
 }
 
 .soundWave {
-    border: 1px solid black;
     width: 600px;
     height: 170px;
-    background-image: url(data:image/jpeg;base64,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);
     padding-bottom: 5px;
 }
 
 .waveform {
     margin-top: 70px;
-    width: 100%;
-    height: 50px;
+    width: 98%;
+    margin-left: 5px;
 }
 
 .waveform-image {
     cursor: pointer;
-    height: 100px;
+    height: 50px;
     width: 100%;
 }
 
@@ -347,13 +354,17 @@ x
 }
 
 .soundSong {
-    margin-left: 15px;
     text-align: center;
-    padding-top: 15px;
+    padding-top: 35px;
     width: 125px;
     word-wrap: break-word;
     text-decoration: none;
-    color: #333333;
+    color: #333;
+    box-sizing: border-box;
+}
+
+#root>div:nth-child(4)>div>div>div.soundWave>div:nth-child(1) {
+    margin-left: 15px;
 }
 
 .songs-left-arrow {
@@ -411,6 +422,7 @@ x
 
 .comment-profile-image-wrapper {
     display: flex;
+    width: 100%
 }
 
 .comment-profile-image {
@@ -419,7 +431,7 @@ x
 }
 
 #form1 {
-    width: 100%;
+    width: 80%;
     height: 30px;
     border: none;
     background-color: #f2f2f2;
@@ -428,7 +440,7 @@ x
     left: 0
 }
 
-#form1 > div > input[type=text] {
+#form1>div>input[type=text] {
     width: 91.4%;
     margin-left: 10px;
     margin-top: 12.4px;
@@ -439,7 +451,7 @@ x
     border: none;
 }
 
-#form1 > div > input[type=text]::placeholder {
+#form1>div>input[type=text]::placeholder {
     color: #999;
 }
 
@@ -450,7 +462,7 @@ x
 }
 
 .comment-divider {
-    width: 102%;
+    width: 80%;
     margin-left: 14%;
     margin-top: 1%;
     opacity: .2;
@@ -458,7 +470,7 @@ x
 }
 
 .scroll-divider {
-    width: 80%;
+    width: 64%;
     margin-left: 5%;
     margin-top: 2%;
     opacity: .2;
@@ -503,6 +515,14 @@ x
 .follow-username {
     font-size: 12px;
     color: #333;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+.follow-metrics {
+    font-size: 10px;
+    margin-top: 7px;
+    margin-bottom: 7px;
 }
 
 .comment-summary {
@@ -525,10 +545,12 @@ x
     color: #999;
     font-size: 12px
 }
+
 .two-item-comment {
     display: flex;
     gap: 5px;
 }
+
 .comment-body {
     margin-top: 5px;
     top: 0;
@@ -542,7 +564,8 @@ x
     margin-top: 10px;
     display: flex;
     gap: 10px;
-    color: rgba(255, 255, 255, 0.5);;
+    color: rgba(255, 255, 255, 0.5);
+    ;
     font-size: 14px;
     cursor: pointer;
 }
@@ -553,7 +576,7 @@ x
     border-radius: 50%;
 }
 
-#root > div.song-detail-lists > div.scroll-body > div > div.comment-buttons > div.detail-button1 {
+#root>div.song-detail-lists>div.scroll-body>div>div.comment-buttons>div.detail-button1 {
 
     font-size: 12px;
     color: #999;
@@ -640,6 +663,8 @@ x
     color: rgb(156, 155, 155);
     font-size: 14px;
     text-decoration: none;
+    height: 20px;
+    overflow-y: hidden;
 }
 
 .images-sidebar {
@@ -652,6 +677,8 @@ x
     flex-direction: column;
     align-items: baseline;
     gap: 2px;
+    width: 150px;
+    height: 50px;
 }
 
 .songSplash {
@@ -669,7 +696,7 @@ x
         grid-template-columns: repeat(6, 1fr);
     }
 
-    .pitch{
+    .pitch {
         margin-left: 0%;
     }
 
@@ -694,15 +721,113 @@ x
     }
 
     .comment-divider {
-        width: 55%;
+        width: 51%;
     }
 
     #form1 {
         width: 80%;
     }
 
-    #form1 > div > input[type=text] {
+    #form1>div>input[type=text] {
         width: 85.4%;
     }
 
+    .songFiller {
+        display: flex;
+        gap: 75px;
+        margin-left: 50px;
+        width: 63.6%;
+        border-right: 1px solid white;
+    }
+
+    .song {
+        text-align: left;
+        padding-top: 25px;
+        width: 125px;
+        height: 20px;
+        word-wrap: break-word;
+        text-decoration: none;
+        color: #333333;
+        font-size: 14px;
+        overflow-y: hidden;
+
+    }
+
+    .images {
+        width: 125px;
+        height: 125px;
+        position: absolute;
+    }
+
+    .playButton {
+        width: 70px;
+        height: 70px;
+        margin-top: 25%;
+        margin-left: 21%;
+    }
+
+    .playButton-feed {
+        width: 70px;
+        height: 70px;
+        margin-top: 35%;
+        margin-left: 35%;
+    }
+
+    .songFiller {
+        display: flex;
+        gap: 15px;
+        margin-left: 50px;
+        width: 63.4%;
+        border-right: 1px solid white;
+    }
+
+    .title-image-wrapper {
+        background-color: aqua;
+        display: flex;
+        align-items: center;
+        padding-left: 5%;
+        margin-top: 3%;
+        height: 495px;
+    }
+
+    .title-wrapper {
+        margin-bottom: 30%;
+        width: 450px;
+    }
+
+    .title-image {
+        width: 350px;
+        height: 350px;
+        display: flex;
+        padding-top: 3%;
+    }
+
+    #form1 {
+        width: 75%;
+        height: 30px;
+        border: none;
+        background-color: #f2f2f2;
+        padding-top: 2px;
+        padding-bottom: 17px;
+        left: 0
+    }
+
+    .scroll-divider {
+        width: 60%;
+        margin-left: 5%;
+        margin-top: 2%;
+        opacity: .2;
+        border-color: rgb(237, 234, 234);
+    }
+
+    .waveform {
+        margin-top: 40px;
+        margin-left: 5px;
+    }
+
+    .soundWave {
+        width: 450px;
+        height: 170px;
+        padding-bottom: 5px;
+    }
 }

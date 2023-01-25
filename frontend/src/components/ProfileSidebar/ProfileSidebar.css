@@ -3,7 +3,7 @@
     border: 1px solid rgb(230, 230, 230);
     width: 360px;
     margin-top: 2.4%;
-    margin-left: 47.3%;
+    margin-left: 47%;
     height: 85%;
     z-index: 1;
     background-color: white;
@@ -115,9 +115,9 @@
 #root > div.fixed-sideBar {
     position: fixed;
     border: 1px solid rgb(230, 230, 230);
-    width: 30%;
+    width: 20%;
     margin-top: 2.4%;
-    margin-left: 41.2%;
+    margin-left: 48.5%;
     height: 84%;
     z-index: 1;
     background-color: white;
@@ -135,8 +135,8 @@
     border: 1px solid rgb(230, 230, 230);
     border-bottom: none;
     width: 310px;
-    margin-top: 31.7%;
-    margin-left: 50%;
+    margin-top: 34.8%;
+    margin-left: 46.5%;
     height: 1650px;
     z-index: 1;
     background-color: white;

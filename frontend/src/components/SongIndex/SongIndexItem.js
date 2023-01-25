@@ -8,6 +8,7 @@ import { deleteSong } from '../../store/song';
 import { createPlaylistSong } from '../../store/playlistSong';
 import SongEditForm from './SongEditForm';
 import { getAudio } from '../../store/songPlayer';
+import { getSongs } from '../../store/song';
 import CommentForm from './CommentForm';
 import CommentEditForm from '../CommentEditForm';
 import { getComments, deleteComment } from '../../store/comment';
@@ -18,16 +19,23 @@ import FollowButton from '../FollowButton';
 const SongIndexItem = ({ song }) => {
   const { id } = useParams();
   const singleSong = useSelector(state => state.songs.singleSong);
+  const songObject = useSelector(state => state.songs.allSongs)
+  const songs = Object.values(songObject);
   const user = useSelector(state => state.session.user)
   const commentsObj = useSelector(state => state.comment.allComments)
   const allComments = Object.values(commentsObj)
   const comments = allComments.filter(comment => comment.songId === singleSong.id)
   const playlistObject = useSelector(state => state.playlist.allPlaylists)
   const playlists = Object.values(playlistObject);
-
-
+  const followingsObj = useSelector((state) => (state.follow?.following))
+  const followings = Object.values(followingsObj)
+  const filtered = followings.filter(follow => follow.followerId === user.id)
+  const filtered2 = filtered.filter(follow => follow.followedId === singleSong.Artist?.id)
+  console.log("this is filter 2", filtered2)
+  const filtered3 = songs.filter(song => song.userId === singleSong.Artist?.id)
   const dispatch = useDispatch()
   const history = useHistory()
+
   const [showEdit, setShowEdit] = useState(false)
   const [commentBody, setCommentBody] = useState("");
   const [captionBody, setCaptionBody] = useState("");
@@ -35,15 +43,20 @@ const SongIndexItem = ({ song }) => {
   const [editId, setEditId] = useState(-1);
   const [editId2, setEditId2] = useState(-1);
   const [isLoaded, setIsLoaded] = useState(false);
-  const followingsObj = useSelector((state) => (state.follow?.following))
-  const followings = Object.values(followingsObj)
-  const filtered = followings.filter(follow => follow.followerId === user.id)
-  const [following, setFollowing] = useState(filtered.length > 0)
+  const [following, setFollowing] = useState(filtered2.length > 0)
   const [playlistDrop, setPlaylistDrop] = useState(false)
 
 
   const playSong = async (id) => {
     await dispatch(getAudio(id))
+  }
+
+  useEffect(() => {
+    dispatch(getSongs())
+  }, [dispatch])
+
+  const getRandomArbitrary = (min, max) => {
+    return Math.random() * (max - min) + min;
   }
 
   useEffect(() => {
@@ -88,14 +101,8 @@ const SongIndexItem = ({ song }) => {
 
   useEffect(() => {
     if (user) {
-
-    }
-  }, [dispatch, followings]);
-
-  useEffect(() => {
-    if (user) {
       dispatch(followActions.followingList(user.id))
-      .then(() => setIsLoaded(true))
+        .then(() => setIsLoaded(true))
     }
   }, [dispatch, isLoaded]);
 
@@ -104,11 +111,15 @@ const SongIndexItem = ({ song }) => {
   return (
     <div className="song-detail-lists">
       <div>
-        <center>
-          <img className="titleImage" alt="" src={singleSong?.imageUrl} />
-        </center>
-
-        <h5 className="title">{singleSong?.title}</h5>
+        <div className='title-image-wrapper'>
+          <div className='title-wrapper'>
+            <h5 className="title">{singleSong?.title}</h5>
+            <h6 className='sub-title'>{singleSong.Artist?.username}</h6>
+          </div>
+          <center>
+            <img className="title-image" alt="" src={singleSong?.imageUrl} />
+          </center>
+        </div>
         <div className="detailButtons">
           {singleSong?.userId === user?.id && <button className="detailButton1" onClick={removeSong}>Delete Song</button>}
           <button className={singleSong?.userId === user?.id ? "detailButton4" : "detailButton5"} onClick={() => playSong(singleSong.id)}>Play Song</button>
@@ -134,18 +145,25 @@ const SongIndexItem = ({ song }) => {
       </div>
       <hr className='scroll-divider' />
       <div className='comment-follow-wrapper'>
-        <div>
+        <div className='follow-wrapper'>
           <div>
             <img className='follow-profile-picture' src={singleSong.Artist?.imageUrl} />
           </div>
           <div className='follow-username'>
             {singleSong.Artist?.username}
           </div>
-          <FollowButton song={singleSong} />
+          <div className='follow-metrics'>
+            <i class="fa-solid fa-user-group"></i> {Math.round(getRandomArbitrary(1, 100)) + 'k'}
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <i class="fa-solid fa-podcast"></i> {filtered3.length}
+          </div>
+          {user.id !== singleSong.Artist?.id && <FollowButton song={singleSong} />}
         </div>
         <div className="scroll-body">
-          <div className='comment-summary'><i class="fa-solid fa-message"></i> {comments.length} comments</div>
-          <hr className='comment-divider' />
+          {comments.length > 0 && <div className='comment-summary'><i class="fa-solid fa-message"></i> {comments.length} comments</div>}
+          {comments.length > 0 && <hr className='comment-divider' />}
           {comments?.map((comment) => (
             <div className="comment-wrapper2">
               <div className='two-item-comment'>

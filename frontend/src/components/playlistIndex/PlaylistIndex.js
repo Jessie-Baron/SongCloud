@@ -15,8 +15,9 @@ const PlaylistIndex = () => {
 
   const playlistObject = useSelector(state => state.playlist.allPlaylists)
   const playlists = Object.values(playlistObject);
-  const sample = playlists.slice(0, 5)
-  const sample2 = playlists.slice(6, 11)
+  const filtered = playlists.filter(playlist => playlist.userId === currentUser.id)
+  const sample = filtered.slice(0, 5)
+  const sample2 = filtered.slice(6, 11)
   const [carousel, setCarousel] = useState(true)
   const playlistObj = useSelector(state => state.songPlayer.currentPlaylist)
   const audPlaylist = Object.values(playlistObj)

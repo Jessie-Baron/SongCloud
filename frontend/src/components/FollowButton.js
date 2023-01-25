@@ -13,10 +13,10 @@ const FollowButton = ({song}) => {
     const user = useSelector((state) => state.session.user);
     const followingsObj = useSelector((state) => (state.follow?.following))
     const followings = Object.values(followingsObj)
-    const filtered = followings.filter(follow => follow.followerId === user.id)
+    const filtered = followings.filter(follow => follow.followerId === user.id && follow.followedId === song.Artist?.id)
     console.log("this is filtered", filtered)
-    const [following, setFollowing] = useState(followings[0]?.followerId === user.id)
-    console.log("this is following", following)
+    const [following, setFollowing] = useState(filtered.length > 0)
+    console.log("this is followings", followings)
     const dispatch = useDispatch();
     console.log("this is the value of following", following)
 
@@ -29,7 +29,7 @@ const FollowButton = ({song}) => {
 
       useEffect(() => {
         if (isLoaded) {
-        setFollowing(followings[0]?.followerId === user.id)
+        setFollowing(filtered.length > 0)
         }
       })
 

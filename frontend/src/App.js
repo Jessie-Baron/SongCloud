@@ -74,7 +74,7 @@ function App() {
             <SongYouMightLike4 />
             <SongYouMightLike8 />
             <SongYouMightLike10 />
-            <SongYouMightLike2 />
+frontend/src/components/SongIndex/SongIndexItem.js            <SongYouMightLike2 />
           </Route>
           <Route exact path="/feed">
             <ProfileSidebar />
@@ -88,6 +88,7 @@ function App() {
             <PlaylistForm />
           </Route>
           <Route path="/songs/:id">
+            <ProfileSidebarIndexItem />
             <SongIndexItem />
           </Route>
           <Route path="/songs">
@@ -95,7 +96,7 @@ function App() {
           </Route>
         </Switch>
       )}
-       <Toaster />
+      <Toaster />
     </>
   );
 }

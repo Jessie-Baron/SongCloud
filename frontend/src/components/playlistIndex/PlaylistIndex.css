@@ -211,13 +211,29 @@ h2 {
     margin-top: 3%;
 }
 
+.title-wrapper {
+    margin-bottom: 30%;
+    width: 575px;
+}
+
 .title {
-    display: flex;
-    padding-top: 5%;
-    margin-left: 5%;
-    align-items: left;
-    font-size: 20px;
-    color: #333333;
+    font-size: 24px;
+    line-height: 37px;
+    background-color: #333333;
+    color: #fff;
+    margin-bottom: 15px;
+    margin-top: 200px;
+    width: fit-content;
+    padding: 5px 5px 5px 5px;
+}
+
+.sub-title {
+    font-size: 16px;
+    line-height: 1.2;
+    background-color: #333333;
+    color: #fff;
+    width: fit-content;
+    padding: 5px 5px 5px 5px;
 }
 
 p {
