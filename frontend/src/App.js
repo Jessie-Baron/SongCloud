@@ -22,6 +22,8 @@ import SongYouMightLike6 from "./components/SongIndex/SongsYouMightLike6";
 import SongYouMightLike7 from "./components/SongIndex/SongsYouMightLike7";
 import SongYouMightLike8 from "./components/SongIndex/SongsYouMightLike8";
 import SongYouMightLike10 from "./components/SongIndex/SongsYouMightLike10";
+import PopularSongs from './components/SongIndex/PopularSongs'
+import PopularSongsComm from './components/SongIndex/PopularSongsComm'
 import SongLibrary from "./components/SongIndex/SongLibrary"
 import 'react-h5-audio-player/lib/styles.css';
 import SongIndexItemNoAuth from "./components/SongIndex/SongIndexItemNoAuth";
@@ -61,9 +63,9 @@ function App() {
           <Route path="/home">
             <ProfileSidebar />
             <SongYouMightLike />
-            <SongYouMightLike2 />
+            <PopularSongs />
             <SongYouMightLike3 />
-            <SongYouMightLike4 />
+            <PopularSongsComm />
             <SongYouMightLike5 />
             <SongYouMightLike6 />
             <SongYouMightLike7 />
@@ -74,7 +76,7 @@ function App() {
             <SongYouMightLike4 />
             <SongYouMightLike8 />
             <SongYouMightLike10 />
-frontend/src/components/SongIndex/SongIndexItem.js            <SongYouMightLike2 />
+            <SongYouMightLike2 />
           </Route>
           <Route exact path="/feed">
             <ProfileSidebar />

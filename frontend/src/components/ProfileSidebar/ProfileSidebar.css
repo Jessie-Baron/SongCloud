@@ -1,9 +1,11 @@
 #root > div.fixed-sideBar {
     position: fixed;
     border: 1px solid rgb(230, 230, 230);
-    width: 360px;
+    border-right: none;
+    width: 400px;
     margin-top: 2.4%;
-    margin-left: 47%;
+    margin-left: 63.5%;
+    padding-bottom: 125px;
     height: 85%;
     z-index: 1;
     background-color: white;
@@ -13,10 +15,12 @@
 .fixed-sideBar-index-item {
     position: absolute;
     border: 1px solid rgb(230, 230, 230);
+    border-right: none;
+
+    border-top: none;
     width: 350px;
-    margin-top: 26.1%;
-    margin-left: 47.3%;
-    height: 1650px;
+    margin-top: 33.9%;
+    margin-left: 64.2%;
     z-index: 1;
     background-color: white;
 }
@@ -112,17 +116,6 @@
 }
 
 @media screen and (max-width: 1600px) {
-#root > div.fixed-sideBar {
-    position: fixed;
-    border: 1px solid rgb(230, 230, 230);
-    width: 20%;
-    margin-top: 2.4%;
-    margin-left: 48.5%;
-    height: 84%;
-    z-index: 1;
-    background-color: white;
-    font-size: 10px;
-}
 
 .sideBar-profile {
     width: 125px;
@@ -140,5 +133,6 @@
     height: 1650px;
     z-index: 1;
     background-color: white;
+    visibility: hidden;
 }
 }

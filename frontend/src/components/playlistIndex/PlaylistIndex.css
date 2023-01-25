@@ -1,17 +1,17 @@
 .playlistSection {
     display: flex;
-    gap: 75px;
+    gap: 63px;
     width: 65.6%;
     border-right: 1px solid white;
     align-items: center;
 }
 
 .playlist-line-item {
-    width: 65%;
+    width: 44.5%;
     display: flex;
     justify-content: space-between;
     gap: 15px;
-    margin-left: 55px;
+    margin-left: 18%;
     padding-bottom: 15px;
     padding-top: 15px;
     padding-left: 10px;
@@ -21,13 +21,14 @@
 
 .playlist-line-item:hover {
     cursor: pointer;
-    background-color: #dfdfdf;
+    background-color: #f2f2f2;
     border-radius: 7px;
 }
 
 #root > div.outer1 {
     padding-top: 10%;
     padding-bottom: 25px;
+    margin-left: 15%;
 }
 
 .playlist-item-header {
@@ -65,11 +66,12 @@
 }
 
 .detailButtons-playlist {
-    width: 70%;
+    width: 45%;
     margin-top: 1%;
     margin-bottom: 1%;
     border-bottom: 1px solid #f2f2f2;
     padding-bottom: 2%;
+    margin-left: 18%;
 }
 
 .users-name-playlist-item {
@@ -118,7 +120,6 @@ h2 {
 }
 
 .playlist {
-    text-align: center;
     padding-top: 35px;
     width: 125px;
     word-wrap: break-word;
@@ -301,4 +302,15 @@ p {
 #root > form#form2 {
     padding-bottom: 0px;
     margin-bottom: 0;
+}
+
+.arrows-wrapper-playlist {
+    display: flex;
+    align-items: center;
+    margin-left: 3.5%;
+}
+
+.playlist-header {
+    margin-top: 5%;
+    padding-bottom: 1%;
 }

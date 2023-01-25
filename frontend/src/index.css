@@ -12,30 +12,26 @@ h1 {
 
 body {
     margin-top: 0;
-    height: 2200px;
+    overflow-y: scroll;
+    padding-bottom: 125px;
+    background: #f2f2f2 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABNgAAABkAQMAAABuPx8iAAAAA1BMVEX///+nxBvIAAAAJUlEQVR4Xu3AMQEAAADCIPunNsYeWAQAAAAAAAAAAAAAAAAAAOA88AABMGQBNwAAAABJRU5ErkJggg==) repeat-y 50% 0;
 }
 
 .border {
     border: 25px solid grey
 }
 
-body:not(.navBar) {
-    z-index: 3;
-    border-left: 325px solid rgb(213, 212, 212);
-    border-right: 325px solid rgb(213, 212, 212);
-}
-
 #root > div.rhap_container.rhap_loop--off.rhap_play-status--paused {
     position: fixed;
     z-index: 1000;
-    width: 66%;
+    width: 100%;
     bottom: 0
 }
 
 #root > div.rhap_container.rhap_loop--off.rhap_play-status--playing {
     position: fixed;
     z-index: 1000;
-    width: 66%;
+    width: 100%;
     bottom: 0
 }
 
@@ -47,11 +43,11 @@ body:not(.navBar) {
 #root > form {
     position: absolute;
     display: block;
-    margin-top: 10%;
+    margin-top: 5%;
     flex-direction: column;
     width: 550px;
-    height: 450px;
-    margin-left: 10%;
+    height: 400px;
+    margin-left: 34%;
     padding-top: 65px;
     padding-right: 25px;
     padding-bottom: 105px;
@@ -104,25 +100,5 @@ body:not(.navBar) {
 
 
 @media screen and (max-width: 1600px) {
-
-#root > div.rhap_container.rhap_loop--off.rhap_play-status--paused {
-    position: fixed;
-    z-index: 1000;
-    width: 68.5%;
-    bottom: 0
-}
-
-#root > div.rhap_container.rhap_loop--off.rhap_play-status--playing {
-    position: fixed;
-    z-index: 1000;
-    width: 68.5%;
-    bottom: 0
-}
-
-body:not(.navBar) {
-    z-index: 3;
-    border-left: 225px solid rgb(213, 212, 212);
-    border-right: 225px solid rgb(213, 212, 212);
-}
 
 }

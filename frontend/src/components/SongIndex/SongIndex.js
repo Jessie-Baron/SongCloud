@@ -26,7 +26,7 @@ const SongIndex = () => {
 
   return (
     <div className='box'>
-      <h2>Your Songs</h2>
+      <h2 className='playlist-header'>Your Songs</h2>
       <div className='arrows-wrapper'>
         <div className='songs-left-arrow'>
           {!carousel && <i id="left-arrow" onClick={() => setCarousel(true)} class="fa-solid fa-chevron-left"></i>}

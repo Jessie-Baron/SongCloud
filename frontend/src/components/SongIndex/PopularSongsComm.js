@@ -20,12 +20,12 @@ const SongYouMightLike = () => {
 
   const songObject = useSelector(state => state.songs.allSongs)
   const songs = Object.values(songObject);
-  const sample = songs.slice(40, 44)
-  const sample2 = songs.slice(45, 50)
+  const sample = songs.slice(18, 23)
+  const sample2 = songs.slice(23, 27)
 
   return (
-    <div className='box'>
-      <h2 className="songHeader">Songs from the 2000s</h2>
+       <div className='box'>
+      <h2 className="songHeader">Popular songs from our community!</h2>
       <div className='arrows-wrapper'>
         <div className='songs-left-arrow'>
           {!carousel && <i id="left-arrow" onClick={() => setCarousel(true)} class="fa-solid fa-chevron-left"></i>}
@@ -59,5 +59,6 @@ const SongYouMightLike = () => {
     </div>
   );
 }
+
 
 export default SongYouMightLike;

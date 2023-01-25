@@ -20,12 +20,12 @@ const SongYouMightLike = () => {
 
   const songObject = useSelector(state => state.songs.allSongs)
   const songs = Object.values(songObject);
-  const sample = songs.slice(40, 44)
-  const sample2 = songs.slice(45, 50)
+  const sample = songs.slice(6, 11)
+  const sample2 = songs.slice(11, 15)
 
   return (
     <div className='box'>
-      <h2 className="songHeader">Songs from the 2000s</h2>
+      <h2 className="songHeader">Popular Songs</h2>
       <div className='arrows-wrapper'>
         <div className='songs-left-arrow'>
           {!carousel && <i id="left-arrow" onClick={() => setCarousel(true)} class="fa-solid fa-chevron-left"></i>}

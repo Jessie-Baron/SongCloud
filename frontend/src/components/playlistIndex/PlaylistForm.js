@@ -66,15 +66,6 @@ function PlaylistForm() {
       />
     </label>
     <label>
-      Description
-      <input
-        type="text"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-        required
-      />
-    </label>
-    <label>
       Image Url
       <input
         type="text"

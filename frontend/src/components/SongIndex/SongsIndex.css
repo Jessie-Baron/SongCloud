@@ -7,8 +7,9 @@
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     margin-top: 45px;
-    margin-left: 3%;
+    margin-left: 1.5%;
     height: 500px;
+    width: 1200px;
 
 }
 
@@ -24,10 +25,14 @@ h2 {
     align-items: left;
     display: flex;
     flex-direction: column;
-    margin-left: 6%;
+    margin-left: 20%;
     padding-bottom: 4%;
     font-size: 18px;
     font-weight: 400;
+}
+
+#root > div.outer1 > h2 {
+    margin-left: 6%;
 }
 
 .box {
@@ -166,15 +171,19 @@ h2 {
     background-color: aqua;
     display: flex;
     align-items: center;
-    padding-left: 5%;
-    gap: 10%;
-    margin-top: 3%;
-    height: 495px;
+    margin-left: 17.5%;
+    margin-right: 17.5%;
+    padding-left: 3%;
+    gap: 5%;
+}
+
+.detailButtons {
+    margin-left: 15%;
 }
 
 .title-image {
-    width: 450px;
-    height: 425px;
+    width: 500px;
+    height: 500px;
     display: flex;
     padding-top: 3%;
 }
@@ -246,6 +255,8 @@ p {
 .songHeader {
     color: grey;
     padding-top: 6%;
+    margin-left: 20%;
+    padding-bottom: 1%;
 }
 
 .pitch {
@@ -260,7 +271,6 @@ p {
     height: 35px;
     align-items: center;
     justify-content: center;
-    margin-left: 45%;
     margin-top: 5%;
     border: 1px solid rgba(252, 113, 0, 0.899);
     background-color: rgba(252, 113, 0, 0.899);
@@ -272,7 +282,7 @@ p {
 .pitchSection {
     display: flex;
     flex-direction: column;
-    margin-top: 5%;
+    margin-top: 2%;
 }
 
 #root>form#form1 {
@@ -293,9 +303,8 @@ x .detailButtons {
 
 .songFiller {
     display: flex;
-    gap: 75px;
-    margin-left: 50px;
-    width: 65.6%;
+    gap: 65px;
+    width: 43.2%;
     border-right: 1px solid white;
 }
 
@@ -316,6 +325,7 @@ x .detailButtons {
 .soundContainer {
     display: flex;
     gap: 115px;
+    margin-left: 15%;
 }
 
 .soundImage {
@@ -373,6 +383,7 @@ x .detailButtons {
     border-radius: 3px;
     background-color: #fff;
     margin-left: 5px;
+    margin-right: 10px;
     margin-bottom: 40px;
 }
 
@@ -398,7 +409,7 @@ x .detailButtons {
 .songs-right-arrow {
     z-index: 99;
     border: 1px solid black;
-    margin-left: 5px;
+    margin-left: 10.5%;
     margin-bottom: 40px;
     border: 1px solid #e5e5e5;
     border-radius: 3px;
@@ -412,6 +423,7 @@ x .detailButtons {
 .arrows-wrapper {
     display: flex;
     align-items: center;
+    margin-left: 18%;
 }
 
 .textarea-comments {
@@ -422,26 +434,28 @@ x .detailButtons {
 
 .comment-profile-image-wrapper {
     display: flex;
-    width: 100%
+    width: 100%;
 }
 
 .comment-profile-image {
     top: 0;
     height: 50px;
+    z-index: 2;
 }
 
 #form1 {
-    width: 80%;
+    width: 53%;
     height: 30px;
     border: none;
     background-color: #f2f2f2;
     padding-top: 2px;
     padding-bottom: 17px;
-    left: 0
+    left: 0;
+    margin-left: 20%;
 }
 
 #form1>div>input[type=text] {
-    width: 91.4%;
+    width: 92.8%;
     margin-left: 10px;
     margin-top: 12.4px;
     height: 22px;
@@ -457,12 +471,12 @@ x .detailButtons {
 
 .comment-follow-wrapper {
     display: flex;
-    margin-left: 5%;
+    margin-left: 20%;
     margin-top: 3%;
 }
 
 .comment-divider {
-    width: 80%;
+    width: 84%;
     margin-left: 14%;
     margin-top: 1%;
     opacity: .2;
@@ -470,8 +484,8 @@ x .detailButtons {
 }
 
 .scroll-divider {
-    width: 64%;
-    margin-left: 5%;
+    width: 42.5%;
+    margin-left: 21%;
     margin-top: 2%;
     opacity: .2;
     border-color: rgb(237, 234, 234);
@@ -683,12 +697,14 @@ x .detailButtons {
 
 .songSplash {
     text-align: left;
-    padding-top: 55px;
-    width: 125px;
+    padding-top: 60px;
+    width: 175px;
+    height: 20px;
     word-wrap: break-word;
     text-decoration: none;
     color: #333333;
     font-size: 14px;
+    overflow-y: hidden;
 }
 
 @media screen and (max-width: 1600px) {
@@ -698,10 +714,6 @@ x .detailButtons {
 
     .pitch {
         margin-left: 0%;
-    }
-
-    .pitchButton {
-        margin-left: 43%;
     }
 
     .detailButton1 {
@@ -777,8 +789,15 @@ x .detailButtons {
         display: flex;
         gap: 15px;
         margin-left: 50px;
-        width: 63.4%;
+        width: 38.4%;
         border-right: 1px solid white;
+    }
+
+    .songHeader {
+        color: grey;
+        padding-top: 6%;
+        margin-left: 22%;
+        padding-bottom: 1%;
     }
 
     .title-image-wrapper {
@@ -788,6 +807,12 @@ x .detailButtons {
         padding-left: 5%;
         margin-top: 3%;
         height: 495px;
+    }
+
+    .arrows-wrapper {
+        display: flex;
+        align-items: center;
+        margin-left: 17%;
     }
 
     .title-wrapper {
