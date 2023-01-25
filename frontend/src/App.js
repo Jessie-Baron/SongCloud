@@ -36,6 +36,7 @@ import ProfileSidebarProfile from "./components/ProfileSidebar/ProfileSidebarPro
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [idx, setIdx] = useState(0);
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -45,13 +46,17 @@ function App() {
   const currentSong = useSelector(state => state.songPlayer.currentSong)
   const playlistObject = useSelector(state => state.songPlayer.currentPlaylist)
   const currentPlaylist = Object.values(playlistObject)
+  const song = currentPlaylist[idx]
 
   return (
     <>
       <Navigation isLoaded={isLoaded} />
       <AudioPlayer
         autoPlay
-        src={currentSong.url}
+        src={currentSong?.url}
+        // onEnded={() => setIdx(i => i + 1)}
+        // onClickNext={() => setIdx(i => i + 1)}
+        // onClickPrevious={() => setIdx(i => i + 1)}
       />
       {isLoaded && (
         <Switch>
