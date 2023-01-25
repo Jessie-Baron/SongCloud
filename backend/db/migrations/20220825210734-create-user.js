@@ -12,6 +12,7 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
+        references: { model: 'Users' },
         type: Sequelize.INTEGER
       },
       username: {
