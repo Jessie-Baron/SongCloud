@@ -264,6 +264,13 @@ p {
     padding-bottom: 1%;
 }
 
+.feedHeader {
+    color: grey;
+    padding-top: 6%;
+    margin-left: 20%;
+    padding-bottom: 4%;
+}
+
 .pitch {
     display: flex;
     align-items: center;
