@@ -25,6 +25,8 @@ import SongYouMightLike10 from "./components/SongIndex/SongsYouMightLike10";
 import PopularSongs from './components/SongIndex/PopularSongs'
 import PopularSongsComm from './components/SongIndex/PopularSongsComm'
 import SongLibrary from "./components/SongIndex/SongLibrary"
+import * as followActions from './store/follow'
+import SongLibraryNoFollows from "./components/SongIndex/SongLibraryNoFollows"
 import 'react-h5-audio-player/lib/styles.css';
 import SongIndexItemNoAuth from "./components/SongIndex/SongIndexItemNoAuth";
 import SplashCarousel from "./components/SplashCarousel";
@@ -38,15 +40,27 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [idx, setIdx] = useState(0);
 
-  useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
-  }, [dispatch]);
-
+  const followingsObj = useSelector((state) => state.follow?.following)
+  let followings = Object.values(followingsObj)
+  followings = followings.map((user) => user?.id)
   const currentUser = useSelector(state => state.session.user)
   const currentSong = useSelector(state => state.songPlayer.currentSong)
   const playlistObject = useSelector(state => state.songPlayer.currentPlaylist)
   const currentPlaylist = Object.values(playlistObject)
   const song = currentPlaylist[idx]
+
+  useEffect(() => {
+    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (currentUser) {
+      dispatch(followActions.followingList(currentUser.id))
+      .then(() => setIsLoaded(true))
+    }
+  }, [dispatch, isLoaded]);
+
+  console.log("this is followings", followings)
 
   return (
     <>
@@ -87,7 +101,8 @@ function App() {
           </Route>
           <Route exact path="/feed">
             <ProfileSidebar />
-            <SongLibrary />
+            {followings &&<SongLibrary />}
+            {!followings.length && <SongLibraryNoFollows />}
           </Route>
           <Route path="/playlists/:id">
             <ProfileSidebarIndexItem />
