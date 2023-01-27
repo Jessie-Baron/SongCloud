@@ -15,45 +15,106 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(255, 255, 255, 0.90);
   }
 
   #modal-content {
-    position: absolute;
-    background-color:white;
-    width: 450px;
-    border-left: 7px solid rgba(252, 113, 0, 0.899);
-    border-bottom: 7px solid rgba(252, 113, 0, 0.899);
-    border-top: 4px solid rgba(252, 113, 0, 0.899);
-    border-right: 4px solid rgba(252, 113, 0, 0.899);
-    z-index: 1500;
-    margin-bottom: 20%
+    width: 300px;
+    height: 300px;
+    padding: 30px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    border-radius: 7px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14);
+  }
+
+  .singIn-header {
+    padding-bottom: 5%;
+    color: #333;
+    font-weight: 400;
   }
 
   #modal-content > form {
     border: none;
     display: flex;
     padding-bottom: 65px;
-    padding-left: 35px;
     top: 0;
     z-index: 2500;
   }
 
   #modal-content > form > label > input[type=text] {
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 7px 8px;
+    margin-left: 4%;
     width: 90%;
-    top: 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    display: inline-block;
+    color: #333;
+  }
+
+  #modal-content > form > label > input[type=text]::placeholder {
+    color: rgb(192, 192, 192);
   }
 
   #modal-content > form > label > input[type=password] {
-    width: 90%
+    border-radius: 5px;
+    font-size: 18px;
+    line-height: 24px;
+    padding: 7px 8px;
+    margin-left: 4%;
+    width: 90%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    display: inline-block;
+    color: #333;
   }
 
-  #modal-content > form > button {
-    border: 1px solid rgba(252, 113, 0, 0.899);
-    background-color: rgba(252, 113, 0, 0.899);
+  #modal-content > form > label > input[type=password]::placeholder {
+    color: rgb(192, 192, 192);
+  }
+
+  .logIn {
+    background-color: #f50;
+    border-color: #f50;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
     color: white;
     font-weight: bold;
-    width: 250px;
-    margin-left: 15%;
+    width: 90%;
+    font-size: 16px;
+    font-weight: 100;
+    height: 40px;
+    line-height: 18px;
+    padding: 10px 15px;
+    margin-right: 15px;
     cursor: pointer;
+  }
+
+  .logIn-demo {
+    background-color: #333;
+    border-color: #333;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    width: 90%;
+    font-size: 16px;
+    font-weight: 100;
+    height: 40px;
+    line-height: 18px;
+    padding: 10px 15px;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+
+  .singIn-divider {
+    width: 90%;
+    margin-left: 4%;
   }

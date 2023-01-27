@@ -10,11 +10,11 @@ function LoginForm() {
   const [errors, setErrors] = useState([]);
   const history = useHistory()
 
-  const  loginDemo = async () => {
+  const loginDemo = async () => {
     dispatch(sessionActions.login({ credential: 'Demo-lition', password: 'password' }
-      ))
+    ))
       .then(history.push("/home"))
-        }
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,26 +34,34 @@ function LoginForm() {
           <li key={idx}>{error}</li>
         ))}
       </ul>
+      <center>
+          <h3 className="singIn-header">Welcome back.</h3>
+      </center>
+      <center>
+        <button className='logIn-demo' type="submit" onClick={() => loginDemo()}>Demo User</button>
+      </center>
+      <center>
+        <button className='logIn' type="submit">Continue</button>
+      </center>
+      <hr className="singIn-divider"/>
       <label>
-        Username or Email
         <input
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
+          placeholder='Your email address or username'
           required
         />
       </label>
       <label>
-        Password
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder='Password'
           required
         />
       </label>
-          <button type="submit" onClick={() => loginDemo()}>Demo User</button>
-      <button className='logIn' type="submit">Sign In</button>
     </form>
   );
 }

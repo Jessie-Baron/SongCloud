@@ -9,14 +9,16 @@ form {
     margin-top: 75px;
 }
 
-label {
-    padding-left: 10px;
-}
-
 input {
     margin-left: 5px;;
 }
 
 button {
     margin-left: 10px;
+}
+
+.sign-in-title {
+    margin-bottom: 10%;
+    top: 0;
+    font-size: 25px;
 }
