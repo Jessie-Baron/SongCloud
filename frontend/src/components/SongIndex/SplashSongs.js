@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { getSongs } from '../../store/song';
 import { getAudio } from '../../store/songPlayer';
 import './SongsIndex.css'
+import SignupFormModal from '../SignupFormModal';
 
 const SplashSongs = () => {
   const dispatch = useDispatch()
@@ -46,7 +47,9 @@ const SplashSongs = () => {
         <h4 className="pitch">Ready to join the community?</h4>
         <h6 className="pitch">Sign up today to start sharing music for FREE</h6>
         <center>
-        <Link to="/signup"><button className="pitchButton">Sign Up</button></Link>
+          <div className='pitch-container'>
+            <SignupFormModal />
+          </div>
         </center>
       </div>
     </div>

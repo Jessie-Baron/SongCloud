@@ -14,8 +14,9 @@
     z-index: 4000;
 }
 
-.signup-input {
-
+.pitch-container {
+    margin-top: 2%;
+    cursor: pointer;
 }
 
 .sinUp-button {
@@ -33,6 +34,10 @@
     padding: 10px 15px;
     margin-right: 15px;
     margin-top: 10%;
+    cursor: pointer;
+}
+
+.sinUp-button:hover {
     cursor: pointer;
 }
 

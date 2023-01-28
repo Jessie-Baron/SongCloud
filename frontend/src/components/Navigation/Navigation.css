@@ -140,6 +140,7 @@
     background-color: #f50;
     margin-left: 10px;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 #root > header > div > li > button {
