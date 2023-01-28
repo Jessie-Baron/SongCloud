@@ -35,74 +35,64 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className='signup-form' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      <center>
+        <h4 className="modal-header">Sign&nbsp;Up</h4>
+      </center>
       <label>
-        First Name
         <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        last Name
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Email
-        <input
+          className="signup-input"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder='Email'
           required
         />
       </label>
       <label>
-        Username
         <input
+          className="signup-input"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          placeholder='Username'
           required
         />
       </label>
       <label>
-        Password
         <input
+          className="signup-input"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder='Password'
           required
         />
       </label>
       <label>
-        Confirm Password
         <input
+          className="signup-input"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
+          placeholder='Confirm Password'
           required
         />
       </label>
       <label>
-        Upload a Picture of Yourself!
         <input
+          className="signup-input"
           type="text"
           value={imageUrl}
           onChange={(e) => ssetImageUrl(e.target.value)}
+          placeholder='Upload a Picture'
           required
         />
       </label>
-      <button type="submit">Sign Up</button>
+      <button className='sinUp-button' type="submit">Create Account</button>
     </form>
   );
 }
