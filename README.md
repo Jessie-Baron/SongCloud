@@ -2,7 +2,7 @@
 
 SongCloud is a dynamic clone of SoundCloud with built in features and a fully functioning backend database. Try it out [HERE!](https://songcloud-hj12.onrender.com/)
 
-<a href="https://drive.google.com/uc?export=view&id=1N3i7n5Yy9EYf1Cw7eRYl4AEKrCIer-Zf"><img src="https://drive.google.com/uc?export=view&id=1N3i7n5Yy9EYf1Cw7eRYl4AEKrCIer-Zf" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture" />
+![Screen Shot 2023-01-29 at 6 04 35 PM](https://user-images.githubusercontent.com/101578812/215360737-292bdb57-4a5d-4c11-96f3-2cc1ae944651.png)
 
 
 ## Wiki Links
