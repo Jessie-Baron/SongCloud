@@ -21,6 +21,7 @@ const User = () => {
     }
 
     const { id } = useParams();
+    const user = useSelector((state) => state.session.user);
     const songObject = useSelector(state => state.songs.allSongs)
     const songs = Object.values(songObject);
     const filtered = songs.filter(song => song.userId === Number(id))
@@ -49,14 +50,13 @@ const User = () => {
         setRandomId(Math.round(getRandomArbitrary(0, 6)))
     }, [dispatch])
 
-
     return (
         <div>
             <div className={styleObj[0].style}>
                 <center>
                     <img className="title-image-user" alt="" src={artist?.imageUrl} />
                     <div className='follow-wrapper-user'>
-                    <FollowButton artist={artist}/>
+                    {user.id !== Number(id) && <FollowButton artist={artist}/>}
                 </div>
                 </center>
                 <div className='title-wrapper-user'>
