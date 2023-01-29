@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { NavLink, useHistory } from "react-router-dom";
 
 
 function ProfileButton({ user }) {
+  const currentUser = useSelector(state => state.session.user)
+
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const history = useHistory()
@@ -49,6 +51,7 @@ function ProfileButton({ user }) {
           <div className="navItem">{<NavLink className="navText" exact to="/home">Home</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/playlists">Upload Playlist</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/songs">Upload Song</NavLink>}</div>
+          <div className="navItem">{<NavLink className="navText" exact to={`/users/${currentUser.id}`}>Profile</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/feed">Feed</NavLink>}</div>
           <div className="navItem">{<NavLink className="navText" exact to="/library">Library</NavLink>}</div>
           <div className="navItem" id="logout"onClick={logout}>Log Out</div>

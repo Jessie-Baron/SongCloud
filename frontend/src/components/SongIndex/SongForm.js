@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { createSong } from "../../store/song";
 import { Dispatch } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function SongForm() {
+  const user = useSelector(state => state.session.user)
+
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("")
   const [imageUrl, setImageUrl] = useState("")
@@ -40,7 +42,7 @@ function SongForm() {
     };
 
     await dispatch(createSong(songForm))
-    .then(history.push('/home'))
+    .then(history.push(`/users/${user.id}`))
 
     // Reset the form state.
     setTitle("");

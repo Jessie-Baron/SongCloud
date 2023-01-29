@@ -74,7 +74,7 @@ const SongIndexItem = ({ song }) => {
 
   const removeSong = () => {
     dispatch(deleteSong(id))
-      .then(() => history.push('/home'))
+      .then(() => history.push(`/users/${user.id}`))
   };
 
   const handlePlaylistDrop = () => {
