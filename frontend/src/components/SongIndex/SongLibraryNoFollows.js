@@ -12,6 +12,7 @@ const AllSongsIndex = () => {
 
   useEffect(() => {
     dispatch(getSongs())
+    toast("You don't seem to be following anyone. Here are some of our top creators!")
   }, [dispatch])
 
   const playSong = async (id) => {
