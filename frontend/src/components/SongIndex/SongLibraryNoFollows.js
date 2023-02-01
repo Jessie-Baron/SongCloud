@@ -12,7 +12,6 @@ const AllSongsIndex = () => {
 
   useEffect(() => {
     dispatch(getSongs())
-    toast("You don't seem to be following anyone. Here are some of our top creators!")
   }, [dispatch])
 
   const playSong = async (id) => {
@@ -30,7 +29,7 @@ const AllSongsIndex = () => {
   return (
     <div>
       <div className="feedHeader">
-        <h3>Hear the latest posts from the people you’re following:</h3>
+        <h3>Hear the latest posts from our top artists</h3>
       </div>
       <div className='songLibrary'>
         {
@@ -42,7 +41,7 @@ const AllSongsIndex = () => {
               </div>
               <div className='soundWave'>
                 <div><Link className="soundSong" to={`/songs/${song.id}`}>{song.title}</Link></div>
-                <div onClick={() => playSong(song.id)} className='waveform'><img className='waveform-image' src="https://mail.google.com/mail/u/0?ui=2&ik=c3ca6a56cc&attid=0.1&permmsgid=msg-a:r-1025902763432943948&th=185e62309763856a&view=att&disp=safe&realattid=f_ldavl0lx0" /></div>
+                <div onClick={() => playSong(song.id)} className='waveform'><img className='waveform-image' alt='song wave'src="https://mail.google.com/mail/u/0?ui=2&ik=c3ca6a56cc&attid=0.1&permmsgid=msg-a:r-1025902763432943948&th=185e62309763856a&view=att&disp=safe&realattid=f_ldavl0lx0" /></div>
               </div>
             </div>
           ))
