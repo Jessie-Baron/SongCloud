@@ -9,10 +9,14 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Users' },
+        onDelete: 'CASCADE'
       },
       commentId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: { model: 'Comments' },
+        onDelete: 'CASCADE'
       },
       createdAt: {
         allowNull: false,

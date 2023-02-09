@@ -3,7 +3,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const { restoreUser } = require("../../utils/auth.js");
 const { requireAuth } = require("../../utils/auth.js");
-const { Song, User, Playlist, PlaylistSong, Comment, Follow } = require('../../db/models');
+const { Song, User, Playlist, PlaylistSong, Comment, Follow, LikeSong, LikeComment, LikePlaylist } = require('../../db/models');
 const { Op } = require('sequelize');
 // Connect restoreUser middleware to the API router
   // If current user session is valid, set req.user to the user in the database
@@ -539,6 +539,107 @@ router.delete('/followers', requireAuth, restoreUser, async (req, res, next) => 
   })
 
   follow.destroy()
+  res.json({
+    message: "Successfully deleted",
+    statusCode: 200
+  })
+})
+
+// Like Routes
+
+router.post('/likeSongs', requireAuth, restoreUser, async (req, res, next) => {
+  const { songId } = req.body
+  const userId = req.user.id
+
+  const likeSong = await LikeSong.create({ songId, userId })
+  console.log("this is the likeSong object", likeSong)
+
+  res.json(likeSong)
+})
+
+router.delete('/likeSong', requireAuth, restoreUser, async (req, res, next) => {
+  const { playlistId } = req.body
+  const userId = req.user.id
+
+  const likeSong = await PlaylistSong.findOne({
+    where: {
+      playlistId: playlistId,
+      userId: userId
+    }
+  })
+
+  if(!likeSong) res.status(404).json({
+    message: "Song couldn't be found",
+    statusCode: 404
+  })
+
+  likeSong.destroy()
+  res.json({
+    message: "Successfully deleted",
+    statusCode: 200
+  })
+})
+
+router.post('/likeComments', requireAuth, restoreUser, async (req, res, next) => {
+  const { commentId } = req.body
+  const userId = req.user.id
+
+  const likeComment = await LikeComment.create({ commentId, userId })
+  console.log("this is the likeComment object", likeComment)
+
+  res.json(likeComment)
+})
+
+router.delete('/likeComments', requireAuth, restoreUser, async (req, res, next) => {
+  const { commentId } = req.body
+  const userId = req.user.id
+
+  const likeComment = await LikeComment.findOne({
+    where: {
+      commentId: commentId,
+      userId: userId
+    }
+  })
+
+  if(!likeComment) res.status(404).json({
+    message: "Comment couldn't be found",
+    statusCode: 404
+  })
+
+  likeComment.destroy()
+  res.json({
+    message: "Successfully deleted",
+    statusCode: 200
+  })
+})
+
+router.post('/likePlaylists', requireAuth, restoreUser, async (req, res, next) => {
+  const { playlistId } = req.body
+  const userId = req.user.id
+
+  const likePlaylist = await PlaylistSong.create({ playlistId, userId })
+  console.log("this is the likePlaylist object", likePlaylist)
+
+  res.json(likePlaylist)
+})
+
+router.delete('/likePlaylists', requireAuth, restoreUser, async (req, res, next) => {
+  const { playlistId } = req.body
+  const userId = req.user.id
+
+  const likePlaylist = await PlaylistSong.findOne({
+    where: {
+      playlistId: playlistId,
+      userId: userId
+    }
+  })
+
+  if(!likePlaylist) res.status(404).json({
+    message: "Comment couldn't be found",
+    statusCode: 404
+  })
+
+  likePlaylist.destroy()
   res.json({
     message: "Successfully deleted",
     statusCode: 200

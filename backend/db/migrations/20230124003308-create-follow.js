@@ -40,7 +40,3 @@ module.exports = {
     await queryInterface.dropTable('Follows', options);
   }
 };
-
-// npx sequelize-cli model:generate --name LikeSong --attributes userId:integer,songId:integer
-// npx sequelize-cli model:generate --name LikePlaylist --attributes userId:integer,playlistId:integer
-// npx sequelize-cli model:generate --name LikeComment --attributes userId:integer,commentId:integer
