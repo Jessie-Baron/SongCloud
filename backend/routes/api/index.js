@@ -6,8 +6,8 @@ const { requireAuth } = require("../../utils/auth.js");
 const { Song, User, Playlist, PlaylistSong, Comment, Follow, LikeSong, LikeComment, LikePlaylist } = require('../../db/models');
 const { Op } = require('sequelize');
 // Connect restoreUser middleware to the API router
-  // If current user session is valid, set req.user to the user in the database
-  // If current user session is not valid, set req.user to null
+// If current user session is valid, set req.user to the user in the database
+// If current user session is not valid, set req.user to null
 router.use(restoreUser);
 
 router.use('/session', sessionRouter);
@@ -22,16 +22,16 @@ router.get('/songs', async (req, res, next) => {
   let { size, page } = req.query
   const pagination = {}
 
-  if(!page) page = 0
-  if(!size) size = 20
+  if (!page) page = 0
+  if (!size) size = 20
 
   if (page > 10) page = 10
   if (size > 20) size = 20
 
-  if(page >= 1 && size >= 1) {
+  if (page >= 1 && size >= 1) {
     pagination.limit = size
     pagination.offset = (size * page - 1)
-}
+  }
 
   const songs = await Song.findAll({
     include: [{
@@ -55,7 +55,7 @@ router.get('/songs', async (req, res, next) => {
 // Get all songs by current user
 router.get('/songs/current', async (req, res, next) => {
   const user = req.user.id
-  if(user) {
+  if (user) {
     const songs = await Song.findAll({
       where: {
         userId: user
@@ -88,15 +88,15 @@ router.put('/songs/:songid', requireAuth, restoreUser, async (req, res, next) =>
     }
   })
 
-  if(!song) res.status(404).json({
+  if (!song) res.status(404).json({
     message: "Song couldn't be found",
     statusCode: 404
   })
 
-  if(title) song.title = title
-  if(description) song.description = description
-  if(url) song.url = url
-  if(imageUrl) song.imageUrl = imageUrl
+  if (title) song.title = title
+  if (description) song.description = description
+  if (url) song.url = url
+  if (imageUrl) song.imageUrl = imageUrl
   song.save()
 
   res.json(song)
@@ -105,21 +105,21 @@ router.put('/songs/:songid', requireAuth, restoreUser, async (req, res, next) =>
 // Get all songs by an artist
 router.get('/artists/:userid/songs', async (req, res, next) => {
   const songs = await Song.findAll(
-     {
-        where: {
-          userId: req.params.userid
-        }
-  })
+    {
+      where: {
+        userId: req.params.userid
+      }
+    })
 
-  if(!songs.length) {
-  res.status(404)
-  res.json({
-    message: "Artist couldn't be found",
-    statusCode: 404
-  })
-}
+  if (!songs.length) {
+    res.status(404)
+    res.json({
+      message: "Artist couldn't be found",
+      statusCode: 404
+    })
+  }
   else {
-    res.json({Songs: songs})
+    res.json({ Songs: songs })
   }
 })
 
@@ -130,11 +130,11 @@ router.get('/songs/:songid', async (req, res, next) => {
       model: User, as: 'Artist',
       attributes: ['id', 'username', 'imageUrl']
     }],
-      where: {
-        id: req.params.songid
-      }
+    where: {
+      id: req.params.songid
+    }
   })
-  if(!song) {
+  if (!song) {
     res.status(404)
     res.json({
       message: "Song couldn't be found",
@@ -142,19 +142,19 @@ router.get('/songs/:songid', async (req, res, next) => {
     })
   }
   else {
-  res.json(song)
+    res.json(song)
   }
 })
 
 // Delete a song
 router.delete('/songs/:songid', requireAuth, restoreUser, async (req, res, next) => {
   const song = await Song.findOne({
-      where: {
-        id: req.params.songid
-      }
+    where: {
+      id: req.params.songid
+    }
   })
 
-  if(!song) res.status(404).json({
+  if (!song) res.status(404).json({
     message: "Song couldn't be found",
     statusCode: 404
   })
@@ -169,11 +169,11 @@ router.delete('/songs/:songid', requireAuth, restoreUser, async (req, res, next)
 // Playlists
 
 // Get all playlists by current user
-router.get('/playlists/current', restoreUser, requireAuth, async (req, res)=>{
+router.get('/playlists/current', restoreUser, requireAuth, async (req, res) => {
   const user = req.user
-  if(user){
+  if (user) {
     const playlists = await Playlist.findAll({
-      where:{
+      where: {
         userId: user.id
       }
     })
@@ -191,12 +191,12 @@ router.get('/artists/:userid/playlists', async (req, res, next) => {
     }
   })
 
-  if(!playlists.length) res.status(404).json({
+  if (!playlists.length) res.status(404).json({
     message: "Artist couldn't be found",
     statusCode: 404
   })
 
-  res.json({Playlists: playlists})
+  res.json({ Playlists: playlists })
 })
 
 
@@ -220,7 +220,7 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
     }
   })
 
-  if(!playlist) {
+  if (!playlist) {
     res.status(404).json({
       message: "Playlist couldn't be found",
       statusCode: 404
@@ -236,23 +236,23 @@ router.post('/playlists/:playlistid/songs', requireAuth, restoreUser, async (req
   console.log(song)
   console.log(playlist)
 
-  if(!song) {
+  if (!song) {
     res.status(404).json({
       message: "Song couldn't be found",
       statusCode: 404
     })
   }
 
-const newSong = await PlaylistSong.create({songId, playlistId})
+  const newSong = await PlaylistSong.create({ songId, playlistId })
 
-const playlistSong = newSong.toJSON()
+  const playlistSong = newSong.toJSON()
 
-delete playlistSong.createdAt
-delete playlistSong.updatedAt
-delete playlistSong.order
+  delete playlistSong.createdAt
+  delete playlistSong.updatedAt
+  delete playlistSong.order
 
 
-res.json(playlistSong)
+  res.json(playlistSong)
 })
 
 // Get details of a playlist
@@ -263,18 +263,18 @@ router.get('/playlists/:playlistid', async (req, res, next) => {
       id: req.params.playlistid
     },
     include: [
-    {
-      model: Song,
-      through: {attributes: []},
-      include: [
-        {
-          model: User, as: 'Artist'
-        }
-      ]
-    }],
+      {
+        model: Song,
+        through: { attributes: [] },
+        include: [
+          {
+            model: User, as: 'Artist'
+          }
+        ]
+      }],
   })
 
-  if(!playlist) {
+  if (!playlist) {
     res.status(404)
     res.json({
       message: "Playlist couldn't be found",
@@ -282,8 +282,8 @@ router.get('/playlists/:playlistid', async (req, res, next) => {
     })
   }
   else {
-  console.log("this route is running")
-  res.json(playlist)
+    console.log("this route is running")
+    res.json(playlist)
   }
 })
 
@@ -298,13 +298,13 @@ router.put('/playlists/:playlistid', requireAuth, restoreUser, async (req, res, 
     }
   })
 
-  if(!playlist) res.status(404).json({
+  if (!playlist) res.status(404).json({
     message: "Playlist couldn't be found",
     statusCode: 404
   })
 
-  if(name) playlist.name = name
-  if(imageUrl) playlist.imageUrl = imageUrl
+  if (name) playlist.name = name
+  if (imageUrl) playlist.imageUrl = imageUrl
   playlist.save()
 
   res.json({
@@ -320,12 +320,12 @@ router.put('/playlists/:playlistid', requireAuth, restoreUser, async (req, res, 
 // Delete a playlist
 router.delete('/playlists/:playlistid', requireAuth, restoreUser, async (req, res, next) => {
   const playlist = await Playlist.findOne({
-      where: {
-        id: req.params.playlistid
-      }
+    where: {
+      id: req.params.playlistid
+    }
   })
 
-  if(!playlist) res.status(404).json({
+  if (!playlist) res.status(404).json({
     message: "Playlist couldn't be found",
     statusCode: 404
   })
@@ -351,12 +351,12 @@ router.get('/songs/:songid/comments', async (req, res, next) => {
     }
   })
 
-  if(!comments.length) res.status(404).json({
+  if (!comments.length) res.status(404).json({
     message: "Song couldn't be found",
     statusCode: 404
   })
 
-  res.json({Comments: comments})
+  res.json({ Comments: comments })
 })
 
 
@@ -371,12 +371,12 @@ router.post('/songs/:songid/comments', requireAuth, restoreUser, async (req, res
   const validator = songId => {
     let isValid = false
     songs.forEach(song => {
-      if((song.id) == songId) isValid = true
+      if ((song.id) == songId) isValid = true
     })
     return isValid
   }
 
-  if(!validator(songId)) {
+  if (!validator(songId)) {
     res.status(404).json({
       message: "Song couldn't be found",
       statusCode: 404
@@ -398,12 +398,12 @@ router.put('/comments/:commentid', requireAuth, restoreUser, async (req, res, ne
     }
   })
 
-  if(!comment) res.status(404).json({
+  if (!comment) res.status(404).json({
     message: "Comment couldn't be found",
     statusCode: 404
   })
 
-  if(body) comment.body = body
+  if (body) comment.body = body
   comment.save()
 
   res.json({
@@ -419,12 +419,12 @@ router.put('/comments/:commentid', requireAuth, restoreUser, async (req, res, ne
 // Delete a comment
 router.delete('/comments/:commentid', requireAuth, restoreUser, async (req, res, next) => {
   const comment = await Comment.findOne({
-      where: {
-        id: req.params.commentid
-      }
+    where: {
+      id: req.params.commentid
+    }
   })
 
-  if(!comment) res.status(404).json({
+  if (!comment) res.status(404).json({
     message: "Comment couldn't be found",
     statusCode: 404
   })
@@ -447,7 +447,7 @@ router.get('/artists/:userid', async (req, res, next) => {
     }
   })
 
-  if(!artist) {
+  if (!artist) {
     res.status(404)
     res.json({
       message: "Artist couldn't be found",
@@ -456,7 +456,7 @@ router.get('/artists/:userid', async (req, res, next) => {
   }
 
   else {
-  res.json(artist)
+    res.json(artist)
   }
 })
 
@@ -480,7 +480,7 @@ router.delete('/playlistSongs', requireAuth, restoreUser, async (req, res, next)
     }
   })
 
-  if(!playlistSong) res.status(404).json({
+  if (!playlistSong) res.status(404).json({
     message: "Comment couldn't be found",
     statusCode: 404
   })
@@ -500,7 +500,7 @@ router.get('/followers/:userId', requireAuth, restoreUser, async (req, res, next
     }
   })
 
-  if(!follows) {
+  if (!follows) {
     res.status(404)
     res.json({
       message: "Follows couldn't be found",
@@ -508,22 +508,22 @@ router.get('/followers/:userId', requireAuth, restoreUser, async (req, res, next
     })
   }
   else {
-  console.log("this route is running")
-  res.json(follows)
+    console.log("this route is running")
+    res.json(follows)
   }
 })
 
 router.post('/followers', requireAuth, restoreUser, async (req, res, next) => {
-  const {followerId, followedId } = req.body
+  const { followerId, followedId } = req.body
 
-  const follow = await Follow.create({followerId, followedId})
+  const follow = await Follow.create({ followerId, followedId })
   console.log("this is the follow object", follow)
 
   res.json(follow)
 })
 
 router.delete('/followers', requireAuth, restoreUser, async (req, res, next) => {
-  const {followerId, followedId } = req.body
+  const { followerId, followedId } = req.body
   console.log("this is the backend pair", followerId, followedId)
 
   const follow = await Follow.findOne({
@@ -533,7 +533,7 @@ router.delete('/followers', requireAuth, restoreUser, async (req, res, next) => 
     }
   })
 
-  if(!follow) res.status(404).json({
+  if (!follow) res.status(404).json({
     message: "Comment couldn't be found",
     statusCode: 404
   })
@@ -546,10 +546,17 @@ router.delete('/followers', requireAuth, restoreUser, async (req, res, next) => 
 })
 
 // Like Routes
+router.get(`/likeSongs`, requireAuth, restoreUser, async (req, res, next) => {
+
+  const likeSongs = await LikeSong.findAll()
+
+  res.json({
+    LikeSongs: likeSongs
+  })
+})
 
 router.post('/likeSongs', requireAuth, restoreUser, async (req, res, next) => {
-  const { songId } = req.body
-  const userId = req.user.id
+  const { songId, userId } = req.body
 
   const likeSong = await LikeSong.create({ songId, userId })
   console.log("this is the likeSong object", likeSong)
@@ -557,18 +564,17 @@ router.post('/likeSongs', requireAuth, restoreUser, async (req, res, next) => {
   res.json(likeSong)
 })
 
-router.delete('/likeSong', requireAuth, restoreUser, async (req, res, next) => {
-  const { playlistId } = req.body
-  const userId = req.user.id
+router.delete('/likeSongs/:id', requireAuth, restoreUser, async (req, res, next) => {
 
-  const likeSong = await PlaylistSong.findOne({
+  const likeSong = await LikeSong.findOne({
     where: {
-      playlistId: playlistId,
-      userId: userId
+      id: req.params.id
     }
   })
 
-  if(!likeSong) res.status(404).json({
+  console.log("this is the like", likeSong)
+
+  if (!likeSong) res.status(404).json({
     message: "Song couldn't be found",
     statusCode: 404
   })
@@ -601,7 +607,7 @@ router.delete('/likeComments', requireAuth, restoreUser, async (req, res, next) 
     }
   })
 
-  if(!likeComment) res.status(404).json({
+  if (!likeComment) res.status(404).json({
     message: "Comment couldn't be found",
     statusCode: 404
   })
@@ -634,7 +640,7 @@ router.delete('/likePlaylists', requireAuth, restoreUser, async (req, res, next)
     }
   })
 
-  if(!likePlaylist) res.status(404).json({
+  if (!likePlaylist) res.status(404).json({
     message: "Comment couldn't be found",
     statusCode: 404
   })

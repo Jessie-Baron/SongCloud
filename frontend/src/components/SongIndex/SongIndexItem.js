@@ -14,6 +14,7 @@ import CommentEditForm from '../CommentEditForm';
 import { getComments, deleteComment } from '../../store/comment';
 import { toast } from 'react-hot-toast';
 import * as followActions from '../../store/follow'
+import * as likeActions from '../../store/songLike'
 import FollowButton from '../FollowButton';
 
 const SongIndexItem = ({ song }) => {
@@ -22,6 +23,10 @@ const SongIndexItem = ({ song }) => {
   const songObject = useSelector(state => state.songs.allSongs)
   const songs = Object.values(songObject);
   const user = useSelector(state => state.session.user)
+  const likeObj = useSelector(state => state.songLike.allLikeSongs)
+  const likes = Object.values(likeObj)
+  const likesFilter = likes?.filter(like => like.userId === user.id)
+  const like = likesFilter[0]
   const commentsObj = useSelector(state => state.comment.allComments)
   const allComments = Object.values(commentsObj)
   const comments = allComments.filter(comment => comment.songId === singleSong.id)
@@ -31,7 +36,6 @@ const SongIndexItem = ({ song }) => {
   const followings = Object.values(followingsObj)
   const filtered = followings.filter(follow => follow.followerId === user.id)
   const filtered2 = filtered.filter(follow => follow.followedId === singleSong.Artist?.id)
-  console.log("this is filter 2", filtered2)
   const filtered3 = songs.filter(song => song.userId === singleSong.Artist?.id)
   const dispatch = useDispatch()
   const history = useHistory()
@@ -53,6 +57,7 @@ const SongIndexItem = ({ song }) => {
 
   useEffect(() => {
     dispatch(getSongs())
+    dispatch(likeActions.getLikeSongs())
   }, [dispatch])
 
   const getRandomArbitrary = (min, max) => {
@@ -83,7 +88,6 @@ const SongIndexItem = ({ song }) => {
   }
 
   const handlePlaylistAdd = async (playlistId, songId) => {
-    console.log("this is the playlistSong pair", playlistId, songId)
 
     const payload = {
       playlistId,
@@ -98,6 +102,24 @@ const SongIndexItem = ({ song }) => {
     await dispatch(deleteComment(commentId, songId))
     await dispatch(getComments(singleSong.id))
   };
+
+  const handleLike = async (singleSong) => {
+    if (!user) return toast.error("Please log-in to like posts")
+    if (!likesFilter.length > 0) {
+
+      const payload = {
+        songId: singleSong?.id,
+        userId: user.id
+      }
+
+      await dispatch(likeActions.createLikeSong(payload))
+    }
+    else {
+
+      console.log("this is the id", like.id)
+      await dispatch(likeActions.deleteLikeSong(like.id))
+    }
+  }
 
   useEffect(() => {
     if (user) {
@@ -121,6 +143,7 @@ const SongIndexItem = ({ song }) => {
           </center>
         </div>
         <div className="detailButtons">
+          <button className={likesFilter.length > 0 ? "detail-button-liked" : "detail-button-unliked"} onClick={() => handleLike(singleSong)}><i id ={likesFilter.length > 0 ? "liked" : "un-liked"} class="fa-solid fa-heart"></i> Like</button>
           {singleSong?.userId === user?.id && <button className="detailButton1" onClick={removeSong}>Delete Song</button>}
           <button className={singleSong?.userId === user?.id ? "detailButton4" : "detailButton5"} onClick={() => playSong(singleSong.id)}>Play Song</button>
           {singleSong?.userId === user?.id && <button className="detailButton2" onClick={() => setShowEdit(!showEdit)}>Edit Song</button>}

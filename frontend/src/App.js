@@ -27,7 +27,6 @@ import SongLibrary from "./components/SongIndex/SongLibrary"
 import * as followActions from './store/follow'
 import SongLibraryNoFollows from "./components/SongIndex/SongLibraryNoFollows"
 import 'react-h5-audio-player/lib/styles.css';
-import SongIndexItemNoAuth from "./components/SongIndex/SongIndexItemNoAuth";
 import SplashCarousel from "./components/SplashCarousel";
 import toast, { Toaster } from 'react-hot-toast';
 import ProfileSidebarIndexItem from "./components/ProfileSidebar/ProfileSideBarIndexItem";

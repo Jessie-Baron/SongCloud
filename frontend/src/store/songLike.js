@@ -88,7 +88,7 @@ const likeSongReducer = (state = initialState, action) => {
     switch (action.type) {
       case LOAD_LIKE_SONG:
         newState = {...state, allLikeSongs: {}}
-        action.likeSongs.likeSongs.forEach(likeSong => newState.allLikeSongs[likeSong.id] = likeSong)
+        action.likeSongs.LikeSongs.forEach(likeSong => newState.allLikeSongs[likeSong.id] = likeSong)
         return newState;
       case UPDATE_LIKE_SONG:
             newState.singleLikeSong = action.likeSong

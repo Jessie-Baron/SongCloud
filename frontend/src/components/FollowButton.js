@@ -14,11 +14,8 @@ const FollowButton = ({artist}) => {
     const followingsObj = useSelector((state) => (state.follow?.following))
     const followings = Object.values(followingsObj)
     const filtered = followings.filter(follow => follow.followerId === user.id && follow.followedId === artist?.id)
-    console.log("this is filtered", filtered)
     const [following, setFollowing] = useState(filtered.length > 0)
-    console.log("this is followings", followings)
     const dispatch = useDispatch();
-    console.log("this is the value of following", following)
 
     useEffect(() => {
         if (user) {
@@ -35,15 +32,12 @@ const FollowButton = ({artist}) => {
 
       const handleFollow = (followerId, followedId) => {
 
-        console.log("this is my follow pair", followerId, followedId)
         if (!following) {
             dispatch(followActions.follow(followerId, followedId))
               .then(() => setFollowing(true))
-              console.log("this is whether or not the follow button worked", "followed")
           } else {
             dispatch(followActions.unfollow(followerId, followedId))
               .then(() => setFollowing(false))
-              console.log("this is whether or not the follow button worked", "unfollowed")
           }
     }
 
