@@ -14,7 +14,7 @@ import CommentEditForm from '../CommentEditForm';
 import { getComments, deleteComment } from '../../store/comment';
 import { toast } from 'react-hot-toast';
 import * as followActions from '../../store/follow'
-import * as likeActions from '../../store/songLike'
+import * as songLikeActions from '../../store/songLike'
 import FollowButton from '../FollowButton';
 
 const SongIndexItem = ({ song }) => {
@@ -57,7 +57,7 @@ const SongIndexItem = ({ song }) => {
 
   useEffect(() => {
     dispatch(getSongs())
-    dispatch(likeActions.getLikeSongs())
+    dispatch(songLikeActions.getLikeSongs())
   }, [dispatch])
 
   const getRandomArbitrary = (min, max) => {
@@ -103,7 +103,8 @@ const SongIndexItem = ({ song }) => {
     await dispatch(getComments(singleSong.id))
   };
 
-  const handleLike = async (singleSong) => {
+  const handleLikeSong = async (singleSong) => {
+    console.log(likesFilter.length)
     if (!user) return toast.error("Please log-in to like posts")
     if (!likesFilter.length > 0) {
 
@@ -112,12 +113,14 @@ const SongIndexItem = ({ song }) => {
         userId: user.id
       }
 
-      await dispatch(likeActions.createLikeSong(payload))
+      await dispatch(songLikeActions.createLikeSong(payload))
+      await dispatch(songLikeActions.getLikeSongs())
     }
     else {
 
       console.log("this is the id", like.id)
-      await dispatch(likeActions.deleteLikeSong(like.id))
+      await dispatch(songLikeActions.deleteLikeSong(like.id))
+      await dispatch(songLikeActions.getLikeSongs())
     }
   }
 
@@ -143,7 +146,7 @@ const SongIndexItem = ({ song }) => {
           </center>
         </div>
         <div className="detailButtons">
-          <button className={likesFilter.length > 0 ? "detail-button-liked" : "detail-button-unliked"} onClick={() => handleLike(singleSong)}><i id ={likesFilter.length > 0 ? "liked" : "un-liked"} class="fa-solid fa-heart"></i> Like</button>
+          <button className={likesFilter.length > 0 ? "detail-button-liked" : "detail-button-unliked"} onClick={() => handleLikeSong(singleSong)}><i id ={likesFilter.length > 0 ? "liked" : "un-liked"} class="fa-solid fa-heart"></i> Like</button>
           {singleSong?.userId === user?.id && <button className="detailButton1" onClick={removeSong}>Delete Song</button>}
           <button className={singleSong?.userId === user?.id ? "detailButton4" : "detailButton5"} onClick={() => playSong(singleSong.id)}>Play Song</button>
           {singleSong?.userId === user?.id && <button className="detailButton2" onClick={() => setShowEdit(!showEdit)}>Edit Song</button>}

@@ -559,7 +559,6 @@ router.post('/likeSongs', requireAuth, restoreUser, async (req, res, next) => {
   const { songId, userId } = req.body
 
   const likeSong = await LikeSong.create({ songId, userId })
-  console.log("this is the likeSong object", likeSong)
 
   res.json(likeSong)
 })
@@ -571,8 +570,6 @@ router.delete('/likeSongs/:id', requireAuth, restoreUser, async (req, res, next)
       id: req.params.id
     }
   })
-
-  console.log("this is the like", likeSong)
 
   if (!likeSong) res.status(404).json({
     message: "Song couldn't be found",
@@ -619,24 +616,29 @@ router.delete('/likeComments', requireAuth, restoreUser, async (req, res, next) 
   })
 })
 
+router.get(`/likePlaylists`, requireAuth, restoreUser, async (req, res, next) => {
+
+  const likePlaylists = await LikePlaylist.findAll()
+
+  res.json({
+    likePlaylists: likePlaylists
+  })
+})
+
 router.post('/likePlaylists', requireAuth, restoreUser, async (req, res, next) => {
   const { playlistId } = req.body
   const userId = req.user.id
 
-  const likePlaylist = await PlaylistSong.create({ playlistId, userId })
-  console.log("this is the likePlaylist object", likePlaylist)
+  const likePlaylist = await LikePlaylist.create({ playlistId, userId })
 
   res.json(likePlaylist)
 })
 
-router.delete('/likePlaylists', requireAuth, restoreUser, async (req, res, next) => {
-  const { playlistId } = req.body
-  const userId = req.user.id
+router.delete('/likePlaylists/:id', requireAuth, restoreUser, async (req, res, next) => {
 
-  const likePlaylist = await PlaylistSong.findOne({
+  const likePlaylist = await LikePlaylist.findOne({
     where: {
-      playlistId: playlistId,
-      userId: userId
+      id: req.params.id
     }
   })
 

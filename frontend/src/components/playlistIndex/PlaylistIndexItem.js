@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { getPlaylistDetails } from '../../store/playlist';
 import { deletePlaylist } from '../../store/playlist';
 import { getAudio } from '../../store/songPlayer';
+import * as playlistLikeActions from '../../store/playlistLike'
+import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
 const PlaylistIndexItem = ({ playlist }) => {
@@ -12,6 +14,10 @@ const PlaylistIndexItem = ({ playlist }) => {
     // console.log("this is the id of the playlist", id)
     const singlePlaylist = useSelector(state => state.playlist.singlePlaylist);
     const user = useSelector(state => state.session.user)
+    const likeObj = useSelector(state => state.playlistLike.allLikePlaylists)
+    const likes = Object.values(likeObj)
+    const likesFilter = likes?.filter(like => like.userId === user.id)
+    const like = likesFilter[0]
     // const playlists = Object.values(playlistsObj)
     // console.log("this is the playlists array", playlists)
     // const singlePlaylist = playlists.filter(playlist => playlist.id === Number(id))[0]
@@ -22,6 +28,7 @@ const PlaylistIndexItem = ({ playlist }) => {
 
     useEffect(() => {
         dispatch(getPlaylistDetails(id))
+        dispatch(playlistLikeActions.getLikePlaylists())
     }, [id])
 
     const playSong = async (id) => {
@@ -37,6 +44,27 @@ const PlaylistIndexItem = ({ playlist }) => {
         return Math.random() * (max - min) + min;
     }
 
+    const handleLikePlaylist = async (singleSong) => {
+        console.log(likesFilter.length)
+        if (!user) return toast.error("Please log-in to like posts")
+        if (!likesFilter.length > 0) {
+
+            const payload = {
+                songId: singleSong?.id,
+                userId: user.id
+            }
+
+            await dispatch(playlistLikeActions.createLikePlaylist(payload))
+            await dispatch(playlistLikeActions.getLikePlaylists())
+        }
+        else {
+
+            console.log("this is the id", like.id)
+            await dispatch(playlistLikeActions.deleteLikePlaylist(like.id))
+            await dispatch(playlistLikeActions.getLikePlaylists())
+        }
+    }
+
 
     return (
         <div className="playlist-detail-lists">
@@ -50,6 +78,7 @@ const PlaylistIndexItem = ({ playlist }) => {
                     </center>
                 </div>
                 <div className='detailButtons-playlist'>
+                    <button className={likesFilter.length > 0 ? "detail-button-liked" : "detail-button-unliked"} onClick={() => handleLikePlaylist(singlePlaylist)}><i id={likesFilter.length > 0 ? "liked" : "un-liked"} class="fa-solid fa-heart"></i> Like</button>
                     {singlePlaylist?.userId === user?.id && <button className="detailButton3" onClick={removePlaylist}>Delete Playlist</button>}
                 </div>
                 {singlePlaylist?.Songs?.map((song, idx) => (
