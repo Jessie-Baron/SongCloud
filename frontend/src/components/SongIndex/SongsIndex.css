@@ -206,7 +206,6 @@ p {
 
 .detailButton1 {
     margin-top: 2%;
-    margin-left: 5%;
     background-color: #ffffff;
     border: 1px solid black;
     cursor: pointer;
@@ -229,9 +228,35 @@ p {
     background-color: #ffffff;
     margin-top: 2%;
     border: 1px solid black;
+    margin-top: 4%;
+    cursor: pointer;
+}
+
+.detail-button-unliked {
+    background-color: #ffffff;
+    margin-top: 2%;
+    border: 1px solid black;
     margin-left: 5%;
     margin-top: 4%;
     cursor: pointer;
+}
+
+.detail-button-liked {
+    background-color: #ffffff;
+    margin-top: 2%;
+    color: #f50;
+    border: 1px solid #f50;
+    margin-left: 5%;
+    margin-top: 4%;
+    cursor: pointer;
+}
+
+#liked {
+    color: #f50;
+}
+
+#un-liked {
+    color: #333;
 }
 
 .form {
@@ -749,7 +774,6 @@ x .detailButtons {
 
     .detailButton1 {
         margin-top: 4%;
-        margin-left: 5%;
         background-color: #ffffff;
         border: 1px solid black;
     }
