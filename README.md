@@ -1,6 +1,6 @@
 # SongCloud
 
-SongCloud is a dynamic clone of SoundCloud with built in features and a fully functioning backend database. Try it out [HERE!](https://songcloud-hj12.onrender.com/)
+SongCloud is a dynamic clone of SoundCloud with built in features and a fully functioning backend database. Try it out [HERE!](https://songcloud-ezwm.onrender.com/)
 
 ## Wiki Links
 
